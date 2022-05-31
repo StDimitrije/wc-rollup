@@ -1,6 +1,6 @@
 {
   "name": "wc-rollup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/bundle.umd.js",
   "repository": "https://github.com/StDimitrije/wc-rollup.git",
   "scripts": {
