@@ -1,7 +1,8 @@
 {
   "name": "wc-rollup",
   "version": "1.0.0",
-  "main": "dist/bundle.cjs.js",
+  "main": "dist/bundle.umd.js",
+  "repository": "https://github.com/StDimitrije/wc-rollup.git",
   "scripts": {
     "start:css": "npx tailwindcss -i src/main.css -o dist/main.css --watch",
     "build:css": "npx tailwindcss -i src/main.css -o dist/main.css",
@@ -25,5 +26,7 @@
   "dependencies": {
     "@babel/runtime": "^7.17.9",
     "postcss": "^8.4.14"
-  }
+  },
+  "author": "Dimitrije Stanković <dimitrije.stankovic@spicefactory.co>",
+  "license": "MIT"
 }
