@@ -1,278 +1,183 @@
 <!DOCTYPE html>
 <html lang="en" class="antialiased min-h-full">
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Title</title>
   <meta name="description" content="Description">
-  <link rel="stylesheet" href="../dist/main.css">
-  <script src="../dist/bundle.min.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
-  
+  <script src="../dist/nomadix-ui-0.0.2.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+    rel="stylesheet">
+
 </head>
-  <body class="min-h-full bg-white dark:bg-dark-3 text-dark-2 dark:text-white">
-    <main class="grid grid-cols-2 gap-7">
-      <header-component>
-        <logo-component 
-          slot="header-slot"
-          imageSrc="https://auth.dev.nomadix.cloud/assets/providers/nomadix-cloud-stacked-8f5f7560cb0dcd115841250ebef4facebaa412b2.png" 
-          organization="Acme Organization inc." 
-          link="/app/dashboard/">
-        </logo-component>
-        <main-search 
-          slot="header-slot"
-          action="asdf" 
-          placeholder="Search everything... [cmd+/]"
-        ></main-search>
-        <profile-icon 
-          slot="header-slot"
-          initials="JD" 
-          color="#86B64E">
-          <dropdown-component slot="dropdown-container">
-            <dropdown-item
-              slot="dropdown-item"
-              title="Account Settings"
-              href="/app/dashboard/"
-            ></dropdown-item>
-            <dropdown-item
-              slot="dropdown-item"
-              title="Sign Out"
-            ></dropdown-item>
-          </dropdown-component>
-        </profile-icon>
-      </header-component>
-      <alert-component>
-        <custom-alert slot="alert" variant="danger" count="2"></custom-alert>
-        <custom-alert slot="alert" variant="warning" count="5"></custom-alert>
-        <custom-alert slot="alert" variant="success" count="10"></custom-alert>
-      </alert-component>
-       <sidenav-component expandable="true">
+
+<body class="min-h-full bg-white dark:bg-dark-3 text-dark-2 dark:text-white p-4">
+  <main class="grid grid-cols-2 gap-7">
+    <header-component>
+      <logo-component slot="header-slot"
+        imageSrc="https://auth.dev.nomadix.cloud/assets/providers/nomadix-cloud-stacked-8f5f7560cb0dcd115841250ebef4facebaa412b2.png"
+        organization="Acme Organization inc." link="/app/dashboard/">
+      </logo-component>
+      <main-search slot="header-slot" action="asdf" placeholder="Search everything... [cmd+/]"></main-search>
+      <profile-icon slot="header-slot" initials="JD" color="#86B64E">
+        <dropdown-component slot="dropdown-container">
+          <dropdown-item slot="dropdown-item" title="Account Settings" href="/app/dashboard/"></dropdown-item>
+          <dropdown-item slot="dropdown-item" title="Sign Out"></dropdown-item>
+        </dropdown-component>
+      </profile-icon>
+    </header-component>
+    <alert-component>
+      <custom-alert slot="alert" variant="danger" count="2"></custom-alert>
+      <custom-alert slot="alert" variant="warning" count="5"></custom-alert>
+      <custom-alert slot="alert" variant="success" count="10"></custom-alert>
+    </alert-component>
+    <sidenav-component expandable="true">
       <sidenav-ul-component slot="sidenav-ul-component">
         <sidenav-ul-item slot="sidenav-ul-item" href="/app/dashboard/" name="Dashboard">
-          <svg slot="icon-slot" width="24px" height="25px" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path class="fill-primary dark:fill-gray-200" fill-rule="evenodd" clip-rule="evenodd" d="M10 20.5V14.5H14V20.5H19V12.5H22L12 3.5L2 12.5H5V20.5H10Z"/>
+          <svg slot="icon-slot" width="24px" height="25px" viewBox="0 0 24 25" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path class="fill-primary dark:fill-gray-200" fill-rule="evenodd" clip-rule="evenodd"
+              d="M10 20.5V14.5H14V20.5H19V12.5H22L12 3.5L2 12.5H5V20.5H10Z" />
           </svg>
         </sidenav-ul-item>
         <sidenav-ul-item slot="sidenav-ul-item" href="/app/properties/" name="All Properties" count="57">
-          <svg slot="icon-slot" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path class="fill-primary dark:fill-gray-200" d="M17 11V3H7V7H3V21H11V17H13V21H21V11H17ZM7 19H5V17H7V19ZM7 15H5V13H7V15ZM7 11H5V9H7V11ZM11 15H9V13H11V15ZM11 11H9V9H11V11ZM11 7H9V5H11V7ZM15 15H13V13H15V15ZM15 11H13V9H15V11ZM15 7H13V5H15V7ZM19 19H17V17H19V19ZM19 15H17V13H19V15Z" fill="#323232"/>
+          <svg slot="icon-slot" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path class="fill-primary dark:fill-gray-200"
+              d="M17 11V3H7V7H3V21H11V17H13V21H21V11H17ZM7 19H5V17H7V19ZM7 15H5V13H7V15ZM7 11H5V9H7V11ZM11 15H9V13H11V15ZM11 11H9V9H11V11ZM11 7H9V5H11V7ZM15 15H13V13H15V15ZM15 11H13V9H15V11ZM15 7H13V5H15V7ZM19 19H17V17H19V19ZM19 15H17V13H19V15Z"
+              fill="#323232" />
           </svg>
         </sidenav-ul-item>
         <sidenav-ul-item slot="sidenav-ul-item" href="/app/products/" name="All Products" count="5">
-          <svg slot="icon-slot" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path class="fill-primary dark:fill-gray-200" d="M16 4.2C17.5 4.2 19 4.8 20.2 5.9L21 5.1C19.6 3.7 17.8 3 16 3C14.2 3 12.4 3.7 11 5.1L11.8 5.9C13 4.8 14.5 4.2 16 4.2ZM12.7 6.7L13.5 7.5C14.2 6.8 15.1 6.5 16 6.5C16.9 6.5 17.8 6.8 18.5 7.5L19.3 6.7C18.4 5.8 17.2 5.3 16 5.3C14.8 5.3 13.6 5.8 12.7 6.7ZM19 13H17V9H15V13H5C3.9 13 3 13.9 3 15V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V15C21 13.9 20.1 13 19 13ZM19 19H5V15H19V19ZM6 16H8V18H6V16ZM9.5 16H11.5V18H9.5V16ZM13 16H15V18H13V16Z" fill="#323232"/>
+          <svg slot="icon-slot" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path class="fill-primary dark:fill-gray-200"
+              d="M16 4.2C17.5 4.2 19 4.8 20.2 5.9L21 5.1C19.6 3.7 17.8 3 16 3C14.2 3 12.4 3.7 11 5.1L11.8 5.9C13 4.8 14.5 4.2 16 4.2ZM12.7 6.7L13.5 7.5C14.2 6.8 15.1 6.5 16 6.5C16.9 6.5 17.8 6.8 18.5 7.5L19.3 6.7C18.4 5.8 17.2 5.3 16 5.3C14.8 5.3 13.6 5.8 12.7 6.7ZM19 13H17V9H15V13H5C3.9 13 3 13.9 3 15V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V15C21 13.9 20.1 13 19 13ZM19 19H5V15H19V19ZM6 16H8V18H6V16ZM9.5 16H11.5V18H9.5V16ZM13 16H15V18H13V16Z"
+              fill="#323232" />
           </svg>
         </sidenav-ul-item>
       </sidenav-ul-component>
     </sidenav-component>
-      <sidenav-component util="true">
-    <sidenav-util-component slot="sidenav-util-component" title="Recent Deployments" buttonText="View More">
-      <sidenav-util-item 
-        slot="sidenav-util-item"
-        name="Angie"
-        last-active="3w"
-        deployment="HYTOR • Hyatt Regency OrlaHYTOR • Hyatt Regency Orla"
-        href="/app/products/deployments.html" 
-        imgSrc="/assets/images/icons/angie-icon.svg" 
-        imgAlt="image alt">
-      </sidenav-util-item>
-      <sidenav-util-item 
-        slot="sidenav-util-item"
-        name="Angie"
-        last-active="1mo"
-        deployment="HYTOR • Hyatt Regency Orla"
-        href="/app/products/deployments.html" 
-        imgSrc="/assets/images/icons/angie-icon.svg"
-        imgAlt="image alt">
-      </sidenav-util-item>
-      <sidenav-util-item 
-        slot="sidenav-util-item"
-        name="Angie"
-        last-active="1mo"
-        deployment="HYTOR • Hyatt Regency Orla"
-        href="/app/products/deployments.html" 
-        imgSrc="/assets/images/icons/angie-icon.svg"
-        imgAlt="image alt">
-      </sidenav-util-item>
-      <sidenav-util-item 
-        slot="sidenav-util-item"
-        name="Angie"
-        last-active="1mo"
-        deployment="HYTOR • Hyatt Regency Orla"
-        href="/app/products/deployments.html" 
-        imgSrc="/assets/images/icons/angie-icon.svg"
-        imgAlt="image alt">
-      </sidenav-util-item>
-      <sidenav-util-item 
-        slot="sidenav-util-item"
-        name="Angie"
-        last-active="1mo"
-        deployment="HYTOR • Hyatt Regency Orla"
-        href="/app/products/deployments.html" 
-        imgSrc="/assets/images/icons/angie-icon.svg"
-        imgAlt="image alt">
-      </sidenav-util-item>
-    </sidenav-util-component>
-    <sidenav-util-component slot="sidenav-util-component" title="Recent Properties" buttonText="View More">
-      <sidenav-util-item 
-        slot="sidenav-util-item"
-        name="RGN • ABC H. Regency RGN • ABC H. Regency"
-        last-active="1w"
-        deployment="Acme Organization"
-        href="/app/products/deployments.html" >
-      </sidenav-util-item>
-      <sidenav-util-item 
-        slot="sidenav-util-item"
-        name="RGN • ABC H. Regency"
-        last-active="1day"
-        deployment="Acme Organization"
-        href="/app/products/deployments.html" >
-      </sidenav-util-item>
-      <sidenav-util-item 
-        slot="sidenav-util-item"
-        name="RGN • ABC H. Regency"
-        last-active="15hrs"
-        deployment="Acme Organization"
-        href="/app/products/deployments.html" >
-      </sidenav-util-item>
-      <sidenav-util-item 
-        slot="sidenav-util-item"
-        name="RGN • ABC H. Regency"
-        deployment="Acme Organization"
-        href="/app/products/deployments.html" >
-      </sidenav-util-item>
-      <sidenav-util-item 
-        slot="sidenav-util-item"
-        name="RGN • ABC H. Regency"
-        deployment="Acme Organization"
-        href="/app/products/deployments.html" >
-      </sidenav-util-item>
-      <sidenav-util-item 
-        slot="sidenav-util-item"
-        name="RGN • ABC H. Regency"
-        deployment="Acme Organization"
-        href="/app/products/deployments.html" >
-      </sidenav-util-item>
-      <sidenav-util-item 
-        slot="sidenav-util-item"
-        name="RGN • ABC H. Regency"
-        deployment="Acme Organization"
-        href="/app/products/deployments.html" >
-      </sidenav-util-item>
-      <sidenav-util-item 
-        slot="sidenav-util-item"
-        name="RGN • ABC H. Regency"
-        deployment="Acme Organization"
-        href="/app/products/deployments.html" >
-      </sidenav-util-item>
-    </sidenav-util-component>
-  </sidenav-component>
-  
-      <stat-grid>
-        <stat-grid-item
-          slot="grid-item"
-          label="Uptime"
-          count="99,473%"
-        >
-        </stat-grid-item>
-        <stat-grid-item
-          slot="grid-item"
-          label="Deployments"
-          count="813"
-        >
-        </stat-grid-item>
-        <stat-grid-item
-          slot="grid-item"
-          label="Properties"
-          count="97"
-        >
-        </stat-grid-item>
-        <stat-grid-item
-          slot="grid-item"
-          label="Active Users"
-          count="462"
-        >
-        </stat-grid-item>
-      </stat-grid>
-      <card-grid>
-    <card-item
-      slot="card-item"
-      name="Angie Voice Assistant"
-      deployment-time="Deployed 2 months ago"
-      profile-icon-src="/assets/images/icons/angie-icon.svg"
-      status-icon-src="/assets/images/icons/danger-icon.svg"
-    >
-    </card-item>
-    <card-item
-      slot="card-item"
-      name="Angie Voice Assistant"
-      deployment-time="Deployed 2 months ago"
-      profile-icon-src="/assets/images/icons/angie-icon.svg"
-      status-icon-src="/assets/images/icons/warning-icon.svg"
-    >
-    </card-item>
-    <card-item
-      slot="card-item"
-      name="Angie Voice Assistant"
-      deployment-time="Deployed 2 months ago"
-      profile-icon-src="/assets/images/icons/angie-icon.svg"
-      status-icon-src="/assets/images/icons/checkmark-icon.svg"
-    >
-    </card-item>
-    <card-item
-      slot="card-item"  
-      name="Angie Voice Assistant"
-      deployment-time="Deployed 2 months ago"
-      profile-icon-src="/assets/images/icons/angie-icon.svg"
-      status-icon-src="/assets/images/icons/checkmark-icon.svg"
-    >
-    </card-item>
-  </card-grid>
-  <grid-container>
-    <grid-item 
-      slot="grid-item" 
-      href="/app/products/product.html" 
-      imgsrc="/assets/images/icons/nomadix-networks-icon.svg" 
-      imgalt="alt" 
-      name="Nomadix Networks" 
-      deployments="86"
-    >
-    </grid-item>
-    <grid-item 
-      slot="grid-item" 
-      href="/app/products/product.html" 
-      imgsrc="/assets/images/icons/hotel-portal-icon.svg" 
-      imgalt="alt" 
-      name="Hotel Portal" 
-      deployments="86"
-      >
-    </grid-item>
-    <grid-item 
-      slot="grid-item" 
-      href="/app/products/product.html" 
-      imgsrc="/assets/images/icons/nomadix-networks-icon.svg" 
-      imgalt="alt" 
-      name="Nomadix Networks" 
-      deployments="86"
-    >
-    </grid-item>
-    <grid-item 
-      slot="grid-item" 
-      href="/app/products/product.html" 
-      imgsrc="/assets/images/icons/hotel-portal-icon.svg" 
-      imgalt="alt" 
-      name="Hotel Portal" 
-      deployments="86"
-      >
-    </grid-item>
-    </grid-container>
-    
-    <button id="toggleMode" class="fixed bottom-1 right-1 rounded-full backdrop-blur-xl opacity-50 bg-opacity-50 p-2 z-50">
-      <svg class="block dark:hidden" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><rect fill="none" height="24" width="24"/><path d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg>
-      <svg class="hidden dark:block" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#fff"><rect fill="none" height="24" width="24"/><path d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg>
+    <sidenav-component util="true">
+      <sidenav-util-component slot="sidenav-util-component" title="Recent Deployments" buttonText="View More">
+        <sidenav-util-item slot="sidenav-util-item" name="Angie" last-active="3w"
+          deployment="HYTOR • Hyatt Regency OrlaHYTOR • Hyatt Regency Orla" href="/app/products/deployments.html"
+          imgSrc="/assets/images/icons/angie-icon.svg" imgAlt="image alt">
+        </sidenav-util-item>
+        <sidenav-util-item slot="sidenav-util-item" name="Angie" last-active="1mo"
+          deployment="HYTOR • Hyatt Regency Orla" href="/app/products/deployments.html"
+          imgSrc="/assets/images/icons/angie-icon.svg" imgAlt="image alt">
+        </sidenav-util-item>
+        <sidenav-util-item slot="sidenav-util-item" name="Angie" last-active="1mo"
+          deployment="HYTOR • Hyatt Regency Orla" href="/app/products/deployments.html"
+          imgSrc="/assets/images/icons/angie-icon.svg" imgAlt="image alt">
+        </sidenav-util-item>
+        <sidenav-util-item slot="sidenav-util-item" name="Angie" last-active="1mo"
+          deployment="HYTOR • Hyatt Regency Orla" href="/app/products/deployments.html"
+          imgSrc="/assets/images/icons/angie-icon.svg" imgAlt="image alt">
+        </sidenav-util-item>
+        <sidenav-util-item slot="sidenav-util-item" name="Angie" last-active="1mo"
+          deployment="HYTOR • Hyatt Regency Orla" href="/app/products/deployments.html"
+          imgSrc="/assets/images/icons/angie-icon.svg" imgAlt="image alt">
+        </sidenav-util-item>
+      </sidenav-util-component>
+      <sidenav-util-component slot="sidenav-util-component" title="Recent Properties" buttonText="View More">
+        <sidenav-util-item slot="sidenav-util-item" name="RGN • ABC H. Regency RGN • ABC H. Regency" last-active="1w"
+          deployment="Acme Organization" href="/app/products/deployments.html">
+        </sidenav-util-item>
+        <sidenav-util-item slot="sidenav-util-item" name="RGN • ABC H. Regency" last-active="1day"
+          deployment="Acme Organization" href="/app/products/deployments.html">
+        </sidenav-util-item>
+        <sidenav-util-item slot="sidenav-util-item" name="RGN • ABC H. Regency" last-active="15hrs"
+          deployment="Acme Organization" href="/app/products/deployments.html">
+        </sidenav-util-item>
+        <sidenav-util-item slot="sidenav-util-item" name="RGN • ABC H. Regency" deployment="Acme Organization"
+          href="/app/products/deployments.html">
+        </sidenav-util-item>
+        <sidenav-util-item slot="sidenav-util-item" name="RGN • ABC H. Regency" deployment="Acme Organization"
+          href="/app/products/deployments.html">
+        </sidenav-util-item>
+        <sidenav-util-item slot="sidenav-util-item" name="RGN • ABC H. Regency" deployment="Acme Organization"
+          href="/app/products/deployments.html">
+        </sidenav-util-item>
+        <sidenav-util-item slot="sidenav-util-item" name="RGN • ABC H. Regency" deployment="Acme Organization"
+          href="/app/products/deployments.html">
+        </sidenav-util-item>
+        <sidenav-util-item slot="sidenav-util-item" name="RGN • ABC H. Regency" deployment="Acme Organization"
+          href="/app/products/deployments.html">
+        </sidenav-util-item>
+      </sidenav-util-component>
+    </sidenav-component>
+
+    <stat-grid>
+      <stat-grid-item slot="grid-item" label="Uptime" count="99,473%">
+      </stat-grid-item>
+      <stat-grid-item slot="grid-item" label="Deployments" count="813">
+      </stat-grid-item>
+      <stat-grid-item slot="grid-item" label="Properties" count="97">
+      </stat-grid-item>
+      <stat-grid-item slot="grid-item" label="Active Users" count="462">
+      </stat-grid-item>
+    </stat-grid>
+    <card-grid>
+      <card-item slot="card-item" name="Angie Voice Assistant" deployment-time="Deployed 2 months ago"
+        profile-icon-src="/assets/images/icons/angie-icon.svg" status-icon-src="/assets/images/icons/danger-icon.svg">
+      </card-item>
+      <card-item slot="card-item" name="Angie Voice Assistant" deployment-time="Deployed 2 months ago"
+        profile-icon-src="/assets/images/icons/angie-icon.svg" status-icon-src="/assets/images/icons/warning-icon.svg">
+      </card-item>
+      <card-item slot="card-item" name="Angie Voice Assistant" deployment-time="Deployed 2 months ago"
+        profile-icon-src="/assets/images/icons/angie-icon.svg"
+        status-icon-src="/assets/images/icons/checkmark-icon.svg">
+      </card-item>
+      <card-item slot="card-item" name="Angie Voice Assistant" deployment-time="Deployed 2 months ago"
+        profile-icon-src="/assets/images/icons/angie-icon.svg"
+        status-icon-src="/assets/images/icons/checkmark-icon.svg">
+      </card-item>
+    </card-grid>
+
+    <breadcrumb-component>
+      <svg slot="breadcrumb-icon" width="24px" height="25px" viewBox="0 0 24 25" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path class="breadcrumb-icon-fill" fill-rule="evenodd" clip-rule="evenodd"
+          d="M10 20.5V14.5H14V20.5H19V12.5H22L12 3.5L2 12.5H5V20.5H10Z" />
+      </svg>
+      <breadcrumb-item slot="breadcrumb-item" href="/app/dashboard/" title="Dashboard"></breadcrumb-item>
+      <breadcrumb-item slot="breadcrumb-item" href="/app/dashboard/" title="Dashboard"></breadcrumb-item>
+      <breadcrumb-item slot="breadcrumb-item" href="/app/dashboard/" title="Dashboard"></breadcrumb-item>
+      <breadcrumb-item slot="breadcrumb-item" href="/app/dashboard/" title="Dashboard"></breadcrumb-item>
+      <util-button slot="button-slot" variant="manage" href="/app/properties/property.html"></util-button>
+      <util-button slot="button-slot" variant="share"></util-button>
+    </breadcrumb-component>
+
+    <title-cta title="Deployments" border-bottom="true">
+      <custom-filter slot="button-slot" placeholder="Search Suborganizations..."></custom-filter>
+    </title-cta>
+
+    <title-cta title="Deployments">
+      <custom-button title="New Deployment" show-icon="false" slot="button-slot" href="/app/dashboard/"></custom-button>
+    </title-cta>
+
+    <button id="toggleMode"
+      class="fixed bottom-1 right-1 rounded-full backdrop-blur-xl opacity-50 bg-opacity-50 p-2 z-50">
+      <svg class="block dark:hidden" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
+        viewBox="0 0 24 24" width="24px" fill="#000000">
+        <rect fill="none" height="24" width="24" />
+        <path
+          d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z" />
+      </svg>
+      <svg class="hidden dark:block" xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px"
+        viewBox="0 0 24 24" width="24px" fill="#fff">
+        <rect fill="none" height="24" width="24" />
+        <path
+          d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z" />
+      </svg>
     </button>
-    </main>
-    
-  </body>
+  </main>
+
+</body>
+
 </html>

@@ -1,152 +1,253 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer components {
- table {
+  table {
     @apply w-full text-left whitespace-nowrap;
   }
   th,td {
     @apply p-2.5;
   }
+
   .button {
     @apply py-2 px-4 rounded font-bold border border-primary dark:border-gray-600 sm:text-sm text-dark-2 dark:text-white hover:bg-primary hover:bg-opacity-10 shadow-sm;
   }
+
   .button-primary {
     @apply bg-accent hover:bg-accent-dark border-transparent dark:border-transparent dark:text-dark-2;
   }
+
   .input {
     @apply rounded border-gray-300 text-sm shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-dark-1 dark:border-gray-700;
   }
+  .breadcrumb-icon-fill {
+    @apply fill-dark-2 dark:fill-gray-200;
+  }
+
   header-component::part(header-component) {
     @apply bg-white dark:bg-dark-4 py-3 dark:border-gray-300/[.20] border border-solid border-gray-200 border-t-0 border-r-0 border-l-0 mx-auto max-w-full px-4 flex gap-4 justify-between items-center relative;
   }
+
   custom-button::part(custom-button) {
-    @apply flex gap-2 px-3.5 py-1.5 rounded-lg whitespace-nowrap items-center no-underline text-dark-3 text-sm font-medium cursor-pointer;
+    @apply flex gap-2 px-3.5 py-1.5 rounded-md whitespace-nowrap items-center no-underline text-dark-3 text-sm font-medium cursor-pointer;
   }
+
   custom-button::part(custom-button-fill) {
     @apply border-none bg-accent hover:bg-accent-dark;
   }
+
   custom-button::part(custom-button-outline) {
     @apply border border-solid border-accent-dark bg-transparent hover:bg-accent hover:bg-opacity-20 dark:text-white;
   }
+
   custom-button::part(custom-button-svg-path-dark) {
     @apply fill-dark-3;
   }
+
   custom-button::part(custom-button-svg-path-outline) {
     @apply fill-dark-3 dark:fill-gray-200;
   }
+
   util-button::part(util-button) {
-    @apply flex gap-2 h-fit items-center no-underline text-dark-1 dark:text-white;
+    @apply flex gap-2 h-fit items-center no-underline text-dark-2 dark:text-white;
   }
+
   dropdown-component::part(dropdown-modal) {
     @apply w-screen h-screen absolute top-0 right-0;
   }
+
   dropdown-component::part(dropdown-modal-hidden) {
     @apply hidden;
   }
+
   dropdown-component::part(dropdown-modal-visible) {
     @apply block;
   }
+
   dropdown-component::part(dropdown-component) {
     @apply absolute z-30 m-0 top-[50px] right-[20px] w-max p-2 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-dark-1 text-sm shadow-[0px_8px_16px_0px_rgba(0,0,0,0.12)] list-none;
   }
-  dropdown-item::part(profile-dropdown-item){
-    @apply px-2.5 py-1  hover:bg-gray-100 dark:hover:bg-dark-2 rounded;
+
+  dropdown-item::part(profile-dropdown-item) {
+    @apply px-2.5 py-1 hover:bg-gray-100 dark:hover:bg-dark-2 rounded;
   }
+
   dropdown-item::part(profile-dropdown-item-a) {
     @apply no-underline text-dark-1 dark:text-white;
   }
+
   profile-icon::part(profile-icon) {
     @apply cursor-pointer w-8 h-8 flex items-center justify-center text-sm text-white rounded-full;
   }
+
   profile-icon::part(profile-icon-initials) {
     @apply text-dark-3 m-0;
   }
+
   logo-component::part(logo) {
-    @apply flex items-center gap-1 cursor-pointer no-underline text-dark-2 dark:text-white;
+    @apply flex items-center gap-1 cursor-pointer no-underline text-dark-1 dark:text-white;
+  }
+  logo-component::part(logo-title) {
+    @apply overflow-hidden line-clamp-1;
   }
   main-search {
     @apply flex-1 flex justify-center;
   }
+
   main-search::part(main-search-form) {
     @apply relative w-full max-w-[900px];
   }
+
   main-search::part(main-search-input) {
-    @apply relative pl-9 py-2 pr-3 rounded dark:text-white dark:placeholder:text-gray-400 border-gray-300 dark:border-gray-300/[.20] text-sm shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-[calc(100%-50px)] dark:bg-dark-1 border border-solid;
+    @apply relative pl-9 py-2 pr-3 min-w-[45px] rounded dark:text-white dark:placeholder:text-gray-400 border-gray-300 dark:border-gray-300/[.20] text-sm shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-[calc(100%-50px)] dark:bg-dark-1 border border-solid;
   }
+
   main-search::part(main-search-input-icon) {
     @apply p-2 absolute left-0 top-0;
   }
+
   main-search::part(main-search-input-icon) {
     @apply fill-gray-400;
   }
+
+  breadcrumb-component::part(breadcrumb-container) {
+    @apply flex flex-col sm:flex-row justify-between items-start sm:items-center min-h-[32px] gap-3.5 py-5 border border-solid border-l-0 border-t-0 border-r-0 border-gray-200 dark:border-gray-300/[.20];
+  }
+
+  breadcrumb-component::part(breadcrumb-nav-wrapper) {
+    @apply flex flex-col gap-1.5;
+  }
+
+  breadcrumb-component::part(breadcrumb-ul) {
+    @apply flex flex-wrap items-center gap-1 sm:gap-0 list-none p-0 m-0;
+  }
+
+  breadcrumb-component::part(breadcrumb-nav-inline-items-wrapper) {
+    @apply flex gap-1;
+  }
+
+  breadcrumb-component::part(breadcrumb-button-wrapper) {
+    @apply flex gap-6;
+  }
+
+  breadcrumb-component::part(breadcrumb-icon-wrapper) {
+    @apply flex;
+  }
+  breadcrumb-component::part(breadcrumb-icon-wrapper-start) {
+    @apply items-start;
+  }
+  breadcrumb-component::part(breadcrumb-icon-wrapper-center) {
+    @apply items-center;
+  }
+
+  breadcrumb-component::part(breadcrumb-li-a),
+  breadcrumb-item::part(breadcrumb-li-a) {
+    @apply flex items-center no-underline text-gray-600 dark:text-white/[.60] font-medium mr-1 gap-1 whitespace-nowrap;
+  }
+
+  breadcrumb-component::part(breadcrumb-li-a-active),
+  breadcrumb-item::part(breadcrumb-li-a-active) {
+    @apply text-2xl m-0 text-dark-2 dark:text-white;
+  }
+
+  breadcrumb-item::part(arrow-next) {
+    @apply fill-gray-600 dark:fill-white/[0.6];
+  }
+
+  sidenav-component {
+    @apply flex;
+  }
+
   sidenav-component::part(sidenav-container) {
-    @apply flex flex-col h-[calc(100vh-102px)] overflow-y-scroll bg-white dark:bg-dark-4 p-5;
+    @apply flex flex-col overflow-y-scroll bg-white dark:bg-dark-4 py-5 px-4;
   }
+
   sidenav-component::part(sidenav-container-gap) {
-    @apply gap-3;
+    @apply gap-2;
   }
+
   sidenav-component::part(sidenav-container-collapsed) {
-    @apply w-fit min-w-[32px];
+    @apply w-fit min-w-[40px];
   }
+
   sidenav-component::part(sidenav-container-expanded) {
     @apply min-w-[200px];
   }
+
   sidenav-component::part(sidenav-container-border-r) {
     @apply border border-solid border-l-0 border-t-0 border-b-0 border-gray-200 dark:border-gray-300/[.20];
   }
+
   sidenav-component::part(sidenav-container-border-l) {
     @apply border border-solid border-r-0 border-t-0 border-b-0 border-gray-200 dark:border-gray-300/[.20];
   }
+
   sidenav-component::part(sidenav-arrow) {
     @apply flex-col w-[16px] h-[27px] min-h-[27px] cursor-pointer;
   }
+
   sidenav-component::part(sidenav-arrow-visible) {
     @apply flex;
   }
+
   sidenav-component::part(sidenav-arrow-hidden) {
     @apply hidden;
   }
+
   sidenav-component::part(sidenav-arrow-start) {
     @apply self-start;
   }
+
   sidenav-component::part(sidenav-arrow-end) {
     @apply self-end;
   }
+
   sidenav-component::part(sidenav-arrow-center) {
     @apply self-center;
   }
+
   sidenav-component::part(sidenav-arrow-span-1),
   sidenav-component::part(sidenav-arrow-span-2) {
     @apply block w-full h-[2px] bg-primary dark:bg-slate-100;
   }
+
   sidenav-component::part(sidenav-arrow-span-1-left) {
     @apply -rotate-45 translate-y-[9px];
   }
+
   sidenav-component::part(sidenav-arrow-span-2-left) {
     @apply rotate-45 translate-y-[17px];
   }
-   sidenav-component::part(sidenav-arrow-span-1-right) {
+
+  sidenav-component::part(sidenav-arrow-span-1-right) {
     @apply rotate-45 translate-y-[9px];
   }
+
   sidenav-component::part(sidenav-arrow-span-2-right) {
     @apply -rotate-45 translate-y-[17px];
   }
+
   sidenav-ul-component::part(sidenav-ul-component) {
     @apply flex flex-col gap-1.5 text-sm list-none p-0 m-0;
   }
+
   sidenav-ul-component::part(sidenav-ul-component-wrapper) {
     @apply flex flex-col mt-3;
   }
+
   sidenav-ul-item::part(sidenav-ul-item) {
-    @apply p-1 rounded cursor-pointer;
+    @apply py-1 px-2 rounded cursor-pointer;
   }
+
   sidenav-ul-item::part(sidenav-ul-item-hover) {
     @apply hover:bg-slate-100 dark:hover:bg-dark-1;
   }
+
   sidenav-ul-item::part(sidenav-ul-item-active) {
     @apply bg-accent-15 dark:bg-dark-5;
   }
+
   sidenav-ul-item::part(sidenav-ul-item-a) {
     @apply flex items-center w-full font-medium text-gray-700 dark:text-gray-100 no-underline;
   }
@@ -154,124 +255,192 @@
   sidenav-ul-item::part(sidenav-ul-item-a-text) {
     @apply justify-between items-center w-full ml-2;
   }
+
   sidenav-ul-item::part(sidenav-ul-item-a-text-visible) {
     @apply flex;
   }
+
   sidenav-ul-item::part(sidenav-ul-item-a-text-hidden) {
     @apply hidden ml-0;
   }
+
   sidenav-util-component::part(sidenav-util-component) {
     @apply flex-col w-[300px] pb-5;
   }
+
   sidenav-util-component::part(sidenav-util-component-visible) {
     @apply flex;
   }
+
   sidenav-util-component::part(sidenav-util-component-hidden) {
     @apply hidden;
   }
+
   sidenav-util-component::part(sidenav-util-component-ul) {
-    @apply list-none p-0 m-0 mb-3;
+    @apply flex flex-col gap-1 list-none p-0 m-0 mb-3 mt-2.5;
   }
+
   sidenav-util-component::part(sidenav-util-component-button) {
-     @apply cursor-pointer py-2 px-4 w-full rounded-lg sm:text-sm border-0 text-dark-3 shadow-md bg-powder-blue;
+    @apply cursor-pointer py-2 px-4 w-full rounded-lg sm:text-sm border-0 text-dark-3 shadow-md bg-powder-blue;
   }
+
   sidenav-util-item::part(sidenav-util-item) {
-    @apply flex gap-2 items-center justify-between hover:bg-slate-100 dark:hover:bg-dark-1 px-1.5 py-3 rounded cursor-pointer no-underline text-dark-2;
+    @apply flex gap-2 items-center justify-between hover:bg-slate-100 dark:hover:bg-dark-1 p-1.5 rounded-lg cursor-pointer no-underline text-dark-2;
   }
+
   sidenav-util-item::part(sidenav-util-item-info) {
     @apply flex gap-2 items-center overflow-hidden;
   }
+
   sidenav-util-item::part(sidenav-util-item-text),
   grid-item::part(grid-item-text) {
     @apply flex flex-col m-0 dark:text-white overflow-hidden;
   }
+
   sidenav-util-item::part(sidenav-util-item-title) {
     @apply flex gap-1.5 items-center;
   }
+
   sidenav-util-item::part(sidenav-util-item-title-name) {
     @apply font-medium overflow-hidden whitespace-nowrap text-ellipsis;
   }
+
   sidenav-util-item::part(sidenav-util-item-svg-path) {
     @apply fill-slate-600 dark:fill-white;
   }
+
   sidenav-util-item::part(sidenav-util-item-deployment) {
     @apply text-xs overflow-hidden whitespace-nowrap text-ellipsis;
   }
-  sidenav-util-item::part(sidenav-util-item-last-active),
-  grid-item::part(grid-item-deployments) {
+  sidenav-util-item::part(sidenav-util-item-last-active) {
     @apply text-xs;
   }
+  grid-item::part(grid-item-deployments) {
+    @apply text-xs opacity-80 dark:opacity-60;
+  }
+
   sidenav-util-item::part(sidenav-util-item-img),
-  grid-item::part(grid-item-img)
-  {
-    @apply object-cover object-center	max-h-[50px];
+  grid-item::part(grid-item-img) {
+    @apply object-cover object-center max-h-[50px];
   }
+
   grid-item::part(grid-item) {
-    @apply text-dark-1 no-underline flex gap-2 items-center  hover:bg-slate-100 dark:hover:bg-dark-1 p-1.5 rounded cursor-pointer;
+    @apply text-dark-1 no-underline flex gap-2 items-center hover:bg-slate-100 dark:hover:bg-dark-1 p-1.5 rounded-lg cursor-pointer;
   }
-  grid-container::part(grid-container),
+
+  grid-container::part(grid-container) {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3;
+  }
   stat-grid::part(stat-grid) {
-    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-3;
+    @apply flex flex-wrap gap-3;
   }
+
   stat-grid-item::part(stat-grid-item) {
-    @apply p-3 shadow-sm rounded dark:shadow-none bg-slate-50 dark:bg-dark-1;
+    @apply p-3 shadow-sm rounded-lg dark:shadow-none bg-slate-50 dark:bg-dark-1 min-w-[130px];
   }
+
   stat-grid-item::part(stat-grid-item-label) {
     @apply text-sm;
   }
+
   stat-grid-item::part(stat-grid-item-count) {
     @apply text-3xl font-medium;
   }
+
   card-grid::part(card-grid-container) {
-    @apply grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-3;
+    @apply flex flex-wrap gap-3;
   }
+
   card-item::part(card-container) {
-    @apply flex flex-col shadow-sm p-3 rounded gap-2 bg-slate-50 dark:bg-dark-1;
+    @apply flex flex-col shadow-sm p-3 rounded-lg gap-2 bg-slate-50 dark:bg-dark-1;
   }
+
   card-item::part(card-holder) {
-    @apply flex items-center justify-between border-b;
+    @apply flex items-center justify-between gap-4 pb-3;
   }
+
   card-item::part(card-holder-header) {
     @apply flex gap-2;
   }
+
   card-item::part(card-holder-name) {
     @apply font-medium;
   }
+
   card-item::part(card-holder-info) {
-    @apply flex flex-col gap-2 pt-3;
+    @apply flex flex-col text-sm;
   }
+  card-item::part(card-holder-info-muted) {
+    @apply opacity-70;
+  }
+
   card-item::part(deployment-time) {
-    @apply text-sm;
+    @apply text-xs;
   }
+
   title-cta::part(title-cta-container) {
-    @apply flex justify-between items-center gap-2 pb-4 border border-solid border-l-0 border-t-0 border-r-0 border-gray-200 dark:border-gray-300/[.20];
+    @apply flex flex-wrap justify-between items-center gap-3 pb-4 border border-solid border-l-0 border-t-0 border-r-0 border-gray-200 dark:border-gray-300/[.20];
   }
+
   title-cta::part(title-cta-text) {
     @apply text-2xl font-medium;
   }
+
   title-cta::part(title-cta-container-border) {
     @apply border border-solid border-t-0 border-r-0 border-l-0 border-gray-200 dark:border-gray-300/[.20] pb-3;
   }
+  custom-filter {
+    @apply flex flex-1;
+  }
+  custom-filter::part(custom-filter-container) {
+    @apply flex gap-2 w-full justify-start sm:justify-end;
+  }
+
+  custom-filter::part(custom-filter-input-container) {
+    @apply relative max-w-[300px] min-w-[150px] w-full;
+  }
+
+  custom-filter::part(custom-filter-input) {
+    @apply pl-9 relative py-2 pr-3 rounded dark:text-white dark:placeholder:text-gray-400 border-gray-300 dark:border-gray-300/[.20] text-sm shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-[calc(100%-50px)] dark:bg-dark-1 border border-solid;
+  }
+
+  custom-filter::part(custom-filter-input-icon-container) {
+    @apply p-2 absolute inset-y-0 left-0;
+  }
+
+  custom-filter::part(custom-filter-input-icon) {
+    @apply fill-gray-400;
+  }
+
+  custom-filter::part(custom-filter-button-container) {
+    @apply border-gray-300 dark:border-gray-300/[.20] border border-solid rounded bg-transparent active:bg-gray-200 dark:active:bg-dark-1 shadow-sm flex items-center justify-center cursor-pointer;
+  }
+
+  custom-filter::part(custom-filter-button-icon-svg-path) {
+    @apply fill-accent;
+  }
+
   alert-component::part(alert-component) {
-    @apply flex flex-col md:flex-row gap-2 md:gap-5 justify-start;
+    @apply flex flex-row flex-wrap gap-2 md:gap-5 justify-start;
   }
+
   custom-alert::part(alert-wrapper) {
-    @apply flex gap-1 items-center whitespace-nowrap;
+    @apply flex gap-1 items-center;
   }
+
   custom-alert::part(alert-text) {
     @apply text-lg m-0 font-medium;
   }
-  h1 {
-    color: theme('colors.primary')
-    @apply text-primary text-sm
-  }
 }
+
 html {
   image-rendering: -webkit-optimize-contrast;
 }
+
 img {
   height: 100%;
 }
+
 svg {
   margin: 0 auto;
 }

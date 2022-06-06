@@ -1,3 +1,4 @@
+import './tw-out.css';
 
 // src/main.js
 window.onload = function () {
@@ -7,7 +8,7 @@ window.onload = function () {
 
   mode ? content.classList.add(mode) : myStorage.setItem('mode', 'light')
 
-  function setMode (mode) {
+  function setMode(mode) {
     console.log("set mode")
     content.classList.remove('dark', 'light')
     content.classList.add(mode)
@@ -20,18 +21,21 @@ window.onload = function () {
       setMode('dark')
   }
 }
-  const headerComponentTemplate = document.createElement('template');
+
+const headerComponentTemplate = document.createElement('template');
 headerComponentTemplate.innerHTML = `
 <header part="header-component">
   <slot name="header-slot"/>
 </header>
 `
-customElements.define('header-component', 
+customElements.define('header-component',
   class HeaderComponent extends HTMLElement {
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(headerComponentTemplate.content.cloneNode(true));
     }
   }
@@ -45,12 +49,14 @@ profileIconTemplate.innerHTML = `
     </div>
   </div>
 `;
-customElements.define('profile-icon', 
+customElements.define('profile-icon',
   class ProfileIcon extends HTMLElement {
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(profileIconTemplate.content.cloneNode(true));
     }
     connectedCallback() {
@@ -67,12 +73,14 @@ customDropdownComponentTemplate.innerHTML = `
   </ul>
 </div>
 `
-customElements.define('dropdown-component', 
+customElements.define('dropdown-component',
   class CustomDropdownComponent extends HTMLElement {
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(customDropdownComponentTemplate.content.cloneNode(true));
     }
     toggleDropdown(profileDropdown) {
@@ -91,21 +99,31 @@ customDropdownItemTemplate.innerHTML = `
     <a part="profile-dropdown-item-a" href=""></a>
   </li>
 `
-customElements.define('dropdown-item', 
+customElements.define('dropdown-item',
   class CustomDropdownItem extends HTMLElement {
     static get observedAttributes() {
       return ['title', 'href'];
     }
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(customDropdownItemTemplate.content.cloneNode(true));
     }
     attributeChangedCallback() {
       const link = this.shadowRoot.querySelector('a')
       link.href = this.getAttribute('href');
       link.innerText = this.getAttribute('title')
+    }
+    connectedCallback() {
+      const attrNames = this.getAttributeNames();
+      for (const attr of attrNames) {
+        if (attr.includes('data')) {
+          this.shadowRoot.querySelector('a').setAttribute(attr, this.getAttribute(attr))
+        }
+      }
     }
   }
 );
@@ -118,12 +136,14 @@ mainSearch.innerHTML = `
     </div>
   </form>
 `;
-customElements.define('main-search', 
+customElements.define('main-search',
   class MainSearch extends HTMLElement {
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(mainSearch.content.cloneNode(true));
     }
     connectedCallback() {
@@ -139,18 +159,20 @@ logoComponentTemplate.innerHTML = `
 </style>
   <a part="logo" href="">
     <img src="" width="60px" alt="">
-    <p></p>
+    <p part="logo-title"></p>
   </a>
 `;
-customElements.define('logo-component', 
+customElements.define('logo-component',
   class LogoComponent extends HTMLElement {
     static get observedAttributes() {
       return ['imageSrc', 'link', 'organization'];
     }
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(logoComponentTemplate.content.cloneNode(true));
     }
     attributeChangedCallback() {
@@ -159,32 +181,130 @@ customElements.define('logo-component',
       this.shadowRoot.querySelector('img').alt = this.getAttribute('imageAlt');
       this.shadowRoot.querySelector('p').innerText = this.getAttribute('organization');
     }
+    connectedCallback() {
+      const attrNames = this.getAttributeNames();
+      for (const attr of attrNames) {
+        if (attr.includes('data')) {
+          this.shadowRoot.querySelector('a').setAttribute(attr, this.getAttribute(attr))
+        }
+      }
+    }
+  }
+);
+const breadCrumbContainerTemplate = document.createElement('template');
+breadCrumbContainerTemplate.innerHTML = `
+<div part="breadcrumb-container">
+  <div part="breadcrumb-nav-wrapper" class="breadcrumb-nav-wrapper">
+    <div part="breadcrumb-nav-inline-items-wrapper">
+      <div part="breadcrumb-icon-wrapper" class="breadcrumb-icon-wrapper">
+        <slot name="breadcrumb-icon"/>
+      </div>
+      <ul part="breadcrumb-ul">
+        <slot name="breadcrumb-item"/>
+      </ul>
+    </div>
+  </div>
+  <div part="breadcrumb-button-wrapper">
+    <slot name="button-slot"/>
+  </div>
+</div>
+`
+customElements.define('breadcrumb-component',
+  class BreadCrumbContainer extends HTMLElement {
+    constructor() {
+      super();
+      this.showInfo = true;
+      this.attachShadow({
+        mode: 'open'
+      });
+      this.shadowRoot.appendChild(breadCrumbContainerTemplate.content.cloneNode(true));
+    }
+    connectedCallback() {
+      window.addEventListener('DOMContentLoaded', () => {
+        const items = document.querySelectorAll('breadcrumb-item')
+        const itemsList = []
+        for (const item of items) {
+          itemsList.push(item.shadowRoot.querySelector('a'))
+        }
+        const lastItem = itemsList[itemsList.length - 1]
+        lastItem.removeChild(lastItem.lastChild)
+        lastItem.part.add('breadcrumb-li-a-active')
+        if (itemsList.length > 1) {
+          const navWrapper = this.shadowRoot.querySelector('.breadcrumb-nav-wrapper')
+          navWrapper.appendChild(lastItem)
+          this.shadowRoot.querySelector('.breadcrumb-icon-wrapper').part.add('breadcrumb-icon-wrapper-start')
+        } else {
+          this.shadowRoot.querySelector('.breadcrumb-icon-wrapper').part.add('breadcrumb-icon-wrapper-center')
+        }
+      })
+    }
+  }
+);
+const breadCrumbItemTemplate = document.createElement('template');
+breadCrumbItemTemplate.innerHTML = `
+<style>
+  p {margin:0}
+</style>
+<li>
+  <a part="breadcrumb-li-a" href="">
+    <p part="breadcrumb-a-text"></p>
+  </a>
+</li>
+`
+customElements.define('breadcrumb-item',
+  class BreadCrumbItem extends HTMLElement {
+    static get observedAttributes() {
+      return ['href', 'title'];
+    }
+    constructor() {
+      super();
+      this.showInfo = true;
+      this.attachShadow({
+        mode: 'open'
+      });
+      this.shadowRoot.appendChild(breadCrumbItemTemplate.content.cloneNode(true));
+    }
+    attributeChangedCallback() {
+      const link = this.shadowRoot.querySelector('a')
+      link.href = this.getAttribute('href')
+      link.innerHTML = this.getAttribute('title') + `<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20"><path part="arrow-next" d="M7.833 15 6.583 13.75 10.333 10 6.583 6.25 7.833 5 12.833 10Z"/></svg>`
+    }
+    connectedCallback() {
+      const attrNames = this.getAttributeNames();
+      for (const attr of attrNames) {
+        if (attr.includes('data')) {
+          this.shadowRoot.querySelector('a').setAttribute(attr, this.getAttribute(attr))
+        }
+      }
+    }
   }
 );
 const buttonTemplate = document.createElement('template');
 buttonTemplate.innerHTML = `
   <a href="" part="custom-button"></a>
 `;
-customElements.define('custom-button', 
+customElements.define('custom-button',
   class CustomButton extends HTMLElement {
     static get observedAttributes() {
       return ['title', 'show-icon', 'href'];
     }
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(buttonTemplate.content.cloneNode(true));
     }
     attributeChangedCallback() {
       const customBtn = this.shadowRoot.querySelector('a')
       customBtn.href = this.getAttribute('href')
       customBtn.innerHTML = this.getAttribute('title')
-      
-      switch(this.getAttribute('variant')) {
+
+      switch (this.getAttribute('variant')) {
         case 'fill':
           customBtn.part.add('custom-button-fill')
-          if(this.getAttribute('show-icon') == "true") {
+          if (this.getAttribute('show-icon') == "true") {
             customBtn.innerHTML = `
             <svg class="button-icon" width="11" height="11" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path part="custom-button-svg-path-dark" d="M13 8.5H8V13.5C8 14.05 7.55 14.5 7 14.5C6.45 14.5 6 14.05 6 13.5V8.5H1C0.45 8.5 0 8.05 0 7.5C0 6.95 0.45 6.5 1 6.5H6V1.5C6 0.95 6.45 0.5 7 0.5C7.55 0.5 8 0.95 8 1.5V6.5H13C13.55 6.5 14 6.95 14 7.5C14 8.05 13.55 8.5 13 8.5Z" fill="white"/>
@@ -193,7 +313,7 @@ customElements.define('custom-button',
           break;
         case 'outline':
           customBtn.part.add('custom-button-outline')
-          if(this.getAttribute('show-icon') == "true") {
+          if (this.getAttribute('show-icon') == "true") {
             customBtn.innerHTML = `
             <svg class="button-icon" width="11" height="11" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path part="custom-button-svg-path-outline" d="M13 8.5H8V13.5C8 14.05 7.55 14.5 7 14.5C6.45 14.5 6 14.05 6 13.5V8.5H1C0.45 8.5 0 8.05 0 7.5C0 6.95 0.45 6.5 1 6.5H6V1.5C6 0.95 6.45 0.5 7 0.5C7.55 0.5 8 0.95 8 1.5V6.5H13C13.55 6.5 14 6.95 14 7.5C14 8.05 13.55 8.5 13 8.5Z" fill="white"/>
@@ -202,12 +322,20 @@ customElements.define('custom-button',
           break;
         default:
           customBtn.part.add('custom-button-fill')
-          if(this.getAttribute('show-icon') == "true") {
+          if (this.getAttribute('show-icon') == "true") {
             customBtn.innerHTML = `
             <svg class="button-icon" width="11" height="11" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path part="custom-button-svg-path-dark" d="M13 8.5H8V13.5C8 14.05 7.55 14.5 7 14.5C6.45 14.5 6 14.05 6 13.5V8.5H1C0.45 8.5 0 8.05 0 7.5C0 6.95 0.45 6.5 1 6.5H6V1.5C6 0.95 6.45 0.5 7 0.5C7.55 0.5 8 0.95 8 1.5V6.5H13C13.55 6.5 14 6.95 14 7.5C14 8.05 13.55 8.5 13 8.5Z" fill="white"/>
             </svg>` + this.getAttribute('title');
           }
+      }
+    }
+    connectedCallback() {
+      const attrNames = this.getAttributeNames();
+      for (const attr of attrNames) {
+        if (attr.includes('data')) {
+          this.shadowRoot.querySelector('a').setAttribute(attr, this.getAttribute(attr))
+        }
       }
     }
   }
@@ -216,18 +344,20 @@ const utilButtonTemplate = document.createElement('template');;
 utilButtonTemplate.innerHTML = `
 <a part="util-button" href=""></a>
 `
-customElements.define('util-button', 
+customElements.define('util-button',
   class UtilButton extends HTMLElement {
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(utilButtonTemplate.content.cloneNode(true));
     }
     connectedCallback() {
       let button = this.shadowRoot.querySelector('a')
       button.href = this.getAttribute('href')
-      switch(this.getAttribute('variant')) {
+      switch (this.getAttribute('variant')) {
         case 'share':
           button.innerHTML = `
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -242,6 +372,12 @@ customElements.define('util-button',
             </svg>
           ` + 'Manage';
           break;
+      }
+      const attrNames = this.getAttributeNames();
+      for (const attr of attrNames) {
+        if (attr.includes('data')) {
+          this.shadowRoot.querySelector('a').setAttribute(attr, this.getAttribute(attr))
+        }
       }
     }
   }
@@ -261,49 +397,111 @@ sideNavComponentTemplate.innerHTML = `
     </div>
   </div> 
 `;
-customElements.define('sidenav-component', 
+customElements.define('sidenav-component',
   class SideNavComponent extends HTMLElement {
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(sideNavComponentTemplate.content.cloneNode(true));
     }
-    toggleSideNav(sideNavArrow, sideNavContainer) {
-      sideNavContainer.part.toggle('sidenav-container-expanded')
-      sideNavContainer.part.toggle('sidenav-container-collapsed')
-      if (this.getAttribute('util') == "true") {
-        const utilComponent = document.querySelectorAll('sidenav-util-component')
-        for(let i=0; i < utilComponent.length; i++) {
-          utilComponent[i].shadowRoot.querySelector('.sidenav-util-component').part.toggle('sidenav-util-component-visible');
-          utilComponent[i].shadowRoot.querySelector('.sidenav-util-component').part.toggle('sidenav-util-component-hidden');
+    expandSideNav(sideNavArrow, sideNavContainer, isUtil, isExpandable) {
+      if (isExpandable != 'false') {
+        if (isUtil == 'true' && localStorage.getItem('sidenav-util-expanded') != 'false') {
+          sideNavContainer.part.remove('sidenav-container-collapsed')
+          sideNavContainer.part.add('sidenav-container-expanded')
+          const utilComponent = document.querySelectorAll('sidenav-util-component')
+          for (const item of utilComponent) {
+            item.shadowRoot.querySelector('.sidenav-util-component').part.remove('sidenav-util-component-hidden');
+            item.shadowRoot.querySelector('.sidenav-util-component').part.add('sidenav-util-component-visible');
+          }
+          sideNavArrow.part.add('sidenav-arrow-start')
+          sideNavArrow.part.remove('sidenav-arrow-center')
+          sideNavArrow.children[0].part.remove('sidenav-arrow-span-1-left')
+          sideNavArrow.children[1].part.remove('sidenav-arrow-span-2-left')
+          sideNavArrow.children[0].part.add('sidenav-arrow-span-1-right')
+          sideNavArrow.children[1].part.add('sidenav-arrow-span-2-right')
         }
-        sideNavArrow.part.toggle('sidenav-arrow-start')
-        sideNavArrow.part.toggle('sidenav-arrow-center')
-        sideNavArrow.children[0].part.toggle('sidenav-arrow-span-1-left')
-        sideNavArrow.children[1].part.toggle('sidenav-arrow-span-2-left')
-        sideNavArrow.children[0].part.toggle('sidenav-arrow-span-1-right')
-        sideNavArrow.children[1].part.toggle('sidenav-arrow-span-2-right')
+        if (isUtil != 'true' && localStorage.getItem('sidenav-expanded') != 'false') {
+          sideNavContainer.part.remove('sidenav-container-collapsed')
+          sideNavContainer.part.add('sidenav-container-expanded')
+          const ulComponentItems = document.querySelectorAll('sidenav-ul-item');
+          for (const item of ulComponentItems) {
+            let sideNavItemText = item.shadowRoot.querySelector('.sidenav-ul-item-a-text')
+            sideNavItemText.part.add('sidenav-ul-item-a-text-visible')
+            sideNavItemText.part.remove('sidenav-ul-item-a-text-hidden')
+          }
+          sideNavArrow.part.add('sidenav-arrow-end')
+          sideNavArrow.part.remove('sidenav-arrow-center')
+          sideNavArrow.children[0].part.add('sidenav-arrow-span-1-left')
+          sideNavArrow.children[1].part.add('sidenav-arrow-span-2-left')
+          sideNavArrow.children[0].part.remove('sidenav-arrow-span-1-right')
+          sideNavArrow.children[1].part.remove('sidenav-arrow-span-2-right')
+        }
+      }
+    }
+    collapseSideNav(sideNavArrow, sideNavContainer, isUtil, isExpandable) {
+      if (isExpandable != 'false') {
+        if (isUtil == 'true' && localStorage.getItem('sidenav-util-expanded') == 'false') {
+          sideNavContainer.part.remove('sidenav-container-expanded')
+          sideNavContainer.part.add('sidenav-container-collapsed')
+          const utilComponent = document.querySelectorAll('sidenav-util-component')
+          for (const item of utilComponent) {
+            item.shadowRoot.querySelector('.sidenav-util-component').part.add('sidenav-util-component-hidden');
+            item.shadowRoot.querySelector('.sidenav-util-component').part.remove('sidenav-util-component-visible');
+          }
+          sideNavArrow.part.remove('sidenav-arrow-start')
+          sideNavArrow.part.add('sidenav-arrow-center')
+          sideNavArrow.children[0].part.add('sidenav-arrow-span-1-left')
+          sideNavArrow.children[1].part.add('sidenav-arrow-span-2-left')
+          sideNavArrow.children[0].part.remove('sidenav-arrow-span-1-right')
+          sideNavArrow.children[1].part.remove('sidenav-arrow-span-2-right')
+        }
+        if (isUtil != 'true' && localStorage.getItem('sidenav-expanded') == 'false') {
+          sideNavContainer.part.remove('sidenav-container-expanded')
+          sideNavContainer.part.add('sidenav-container-collapsed')
+          const ulComponentItems = document.querySelectorAll('sidenav-ul-item');
+          for (const item of ulComponentItems) {
+            let sideNavItemText = item.shadowRoot.querySelector('.sidenav-ul-item-a-text')
+            sideNavItemText.part.add('sidenav-ul-item-a-text-hidden')
+            sideNavItemText.part.remove('sidenav-ul-item-a-text-visible')
+          }
+          sideNavArrow.part.remove('sidenav-arrow-end')
+          sideNavArrow.part.add('sidenav-arrow-center')
+          sideNavArrow.children[0].part.remove('sidenav-arrow-span-1-left')
+          sideNavArrow.children[1].part.remove('sidenav-arrow-span-2-left')
+          sideNavArrow.children[0].part.add('sidenav-arrow-span-1-right')
+          sideNavArrow.children[1].part.add('sidenav-arrow-span-2-right')
+        }
+      }
+    }
+    toggleSideNav(sideNavArrow, sideNavContainer, isUtil, isExpandable) {
+      if (isUtil != 'true') {
+        if (localStorage.getItem('sidenav-expanded') != 'false') {
+          localStorage.setItem('sidenav-expanded', false)
+          this.collapseSideNav(sideNavArrow, sideNavContainer, isUtil, isExpandable);
+        } else {
+          localStorage.setItem('sidenav-expanded', true)
+          this.expandSideNav(sideNavArrow, sideNavContainer, isUtil, isExpandable);
+        }
       } else {
-        const ulComponentItems = document.querySelectorAll('sidenav-ul-item');
-        for(let i=0; i < ulComponentItems.length; i++) {
-          let sideNavItemText = ulComponentItems[i].shadowRoot.querySelector('.sidenav-ul-item-a-text')
-          sideNavItemText.part.toggle('sidenav-ul-item-a-text-visible')
-          sideNavItemText.part.toggle('sidenav-ul-item-a-text-hidden')
+        if (localStorage.getItem('sidenav-util-expanded') != 'false') {
+          localStorage.setItem('sidenav-util-expanded', false)
+          this.collapseSideNav(sideNavArrow, sideNavContainer, isUtil, isExpandable);
+        } else {
+          localStorage.setItem('sidenav-util-expanded', true)
+          this.expandSideNav(sideNavArrow, sideNavContainer, isUtil, isExpandable);
         }
-        sideNavArrow.part.toggle('sidenav-arrow-end')
-        sideNavArrow.part.toggle('sidenav-arrow-center')
-        sideNavArrow.children[0].part.toggle('sidenav-arrow-span-1-left')
-        sideNavArrow.children[1].part.toggle('sidenav-arrow-span-2-left')
-        sideNavArrow.children[0].part.toggle('sidenav-arrow-span-1-right')
-        sideNavArrow.children[1].part.toggle('sidenav-arrow-span-2-right')
       }
     }
     connectedCallback() {
       const isUtil = this.getAttribute('util');
+      const isExpandable = this.getAttribute('expandable');
       const sideNavArrow = this.shadowRoot.querySelector('.sidenav-arrow')
       const sideNavContainer = this.shadowRoot.querySelector('.sidenav-container');
-      if(isUtil == 'true') {
+      if (isUtil == 'true') {
         sideNavArrow.part.add('sidenav-arrow-start')
         sideNavArrow.children[0].part.add('sidenav-arrow-span-1-right')
         sideNavArrow.children[1].part.add('sidenav-arrow-span-2-right')
@@ -314,12 +512,30 @@ customElements.define('sidenav-component',
         sideNavArrow.children[1].part.add('sidenav-arrow-span-2-left')
         sideNavContainer.part.add('sidenav-container-border-r')
       }
-      if(this.getAttribute('expandable') != "true") {
-        sideNavArrow.part.toggle('sidenav-arrow-visible')
-        sideNavArrow.part.toggle('sidenav-arrow-hidden')
+      if (isExpandable == "false") {
+        sideNavArrow.part.replace('sidenav-arrow-visible', 'sidenav-arrow-hidden')
         sideNavContainer.part.toggle('sidenav-container-gap');
       }
-      sideNavArrow.addEventListener('click', () => this.toggleSideNav(sideNavArrow, sideNavContainer));
+      window.addEventListener('DOMContentLoaded', () => {
+        if (window.innerWidth <= 1024) {
+          if (isExpandable != 'false') {
+            localStorage.setItem('sidenav-expanded', false)
+            localStorage.setItem('sidenav-util-expanded', false)
+          }
+          this.collapseSideNav(sideNavArrow, sideNavContainer, isUtil, isExpandable)
+        }
+        if (localStorage.getItem('sidenav-expanded') != 'false') {
+          this.expandSideNav(sideNavArrow, sideNavContainer, isUtil, isExpandable)
+        } else {
+          this.collapseSideNav(sideNavArrow, sideNavContainer, isUtil, isExpandable)
+        }
+        if (localStorage.getItem('sidenav-util-expanded') != 'false') {
+          this.expandSideNav(sideNavArrow, sideNavContainer, isUtil, isExpandable)
+        } else {
+          this.collapseSideNav(sideNavArrow, sideNavContainer, isUtil, isExpandable)
+        }
+      });
+      sideNavArrow.addEventListener('click', () => this.toggleSideNav(sideNavArrow, sideNavContainer, isUtil, isExpandable));
     }
   }
 );
@@ -331,19 +547,21 @@ sideNavUlComponentTemplate.innerHTML = `
     </ul> 
   </div>
 `;
-customElements.define('sidenav-ul-component', 
+customElements.define('sidenav-ul-component',
   class SideNavUlComponent extends HTMLElement {
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(sideNavUlComponentTemplate.content.cloneNode(true));
     }
     toggleActiveSideNavItem() {
       const sideNavUlItems = document.querySelectorAll('sidenav-ul-item')
-      for(let i = 0; i < sideNavUlItems.length; i++){
-        const sideNavLiItem = sideNavUlItems[i].shadowRoot.querySelector('.sidenav-ul-item');
-        if(window.location.pathname.includes(sideNavLiItem.children[0].pathname)){
+      for (const item of sideNavUlItems) {
+        const sideNavLiItem = item.shadowRoot.querySelector('.sidenav-ul-item');
+        if (window.location.pathname.includes(sideNavLiItem.children[0].pathname)) {
           sideNavLiItem.part.add('sidenav-ul-item-active');
           sideNavLiItem.part.remove('sidenav-ul-item-hover');
         }
@@ -352,7 +570,7 @@ customElements.define('sidenav-ul-component',
     connectedCallback() {
       window.addEventListener('load', () => this.toggleActiveSideNavItem())
     }
-});
+  });
 const sideNavUlItemTemplate = document.createElement('template');
 sideNavUlItemTemplate.innerHTML = `
   <style>
@@ -363,28 +581,37 @@ sideNavUlItemTemplate.innerHTML = `
       <div class="sidenav-ul-item-icon" style="display:flex">
         <slot name="icon-slot"/>
       </div>
-      <div part="sidenav-ul-item-a-text sidenav-ul-item-a-text-visible" class="sidenav-ul-item-a-text">
+      <div part="sidenav-ul-item-a-text" class="sidenav-ul-item-a-text">
         <p class="sidenav-item-text"></p>
         <p class="sidenav-item-text"></p>
       </div>
     </a>
   </li>
 `;
-customElements.define('sidenav-ul-item', 
+customElements.define('sidenav-ul-item',
   class SideNavUlItem extends HTMLElement {
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(sideNavUlItemTemplate.content.cloneNode(true));
     }
     connectedCallback() {
       this.shadowRoot.querySelector('a').href = this.getAttribute('href');
-      let sidenavLinkText  = this.shadowRoot.querySelector('.sidenav-ul-item-a-text');
+      let sidenavLinkText = this.shadowRoot.querySelector('.sidenav-ul-item-a-text');
       sidenavLinkText.children[0].innerText = this.getAttribute('name');
       sidenavLinkText.children[1].innerText = this.getAttribute('count');
+
+      const attrNames = this.getAttributeNames();
+      for (const attr of attrNames) {
+        if (attr.includes('data')) {
+          this.shadowRoot.querySelector('a').setAttribute(attr, this.getAttribute(attr))
+        }
+      }
     }
-});
+  });
 const sideNavUtilComponentTemplate = document.createElement('template');
 sideNavUtilComponentTemplate.innerHTML = `
   <style>
@@ -398,24 +625,26 @@ sideNavUtilComponentTemplate.innerHTML = `
     <button part="sidenav-util-component-button"></button>
   </div>
 `;
-customElements.define('sidenav-util-component', 
+customElements.define('sidenav-util-component',
   class SideNavUtilComponent extends HTMLElement {
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(sideNavUtilComponentTemplate.content.cloneNode(true));
       this.toggleList = true;
     }
-    viewMore(sideNavUtilItems, viewMoreButton){
-      if(this.toggleList) {
-        for(let i = 4; i < sideNavUtilItems.length; i++) {
+    viewMore(sideNavUtilItems, viewMoreButton) {
+      if (this.toggleList) {
+        for (let i = 4; i < sideNavUtilItems.length; i++) {
           sideNavUtilItems[i].style.display = 'block'
         }
         viewMoreButton.innerText = 'View Less'
         this.toggleList = !this.toggleList
       } else {
-        for(let i = 4; i < sideNavUtilItems.length; i++) {
+        for (let i = 4; i < sideNavUtilItems.length; i++) {
           sideNavUtilItems[i].style.display = 'none'
         }
         viewMoreButton.innerText = 'View More'
@@ -425,17 +654,16 @@ customElements.define('sidenav-util-component',
     connectedCallback() {
       this.shadowRoot.querySelector('p').innerText = this.getAttribute('title');
       const viewMoreButton = this.shadowRoot.querySelector('button');
-      
-      setTimeout(()=>{
+      window.addEventListener('load', () => {
         const sideNavUtilItems = this.querySelectorAll('sidenav-util-item')
-        for(let i = 4; i < sideNavUtilItems.length; i++) {
+        for (let i = 4; i < sideNavUtilItems.length; i++) {
           sideNavUtilItems[i].style.display = 'none'
         }
         viewMoreButton.innerText = this.getAttribute('buttonText');
         viewMoreButton.addEventListener('click', () => this.viewMore(sideNavUtilItems, viewMoreButton));
-      }, 10)
+      })
     }
-});
+  });
 const sideNavUtilItem = document.createElement('template');
 sideNavUtilItem.innerHTML = `
   <style>
@@ -461,17 +689,19 @@ sideNavUtilItem.innerHTML = `
     </a>
   </li>
 `;
-customElements.define('sidenav-util-item', 
+customElements.define('sidenav-util-item',
   class SideNavUtilItem extends HTMLElement {
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(sideNavUtilItem.content.cloneNode(true));
     }
     connectedCallback() {
       this.shadowRoot.querySelector('a').href = this.getAttribute('href');
-      if(this.getAttribute('imgSrc') == null ) {
+      if (this.getAttribute('imgSrc') == null) {
         this.shadowRoot.querySelector('img').style.display = 'none'
       } else {
         this.shadowRoot.querySelector('img').src = this.getAttribute('imgSrc');
@@ -480,8 +710,14 @@ customElements.define('sidenav-util-item',
       this.shadowRoot.querySelector('.sidenav-util-item-title').children[0].innerText = this.getAttribute('name');
       this.shadowRoot.querySelector('.sidenav-util-item-title').children[1].innerText = this.getAttribute('last-active');
       this.shadowRoot.querySelector('.sidenav-util-item-deployment').innerText = this.getAttribute('deployment');
+      const attrNames = this.getAttributeNames();
+      for (const attr of attrNames) {
+        if (attr.includes('data')) {
+          this.shadowRoot.querySelector('a').setAttribute(attr, this.getAttribute(attr))
+        }
+      }
     }
-});
+  });
 const gridContainerTemplate = document.createElement('template')
 gridContainerTemplate.innerHTML = `
   <div part="grid-container">
@@ -490,13 +726,15 @@ gridContainerTemplate.innerHTML = `
 `
 customElements.define('grid-container',
   class GridContainer extends HTMLElement {
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(gridContainerTemplate.content.cloneNode(true));
     }
-})
+  })
 const gridItemTemplate = document.createElement('template')
 gridItemTemplate.innerHTML = `
   <style>
@@ -512,10 +750,12 @@ gridItemTemplate.innerHTML = `
 `
 customElements.define('grid-item',
   class StatGridItem extends HTMLElement {
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(gridItemTemplate.content.cloneNode(true));
     }
     connectedCallback() {
@@ -526,9 +766,14 @@ customElements.define('grid-item',
       const text = this.shadowRoot.querySelector('.grid-item-text');
       text.children[0].innerText = this.getAttribute('name');
       text.children[1].innerText = this.getAttribute('deployments') + ' Deployments';
-
+      const attrNames = this.getAttributeNames();
+      for (const attr of attrNames) {
+        if (attr.includes('data')) {
+          this.shadowRoot.querySelector('a').setAttribute(attr, this.getAttribute(attr))
+        }
+      }
     }
-})
+  })
 const StatGridContainerTemplate = document.createElement('template')
 StatGridContainerTemplate.innerHTML = `
   <div part="stat-grid">
@@ -537,13 +782,15 @@ StatGridContainerTemplate.innerHTML = `
 `
 customElements.define('stat-grid',
   class GridContainer extends HTMLElement {
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(StatGridContainerTemplate.content.cloneNode(true));
     }
-})
+  })
 const statGridItemTemplate = document.createElement('template')
 statGridItemTemplate.innerHTML = `
   <style>
@@ -556,10 +803,12 @@ statGridItemTemplate.innerHTML = `
 `
 customElements.define('stat-grid-item',
   class StatGridItem extends HTMLElement {
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(statGridItemTemplate.content.cloneNode(true));
     }
     connectedCallback() {
@@ -567,7 +816,7 @@ customElements.define('stat-grid-item',
       text[0].innerText = this.getAttribute('label')
       text[1].innerText = this.getAttribute('count')
     }
-});
+  });
 const cardGridTemplate = document.createElement('template');
 cardGridTemplate.innerHTML = `
   <div part="card-grid-container">
@@ -576,14 +825,16 @@ cardGridTemplate.innerHTML = `
 `;
 customElements.define('card-grid',
   class CardGrid extends HTMLElement {
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(cardGridTemplate.content.cloneNode(true));
     }
     connectedCallback() {}
-});
+  });
 const cardTemplate = document.createElement('template')
 cardTemplate.innerHTML = `
   <style>
@@ -601,9 +852,9 @@ cardTemplate.innerHTML = `
       <img class="status-icon" src=""/>
     </div>
     <div part="card-holder-info">
-      <p class="activity">Active, no issues</p>
-      <p class="terms-conditions">T&C accepted</p>
-      <p class="licence">License expired</p>
+      <p part="card-holder-info-muted" class="activity">Active, no issues</p>
+      <p part="card-holder-info-muted" class="terms-conditions">T&C accepted</p>
+      <p part="card-holder-info-muted" class="licence">License expired</p>
     </div>
   </div>
 `;
@@ -612,10 +863,12 @@ customElements.define('card-item',
     static get observedAttributes() {
       return ['name', 'deployment-time', 'profile-icon-src', 'status-icon-src', 'activity', 'terms-conditions', 'licence'];
     }
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(cardTemplate.content.cloneNode(true));
     }
     attributeChangedCallback() {
@@ -623,17 +876,23 @@ customElements.define('card-item',
       this.shadowRoot.querySelector('.card-holder-name').innerText = this.getAttribute('name')
       this.shadowRoot.querySelector('.deployment-time').innerText = this.getAttribute('deployment-time')
       this.shadowRoot.querySelector('.status-icon').src = this.getAttribute('status-icon-src');
-      if(this.getAttribute('activity')) {
-        this.shadowRoot.querySelector('.activity').innerText = this.getAttribute('activity')
+      if (this.getAttribute('activity')) {
+        const activity = this.shadowRoot.querySelector('.activity')
+        activity.innerText = this.getAttribute('activity') + ' issues'
+        activity.part.remove('card-holder-info-muted')
       }
-      if(this.getAttribute('terms-conditions')) {
-        this.shadowRoot.querySelector('.terms-conditions').innerText = this.getAttribute('terms-conditions')
+      if (this.getAttribute('terms-conditions')) {
+        const termsConditions = this.shadowRoot.querySelector('.terms-conditions')
+        termsConditions.innerText = this.getAttribute('terms-conditions')
+        termsConditions.part.remove('card-holder-info-muted')
       }
-      if(this.getAttribute('licence')) {
-        this.shadowRoot.querySelector('.licence').innerText = this.getAttribute('licence')
+      if (this.getAttribute('licence')) {
+        const licence = this.shadowRoot.querySelector('.licence')
+        licence.innerText = this.getAttribute('licence')
+        licence.part.remove('card-holder-info-muted')
       }
     }
-});
+  });
 const titleCTAComponentTemplate = document.createElement('template');
 titleCTAComponentTemplate.innerHTML = `
 <style>
@@ -646,22 +905,57 @@ titleCTAComponentTemplate.innerHTML = `
 `
 customElements.define('title-cta',
   class TitleCTAComponent extends HTMLElement {
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(titleCTAComponentTemplate.content.cloneNode(true));
     }
     attributeChangedCallback() {
-      
+
     }
     connectedCallback() {
       this.shadowRoot.querySelector('p').innerText = this.getAttribute('title')
-      if(this.getAttribute('border-bottom') == 'true') {
+      if (this.getAttribute('border-bottom') == 'true') {
         this.shadowRoot.querySelector('.title-cta-container').part.add('title-cta-container-border')
       }
     }
-});
+  });
+const filterComponentTemplate = document.createElement('template')
+filterComponentTemplate.innerHTML = `
+<div part="custom-filter-container">
+  <div part="custom-filter-input-container">
+    <input part="custom-filter-input" type="text" placeholder="Search...">
+    <div part="custom-filter-input-icon-container">
+      <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" part="custom-filter-input-icon" fill="#000000">
+        <path d="M0 0h24v24H0V0z" fill="none"/>
+        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+      </svg>
+    </div>
+  </div>
+  <button part="custom-filter-button-container">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path part="custom-filter-button-icon-svg-path" d="M4.25018 5.61C6.57018 8.59 10.0002 13 10.0002 13V18C10.0002 19.1 10.9002 20 12.0002 20C13.1002 20 14.0002 19.1 14.0002 18V13C14.0002 13 17.4302 8.59 19.7502 5.61C20.2602 4.95 19.7902 4 18.9502 4H5.04018C4.21018 4 3.74018 4.95 4.25018 5.61Z"/>
+    </svg>
+  </button>
+</div>
+`
+customElements.define('custom-filter',
+  class FilterComponent extends HTMLElement {
+    constructor() {
+      super();
+      this.showInfo = true;
+      this.attachShadow({
+        mode: 'open'
+      });
+      this.shadowRoot.appendChild(filterComponentTemplate.content.cloneNode(true));
+    }
+    connectedCallback() {
+      this.shadowRoot.querySelector('input').placeholder = this.getAttribute('placeholder')
+    }
+  });
 const alertComponentTemplate = document.createElement('template');
 alertComponentTemplate.innerHTML = `
   <div part="alert-component">
@@ -670,28 +964,32 @@ alertComponentTemplate.innerHTML = `
 `
 customElements.define('alert-component',
   class AlertComponent extends HTMLElement {
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(alertComponentTemplate.content.cloneNode(true));
     }
-});
+  });
 const alertTemplate = document.createElement('template');;
 alertTemplate.innerHTML = `
 <div part="alert-wrapper" class="alert-wrapper"></div>
 `
-customElements.define('custom-alert', 
+customElements.define('custom-alert',
   class CustomAlert extends HTMLElement {
-    constructor(){
+    constructor() {
       super();
       this.showInfo = true;
-      this.attachShadow({ mode: 'open' });
+      this.attachShadow({
+        mode: 'open'
+      });
       this.shadowRoot.appendChild(alertTemplate.content.cloneNode(true));
     }
     connectedCallback() {
       const alertIcon = this.shadowRoot.querySelector('.alert-wrapper');
-      switch(this.getAttribute('variant')) {
+      switch (this.getAttribute('variant')) {
         case 'danger':
           alertIcon.innerHTML = `
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
