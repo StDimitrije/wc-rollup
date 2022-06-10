@@ -1,0 +1,13 @@
+@layer components {
+  alert-component::part(alert-component) {
+    @apply flex flex-row flex-wrap gap-2 md:gap-5 justify-start;
+  }
+
+  custom-alert::part(alert-wrapper) {
+    @apply flex gap-1 items-center;
+  }
+
+  custom-alert::part(alert-text) {
+    @apply text-lg m-0 font-medium;
+  }
+}

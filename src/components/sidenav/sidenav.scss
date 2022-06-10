@@ -1,0 +1,191 @@
+@layer components {
+  sidenav-component {
+    @apply flex;
+  }
+
+  sidenav-component::part(sidenav-container) {
+    @apply flex flex-col overflow-y-scroll w-max bg-white dark:bg-dark-4 py-5 px-2;
+  }
+
+  sidenav-component::part(sidenav-container-gap) {
+    @apply gap-2;
+  }
+
+  sidenav-component::part(sidenav-container-collapsed) {
+    @apply w-fit min-w-[40px];
+  }
+
+  sidenav-component::part(sidenav-container-expanded) {
+    @apply min-w-[200px];
+  }
+
+  sidenav-component::part(sidenav-container-border-r) {
+    @apply border border-solid border-l-0 border-t-0 border-b-0 border-gray-200 dark:border-gray-300/[.20];
+  }
+
+  sidenav-component::part(sidenav-container-border-l) {
+    @apply border border-solid border-r-0 border-t-0 border-b-0 border-gray-200 dark:border-gray-300/[.20];
+  }
+
+  sidenav-component::part(sidenav-arrow) {
+    @apply flex-col w-[16px] h-[27px] min-h-[27px] cursor-pointer;
+  }
+
+  sidenav-component::part(sidenav-arrow-visible) {
+    @apply flex;
+  }
+
+  sidenav-component::part(sidenav-arrow-hidden) {
+    @apply hidden;
+  }
+
+  sidenav-component::part(sidenav-arrow-start) {
+    @apply self-start;
+  }
+
+  sidenav-component::part(sidenav-arrow-end) {
+    @apply self-end;
+  }
+
+  sidenav-component::part(sidenav-arrow-center) {
+    @apply self-center;
+  }
+
+  sidenav-component::part(sidenav-arrow-span-1),
+  sidenav-component::part(sidenav-arrow-span-2) {
+    @apply block w-full h-[2px] bg-primary dark:bg-slate-100;
+  }
+
+  sidenav-component::part(sidenav-arrow-span-1-left) {
+    @apply -rotate-45 translate-y-[9px];
+  }
+
+  sidenav-component::part(sidenav-arrow-span-2-left) {
+    @apply rotate-45 translate-y-[17px];
+  }
+
+  sidenav-component::part(sidenav-arrow-span-1-right) {
+    @apply rotate-45 translate-y-[9px];
+  }
+
+  sidenav-component::part(sidenav-arrow-span-2-right) {
+    @apply -rotate-45 translate-y-[17px];
+  }
+
+  sidenav-ul-component::part(sidenav-ul-component) {
+    @apply flex flex-col gap-4 text-sm list-none p-0 m-0;
+  }
+
+  sidenav-ul-component::part(sidenav-ul-component-wrapper) {
+    @apply flex flex-col;
+  }
+
+  sidenav-ul-item::part(sidenav-ul-item) {
+    @apply rounded cursor-pointer;
+  }
+    
+  submenu-item::part(submenu-item-hover),
+  sidenav-ul-item::part(sidenav-ul-item-hover) {
+    @apply hover:bg-slate-100 dark:hover:bg-dark-1;
+  }
+
+  submenu-item::part(submenu-item-active),
+  sidenav-ul-item::part(sidenav-ul-item-active) {
+    @apply bg-accent-15 dark:bg-primary-light;
+  }
+
+  sidenav-ul-item::part(sidenav-ul-item-a) {
+    @apply flex flex-col items-center font-medium text-gray-700 dark:text-gray-100 no-underline py-1 px-2;
+  }
+
+  sidenav-ul-item::part(sidenav-ul-item-a-text) {
+    @apply justify-between items-center w-full ml-2;
+  }
+
+  sidenav-ul-item::part(sidenav-ul-item-a-text-visible) {
+    @apply flex;
+  }
+
+  sidenav-ul-item::part(sidenav-ul-item-a-text-hidden) {
+    @apply hidden ml-0;
+  }
+
+  sidenav-util-component::part(sidenav-util-component) {
+    @apply flex-col w-[300px] pb-5;
+  }
+
+  sidenav-util-component::part(sidenav-util-component-visible) {
+    @apply flex;
+  }
+
+  sidenav-util-component::part(sidenav-util-component-hidden) {
+    @apply hidden;
+  }
+
+  sidenav-util-component::part(sidenav-util-component-title) {
+    @apply px-1.5 text-base font-medium;
+  }
+
+  sidenav-util-component::part(sidenav-util-component-ul),
+  submenu-ul-component::part(submenu-ul-component-ul) {
+    @apply flex flex-col gap-1 list-none p-0 m-0 mb-3 mt-2.5;
+  }
+
+  sidenav-util-component::part(sidenav-util-component-button) {
+    @apply cursor-pointer py-2 px-4 w-full rounded-lg sm:text-sm border-0 text-dark-3 shadow-md bg-powder-blue;
+  }
+
+  sidenav-util-item::part(sidenav-util-item) {
+    @apply flex gap-2 items-center justify-between hover:bg-slate-100 dark:hover:bg-dark-1 p-1.5 rounded-lg cursor-pointer no-underline text-dark-2;
+  }
+
+  sidenav-util-item::part(sidenav-util-item-info) {
+    @apply flex gap-2 items-center overflow-hidden;
+  }
+  sidenav-util-item::part(sidenav-util-item-text) {
+    @apply flex flex-col m-0 dark:text-white overflow-hidden;
+  }
+    sidenav-util-item::part(sidenav-util-item-title) {
+    @apply flex gap-1.5 items-center;
+  }
+
+  sidenav-util-item::part(sidenav-util-item-title-name) {
+    @apply font-medium overflow-hidden whitespace-nowrap text-ellipsis;
+  }
+
+  sidenav-util-item::part(sidenav-util-item-svg-path) {
+    @apply fill-slate-600 dark:fill-white;
+  }
+
+  sidenav-util-item::part(sidenav-util-item-deployment) {
+    @apply text-xs overflow-hidden whitespace-nowrap text-ellipsis;
+  }
+  sidenav-util-item::part(sidenav-util-item-last-active) {
+    @apply text-xs;
+  }
+
+  sidenav-util-item::part(sidenav-util-item-img),
+  submenu-component::part(submenu-component-img) {
+    @apply object-cover object-center max-h-[50px];
+  }
+
+  submenu-component::part(submenu-component-img-title-wrapper) {
+    @apply flex gap-2 items-center px-1.5 pb-5 mb-5 border border-solid border-t-0 border-r-0 border-l-0 border-gray-200 dark:border-gray-300/[.20];
+  }
+
+  submenu-ul-component::part(submenu-ul-component) {
+    @apply min-w-[200px] mb-5;
+  }
+
+  submenu-ul-component::part(submenu-ul-component-title) {
+    @apply font-medium text-sm px-1.5 uppercase;
+  }
+
+  submenu-item::part(submenu-item) {
+    @apply rounded cursor-pointer flex;
+  }
+
+  submenu-item::part(submenu-item-a) {
+    @apply flex-1 w-full font-medium text-gray-700 dark:text-gray-100 no-underline py-1 px-2 text-sm;
+  }
+}

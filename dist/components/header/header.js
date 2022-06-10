@@ -1,0 +1,1 @@
+import{_ as e,a,c as o,b as t,d as n}from"../../_rollupPluginBabelHelpers-aa656846.js";import{h as s}from"../../template-bc6ead35.js";customElements.define("header-component",function(n){e(l,n);var r=a(l);function l(){var e;return o(this,l),(e=r.call(this)).showInfo=!0,e.attachShadow({mode:"open"}),e.shadowRoot.appendChild(s.content.cloneNode(!0)),e}return t(l)}(n(HTMLElement)));

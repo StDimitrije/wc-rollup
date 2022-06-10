@@ -1,0 +1,22 @@
+@layer components {
+    grid-item::part(grid-item-text) {
+    @apply flex flex-col m-0 dark:text-white overflow-hidden;
+  }
+
+  grid-item::part(grid-item-deployments) {
+    @apply text-xs opacity-80 dark:opacity-60;
+  }
+
+  grid-item::part(grid-item-img) {
+    @apply object-cover object-center max-h-[50px];
+  }
+
+
+  grid-item::part(grid-item) {
+    @apply text-dark-1 no-underline flex gap-2 items-center hover:bg-slate-100 dark:hover:bg-dark-1 p-1.5 rounded-lg cursor-pointer;
+  }
+
+  grid-container::part(grid-container) {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-2;
+  }
+}

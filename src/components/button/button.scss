@@ -1,0 +1,34 @@
+@layer components {
+  .button-success-fill,
+  .button-success-outline,
+  .button-neutral-fill,
+  .button-neutral-outline,
+  custom-button::part(custom-button) {
+    @apply flex gap-2 px-3.5 py-1.5 w-fit rounded-md whitespace-nowrap items-center no-underline text-dark-3 text-sm font-medium cursor-pointer;
+  }
+
+  .button-success-fill,
+  custom-button::part(custom-button-success-fill) {
+    @apply border-none bg-accent hover:bg-accent-dark;
+  }
+
+  .button-success-outline,
+  custom-button::part(custom-button-success-outline) {
+    @apply border border-solid border-accent-dark bg-transparent hover:bg-accent hover:bg-opacity-20 dark:text-white;;
+  }
+
+  .button-neutral-fill,
+  custom-button::part(custom-button-neutral-fill) {
+    @apply border-none bg-powder-blue hover:bg-powder-blue-2;
+  }
+
+  .button-neutral-outline,
+  custom-button::part(custom-button-neutral-outline) {
+    @apply border border-solid border-powder-blue bg-transparent hover:bg-powder-blue hover:bg-opacity-20 dark:text-white;
+  }
+
+  util-button::part(util-button) {
+    @apply flex gap-2 h-fit items-center no-underline text-dark-2 dark:text-white;
+  }
+
+}

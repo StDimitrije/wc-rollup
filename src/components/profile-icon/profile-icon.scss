@@ -1,0 +1,10 @@
+@layer components {
+
+  profile-icon::part(profile-icon) {
+    @apply cursor-pointer w-8 h-8 flex items-center justify-center text-sm text-white rounded-full;
+  }
+
+  profile-icon::part(profile-icon-initials) {
+    @apply text-dark-3 m-0;
+  }
+}

@@ -1,0 +1,25 @@
+@layer components {
+    dropdown-component::part(dropdown-modal) {
+    @apply w-screen h-screen absolute top-0 right-0;
+  }
+
+  dropdown-component::part(dropdown-modal-hidden) {
+    @apply hidden;
+  }
+
+  dropdown-component::part(dropdown-modal-visible) {
+    @apply block;
+  }
+
+  dropdown-component::part(dropdown-component) {
+    @apply absolute z-30 m-0 top-[50px] right-[20px] w-max p-2 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-dark-1 text-sm shadow-[0px_8px_16px_0px_rgba(0,0,0,0.12)] list-none;
+  }
+
+  dropdown-item::part(profile-dropdown-item) {
+    @apply hover:bg-gray-100 dark:hover:bg-dark-2 rounded flex;
+  }
+
+  dropdown-item::part(profile-dropdown-item-a) {
+    @apply no-underline text-dark-1 dark:text-white px-2.5 py-1 flex-1;
+  }
+}

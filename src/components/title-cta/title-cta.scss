@@ -1,0 +1,14 @@
+@layer components {
+
+  title-cta::part(title-cta-container) {
+    @apply flex flex-wrap justify-between items-center gap-3 pb-4;
+  }
+
+  title-cta::part(title-cta-text) {
+    @apply text-2xl font-medium;
+  }
+
+  title-cta::part(title-cta-container-border) {
+    @apply border border-solid border-t-0 border-r-0 border-l-0 border-gray-200 dark:border-gray-300/[.20];
+  }
+}

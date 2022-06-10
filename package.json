@@ -1,11 +1,8 @@
 {
   "name": "wc-rollup",
-  "version": "0.0.2",
-  "main": "dist/bundle.umd.js",
+  "version": "0.0.3",
   "repository": "https://github.com/StDimitrije/wc-rollup.git",
   "scripts": {
-    "start:css": "npx tailwindcss -i src/main.css -o src/tw-out.css --watch",
-    "build:css": "npx tailwindcss -i src/main.css -o src/tw-out.css",
     "start": "rollup -c -w",
     "build": "rollup -c"
   },
@@ -28,7 +25,9 @@
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.2",
-    "postcss": "^8.4.14"
+    "postcss": "^8.4.14",
+    "postcss-import": "^14.1.0",
+    "rollup-plugin-multi-input": "^1.3.1"
   },
   "author": "Dimitrije Stanković <dimitrije.stankovic@spicefactory.co>",
   "license": "MIT"

@@ -1,0 +1,46 @@
+
+@layer components {
+  breadcrumb-component::part(breadcrumb-container) {
+    @apply flex flex-col sm:flex-row justify-between items-end min-h-[32px] gap-3.5 py-5 border border-solid border-l-0 border-t-0 border-r-0 border-gray-200 dark:border-gray-300/[.20];
+  }
+
+  breadcrumb-component::part(breadcrumb-nav-wrapper) {
+    @apply flex flex-col gap-1.5;
+  }
+
+  breadcrumb-component::part(breadcrumb-ul) {
+    @apply flex flex-wrap items-center gap-1 sm:gap-0 list-none p-0 m-0;
+  }
+
+  breadcrumb-component::part(breadcrumb-nav-inline-items-wrapper) {
+    @apply flex gap-1;
+  }
+
+  breadcrumb-component::part(breadcrumb-button-wrapper) {
+    @apply flex gap-6 items-center;
+  }
+
+  breadcrumb-component::part(breadcrumb-icon-wrapper) {
+    @apply flex;
+  }
+  breadcrumb-component::part(breadcrumb-icon-wrapper-start) {
+    @apply items-start;
+  }
+  breadcrumb-component::part(breadcrumb-icon-wrapper-center) {
+    @apply items-center;
+  }
+
+  breadcrumb-component::part(breadcrumb-li-a),
+  breadcrumb-item::part(breadcrumb-li-a) {
+    @apply flex items-center no-underline text-gray-600 dark:text-white/[.60] font-medium mr-1 gap-1 whitespace-nowrap;
+  }
+
+  breadcrumb-component::part(breadcrumb-li-a-active),
+  breadcrumb-item::part(breadcrumb-li-a-active) {
+    @apply text-2xl m-0 text-dark-2 dark:text-white;
+  }
+
+  breadcrumb-item::part(arrow-next) {
+    @apply fill-gray-600 dark:fill-white/[0.6];
+  }
+}

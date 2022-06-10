@@ -1,0 +1,61 @@
+@layer components {
+    card-container::part(card-container) {
+    @apply flex flex-wrap gap-3;
+  }
+
+  stat-card::part(stat-card) {
+    @apply p-3 shadow-sm rounded-lg dark:shadow-none bg-slate-50 dark:bg-dark-1 min-w-[130px];
+  }
+
+  stat-card::part(stat-card-label) {
+    @apply text-sm;
+  }
+
+  stat-card::part(stat-card-count) {
+    @apply text-3xl font-medium;
+  }
+
+  product-card::part(card-container) {
+    @apply flex flex-col shadow-sm p-3 rounded-lg gap-2 bg-slate-50 dark:bg-dark-1;
+  }
+
+  product-card::part(card-holder) {
+    @apply flex items-center justify-between gap-4 pb-3;
+  }
+
+  product-card::part(card-holder-header) {
+    @apply flex gap-2;
+  }
+
+  product-card::part(card-holder-name) {
+    @apply font-medium;
+  }
+
+  product-card::part(card-holder-info) {
+    @apply flex flex-col text-sm;
+  }
+
+  product-card::part(card-holder-info-muted) {
+    @apply opacity-70;
+  }
+
+  product-card::part(card-holder-info-medium) {
+    @apply font-medium;
+  }
+
+  product-card::part(deployment-time) {
+    @apply text-xs;
+  }
+
+  cta-card::part(cta-card) {
+    @apply p-3 gap-2 flex flex-col shadow-sm rounded-lg dark:shadow-none bg-slate-50 dark:bg-dark-1 min-w-[130px];
+  }
+
+  cta-card::part(title) {
+    @apply text-lg leading-none opacity-70;
+  }
+
+  cta-card::part(subtitle) {
+    @apply text-sm font-semibold;
+  }
+}

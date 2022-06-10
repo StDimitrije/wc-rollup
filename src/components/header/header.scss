@@ -1,0 +1,5 @@
+@layer components {
+  header-component::part(header-component) {
+    @apply bg-white dark:bg-dark-4 py-3 dark:border-gray-300/[.20] border border-solid border-gray-200 border-t-0 border-r-0 border-l-0 mx-auto max-w-full px-4 flex gap-4 justify-between items-center relative;
+  }
+}
