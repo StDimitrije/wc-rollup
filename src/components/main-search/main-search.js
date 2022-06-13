@@ -13,11 +13,24 @@ customElements.define('main-search',
     }
     connectedCallback() {
       const form = this.shadowRoot.querySelector('form')
-      form.action = this.getAttribute('action');
-      form.method = this.getAttribute('method')
+      if (this.getAttribute('action') != null) {
+        form.action = this.getAttribute('action');
+      }
+      if (this.getAttribute('method') != null) {
+        form.method = this.getAttribute('method')
+      } else {
+        form.method = 'POST'
+      }
       const input = this.shadowRoot.querySelector('input')
-      input.placeholder = this.getAttribute('placeholder');
-      input.name = this.getAttribute('name')
+      if (this.getAttribute('placeholder')) {
+        input.placeholder = this.getAttribute('placeholder');
+      }
+      if (this.getAttribute('name') != null) {
+        input.name = this.getAttribute('name')
+      } else {
+        input.name = 'query'
+      }
+
     }
   }
 );

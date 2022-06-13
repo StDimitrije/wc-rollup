@@ -3,6 +3,8 @@
   .button-success-outline,
   .button-neutral-fill,
   .button-neutral-outline,
+  .button-danger-fill,
+  .button-danger-outline,
   custom-button::part(custom-button) {
     @apply flex gap-2 px-3.5 py-1.5 w-fit rounded-md whitespace-nowrap items-center no-underline text-dark-3 text-sm font-medium cursor-pointer;
   }
@@ -25,6 +27,16 @@
   .button-neutral-outline,
   custom-button::part(custom-button-neutral-outline) {
     @apply border border-solid border-powder-blue bg-transparent hover:bg-powder-blue hover:bg-opacity-20 dark:text-white;
+  }
+
+  .button-danger-fill,
+  custom-button::part(custom-button-danger-fill) {
+    @apply border-none bg-red-500 hover:bg-red-600 text-black;
+  }
+
+  .button-danger-outline,
+  custom-button::part(custom-button-danger-outline) {
+    @apply border border-solid border-red-500 bg-transparent hover:bg-red-600 hover:bg-opacity-20 dark:text-white;;
   }
 
   util-button::part(util-button) {

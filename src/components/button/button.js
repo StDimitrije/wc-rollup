@@ -32,11 +32,26 @@ customElements.define('custom-button',
           customBtn.part.add('custom-button-success-fill')
         } else if (color == 'neutral') {
           customBtn.part.add('custom-button-neutral-fill')
+        } else if (color == 'danger') {
+          customBtn.part.add('custom-button-danger-fill')
         }
       } else if (variant == 'outline') {
         if (color == 'success') {
           customBtn.part.add('custom-button-success-outline')
         } else if (color == 'neutral') {
+          customBtn.part.add('custom-button-neutral-outline')
+        } else if (color == 'danger') {
+          customBtn.part.add('custom-button-danger-outline')
+        }
+      } else {
+        customBtn.part.add('custom-button-success-fill')
+        if (color == 'success') {
+          customBtn.part.add('custom-button-success-outline')
+        } else if (color == 'neutral') {
+          customBtn.part.add('custom-button-neutral-outline')
+        } else if (color == 'danger') {
+          customBtn.part.add('custom-button-danger-outline')
+        } else {
           customBtn.part.add('custom-button-neutral-outline')
         }
       }

@@ -6,7 +6,7 @@ sideNavComponentTemplate.innerHTML = `
       <span part="sidenav-arrow-span-2"></span>
     </div>
     <div>
-      <slot name="sidenav-ul-component"/>
+      <slot name="sidenav-component"/>
     </div>
   </div> 
 `;
