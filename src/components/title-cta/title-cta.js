@@ -12,9 +12,6 @@ customElements.define('title-cta',
       });
       this.shadowRoot.appendChild(titleCTAComponentTemplate.content.cloneNode(true));
     }
-    attributeChangedCallback() {
-
-    }
     connectedCallback() {
       this.shadowRoot.querySelector('p').innerText = this.getAttribute('title')
       if (this.getAttribute('border') == 'true') {

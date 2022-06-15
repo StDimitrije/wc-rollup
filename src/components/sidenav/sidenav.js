@@ -128,7 +128,7 @@ customElements.define('sidenav-component',
       //   sideNavArrow.part.replace('sidenav-arrow-visible', 'sidenav-arrow-hidden')
       //   sideNavContainer.part.toggle('sidenav-container-gap');
       // }
-      // window.addEventListener('DOMContentLoaded', () => {
+      // window.addEventListener(config.config.loadListener, () => {
       //   if (window.innerWidth <= 1024) {
       //     if (isExpandable != 'false') {
       //       localStorage.setItem('sidenav-expanded', false)
@@ -155,6 +155,9 @@ customElements.define('sidenav-component',
 
 customElements.define('sidenav-ul-component',
   class SideNavUlComponent extends HTMLElement {
+    static get observedAttributes() {
+      return ['event-changed'];
+    }
     constructor() {
       super();
       this.showInfo = true;
@@ -173,10 +176,11 @@ customElements.define('sidenav-ul-component',
         }
       }
     }
-    connectedCallback() {
-      window.addEventListener('load', () => this.toggleActiveSideNavItem())
+    attributeChangedCallback() {
+      window.addEventListener(window.loadEventListener, () => this.toggleActiveSideNavItem())
     }
   });
+
 
 customElements.define('sidenav-ul-item',
   class SideNavUlItem extends HTMLElement {
@@ -203,6 +207,9 @@ customElements.define('sidenav-ul-item',
 
 customElements.define('sidenav-util-component',
   class SideNavUtilComponent extends HTMLElement {
+    static get observedAttributes() {
+      return ['event-changed'];
+    }
     constructor() {
       super();
       this.showInfo = true;
@@ -227,10 +234,10 @@ customElements.define('sidenav-util-component',
         this.toggleList = !this.toggleList
       }
     }
-    connectedCallback() {
+    attributeChangedCallback() {
       this.shadowRoot.querySelector('p').innerText = this.getAttribute('title');
       const viewMoreButton = this.shadowRoot.querySelector('button');
-      window.addEventListener('load', () => {
+      window.addEventListener(window.loadEventListener, () => {
         const sideNavUtilItems = this.querySelectorAll('sidenav-util-item')
         for (let i = 4; i < sideNavUtilItems.length; i++) {
           sideNavUtilItems[i].style.display = 'none'
@@ -289,6 +296,9 @@ customElements.define('submenu-component',
 
 customElements.define('submenu-ul-component',
   class SideNavSubmenuUlComponent extends HTMLElement {
+    static get observedAttributes() {
+      return ['event-changed'];
+    }
     constructor() {
       super();
       this.showInfo = true;
@@ -309,8 +319,11 @@ customElements.define('submenu-ul-component',
     }
     connectedCallback() {
       this.shadowRoot.querySelector('p').innerText = this.getAttribute('title')
-      window.addEventListener('load', () => this.toggleActiveItem())
     }
+    attributeChangedCallback() {
+      window.addEventListener(window.loadEventListener, () => this.toggleActiveItem())
+    }
+
   });
 
 customElements.define('submenu-item',

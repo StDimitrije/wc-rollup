@@ -14,7 +14,31 @@ import './components/title-cta/title-cta.js';
 import './components/filter/filter.js';
 import './components/alert/alert.js';
 
-window.onload = function() {
+window.loadEventListener = "DOMContentLoaded"
+
+function libConfig(options) {
+  if (options.loadEventListener) {
+    window.loadEventListener = options.loadEventListener;
+    if (document.querySelector('breadcrumb-component')) {
+      document.querySelector('breadcrumb-component').setAttribute('event-changed', 'true')
+    }
+    if (document.querySelectorAll('sidenav-util-component')) {
+      for (let item of document.querySelectorAll('sidenav-util-component')) {
+        item.setAttribute('event-changed', 'true')
+      }
+    }
+    if (document.querySelectorAll('sidenav-ul-component')) {
+      for (let item of document.querySelectorAll('sidenav-ul-component')) {
+        item.setAttribute('event-changed', 'true')
+      }
+    }
+    if (document.querySelectorAll('submenu-ul-component')) {
+      for (let item of document.querySelectorAll('submenu-ul-component')) {
+        item.setAttribute('event-changed', 'true')
+      }
+    }
+  }
+  window.addEventListener(window.loadEventListener, () => {
   const content = document.querySelector('html')
   const myStorage = window.localStorage
   const mode = myStorage.getItem('mode')
@@ -31,4 +55,9 @@ window.onload = function() {
       setMode('light') :
       setMode('dark')
   }
-}
+})
+};
+window.libConfig = libConfig;
+
+
+

@@ -20,7 +20,7 @@ export default {
     name: 'version',
     file: 'dist/nomadix-ui-' + version + '.js',
     format: 'umd',
-    plugins: [terser()]
+
   },
   plugins: [
     postcss({

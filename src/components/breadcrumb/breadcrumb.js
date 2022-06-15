@@ -1,10 +1,13 @@
 import {
   breadCrumbContainerTemplate,
   breadCrumbItemTemplate
-} from '../breadcrumb/template.js'
+} from './template.js';
 
 customElements.define('breadcrumb-component',
   class BreadCrumbContainer extends HTMLElement {
+    static get observedAttributes() {
+      return ['event-changed'];
+    }
     constructor() {
       super();
       this.showInfo = true;
@@ -13,24 +16,25 @@ customElements.define('breadcrumb-component',
       });
       this.shadowRoot.appendChild(breadCrumbContainerTemplate.content.cloneNode(true));
     }
-    connectedCallback() {
-      window.addEventListener('DOMContentLoaded', () => {
-        const items = document.querySelectorAll('breadcrumb-item')
-        const itemsList = []
-        for (const item of items) {
-          itemsList.push(item.shadowRoot.querySelector('a'))
-        }
-        const lastItem = itemsList[itemsList.length - 1]
-        lastItem.removeChild(lastItem.lastChild)
-        lastItem.part.add('breadcrumb-li-a-active')
-        if (itemsList.length > 1) {
-          const navWrapper = this.shadowRoot.querySelector('.breadcrumb-nav-wrapper')
-          navWrapper.appendChild(lastItem)
-          this.shadowRoot.querySelector('.breadcrumb-icon-wrapper').part.add('breadcrumb-icon-wrapper-start')
-        } else {
-          this.shadowRoot.querySelector('.breadcrumb-icon-wrapper').part.add('breadcrumb-icon-wrapper-center')
-        }
-      })
+    toggleActiveItem() {
+      const items = document.querySelectorAll('breadcrumb-item')
+      const itemsList = []
+      for (const item of items) {
+        itemsList.push(item.shadowRoot.querySelector('a'))
+      }
+      const lastItem = itemsList[itemsList.length - 1]
+      lastItem.removeChild(lastItem.lastChild)
+      lastItem.part.add('breadcrumb-li-a-active')
+      if (itemsList.length > 1) {
+        const navWrapper = this.shadowRoot.querySelector('.breadcrumb-nav-wrapper')
+        navWrapper.appendChild(lastItem)
+        this.shadowRoot.querySelector('.breadcrumb-icon-wrapper').part.add('breadcrumb-icon-wrapper-start')
+      } else {
+        this.shadowRoot.querySelector('.breadcrumb-icon-wrapper').part.add('breadcrumb-icon-wrapper-center')
+      }
+    }
+    attributeChangedCallback() {
+      window.addEventListener(window.loadEventListener, () => this.toggleActiveItem())
     }
   }
 );
