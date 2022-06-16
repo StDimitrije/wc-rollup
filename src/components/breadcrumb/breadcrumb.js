@@ -5,9 +5,6 @@ import {
 
 customElements.define('breadcrumb-component',
   class BreadCrumbContainer extends HTMLElement {
-    static get observedAttributes() {
-      return ['event-changed'];
-    }
     constructor() {
       super();
       this.showInfo = true;
@@ -18,22 +15,22 @@ customElements.define('breadcrumb-component',
     }
     toggleActiveItem() {
       const items = document.querySelectorAll('breadcrumb-item')
-      const itemsList = []
-      for (const item of items) {
-        itemsList.push(item.shadowRoot.querySelector('a'))
-      }
-      const lastItem = itemsList[itemsList.length - 1]
-      lastItem.removeChild(lastItem.lastChild)
-      lastItem.part.add('breadcrumb-li-a-active')
-      if (itemsList.length > 1) {
-        const navWrapper = this.shadowRoot.querySelector('.breadcrumb-nav-wrapper')
-        navWrapper.appendChild(lastItem)
+      const lastItem = items[items.length - 1]
+
+      lastItem.shadowRoot.querySelector('a').part.add('breadcrumb-li-a-active')
+      lastItem.shadowRoot.querySelector('path').part.add('arrow-hidden')
+
+      if(items.length > 1) {
         this.shadowRoot.querySelector('.breadcrumb-icon-wrapper').part.add('breadcrumb-icon-wrapper-start')
+        lastItem.classList.add('breadcrumb-item-active')
+        lastItem.classList.add('breadcrumb-item-active-ml')
       } else {
         this.shadowRoot.querySelector('.breadcrumb-icon-wrapper').part.add('breadcrumb-icon-wrapper-center')
+        lastItem.classList.add('breadcrumb-item-active')
       }
     }
-    attributeChangedCallback() {
+    connectedCallback() {
+      console.log('breadcrumb connected', window.loadEventListener)
       window.addEventListener(window.loadEventListener, () => this.toggleActiveItem())
     }
   }
@@ -41,9 +38,6 @@ customElements.define('breadcrumb-component',
 
 customElements.define('breadcrumb-item',
   class BreadCrumbItem extends HTMLElement {
-    static get observedAttributes() {
-      return ['href', 'title'];
-    }
     constructor() {
       super();
       this.showInfo = true;
@@ -52,12 +46,10 @@ customElements.define('breadcrumb-item',
       });
       this.shadowRoot.appendChild(breadCrumbItemTemplate.content.cloneNode(true));
     }
-    attributeChangedCallback() {
+    connectedCallback() {
       const link = this.shadowRoot.querySelector('a')
       link.href = this.getAttribute('href')
       link.innerHTML = this.getAttribute('title') + `<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20"><path part="arrow-next" d="M7.833 15 6.583 13.75 10.333 10 6.583 6.25 7.833 5 12.833 10Z"/></svg>`
-    }
-    connectedCallback() {
       const attrNames = this.getAttributeNames();
       for (const attr of attrNames) {
         if (attr.includes('data')) {

@@ -43,4 +43,7 @@
   breadcrumb-item::part(arrow-next) {
     @apply fill-gray-600 dark:fill-white/[0.6];
   }
+  breadcrumb-item::part(arrow-hidden) {
+    @apply hidden;
+  }
 }

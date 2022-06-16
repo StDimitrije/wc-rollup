@@ -24,7 +24,6 @@ breadCrumbItemTemplate.innerHTML = `
 </style>
 <li>
   <a part="breadcrumb-li-a" href="">
-    <p part="breadcrumb-a-text"></p>
   </a>
 </li>
 `

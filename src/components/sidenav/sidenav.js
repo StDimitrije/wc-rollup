@@ -155,9 +155,6 @@ customElements.define('sidenav-component',
 
 customElements.define('sidenav-ul-component',
   class SideNavUlComponent extends HTMLElement {
-    static get observedAttributes() {
-      return ['event-changed'];
-    }
     constructor() {
       super();
       this.showInfo = true;
@@ -176,7 +173,7 @@ customElements.define('sidenav-ul-component',
         }
       }
     }
-    attributeChangedCallback() {
+    connectedCallback() {
       window.addEventListener(window.loadEventListener, () => this.toggleActiveSideNavItem())
     }
   });
@@ -207,9 +204,6 @@ customElements.define('sidenav-ul-item',
 
 customElements.define('sidenav-util-component',
   class SideNavUtilComponent extends HTMLElement {
-    static get observedAttributes() {
-      return ['event-changed'];
-    }
     constructor() {
       super();
       this.showInfo = true;
@@ -234,7 +228,7 @@ customElements.define('sidenav-util-component',
         this.toggleList = !this.toggleList
       }
     }
-    attributeChangedCallback() {
+    connectedCallback() {
       this.shadowRoot.querySelector('p').innerText = this.getAttribute('title');
       const viewMoreButton = this.shadowRoot.querySelector('button');
       window.addEventListener(window.loadEventListener, () => {
@@ -296,9 +290,6 @@ customElements.define('submenu-component',
 
 customElements.define('submenu-ul-component',
   class SideNavSubmenuUlComponent extends HTMLElement {
-    static get observedAttributes() {
-      return ['event-changed'];
-    }
     constructor() {
       super();
       this.showInfo = true;
@@ -319,8 +310,6 @@ customElements.define('submenu-ul-component',
     }
     connectedCallback() {
       this.shadowRoot.querySelector('p').innerText = this.getAttribute('title')
-    }
-    attributeChangedCallback() {
       window.addEventListener(window.loadEventListener, () => this.toggleActiveItem())
     }
 

@@ -101,6 +101,14 @@
   .breadcrumb-icon-fill {
     @apply fill-dark-2 dark:fill-gray-200;
   } 
+  .breadcrumb-item-active {
+    @apply basis-full;
+  }
+  .breadcrumb-item-active-ml {
+    @apply ml-[-25px];
+  }
+  
+  
 }
 
 html {
