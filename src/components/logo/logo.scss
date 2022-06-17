@@ -1,7 +1,7 @@
 @layer components {
   
   logo-component::part(logo) {
-    @apply flex items-center gap-1 cursor-pointer no-underline text-dark-1 dark:text-white;
+    @apply flex items-center gap-3 cursor-pointer no-underline text-dark-1 dark:text-white;
   }
 
   logo-component::part(logo-title) {
