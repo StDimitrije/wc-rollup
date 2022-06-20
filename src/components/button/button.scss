@@ -5,10 +5,12 @@
   .button-neutral-outline,
   .button-danger-fill,
   .button-danger-outline,
+  .button,
   custom-button::part(custom-button) {
-    @apply flex gap-2 px-3.5 py-1.5 w-fit rounded-md whitespace-nowrap items-center no-underline text-dark-3 text-sm font-medium cursor-pointer;
+    @apply flex gap-2 px-4 py-2 w-fit rounded-md whitespace-nowrap items-center no-underline text-dark-3 text-sm font-medium cursor-pointer;
   }
 
+  .button-primary,
   .button-success-fill,
   custom-button::part(custom-button-success-fill) {
     @apply border-none bg-accent hover:bg-accent-dark;
@@ -31,7 +33,7 @@
 
   .button-danger-fill,
   custom-button::part(custom-button-danger-fill) {
-    @apply border-none bg-red-500 hover:bg-red-600 text-black;
+    @apply border-none bg-red-600 hover:bg-red-700 text-white;
   }
 
   .button-danger-outline,

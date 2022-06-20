@@ -4,8 +4,11 @@ titleCTAComponentTemplate.innerHTML = `
   p {margin:0}
 </style>
 <div class="title-cta-container" part="title-cta-container">
-  <p part="title-cta-text"></p>
-  <slot name="cta-slot"/>
+  <div class="title-wrapper">
+  </div>
+  <div part="button-wrapper">
+    <slot name="cta-slot"/>
+  </div>
 </div>
 `
 

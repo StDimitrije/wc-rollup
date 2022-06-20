@@ -4,7 +4,7 @@
   }
 
   sidenav-component::part(sidenav-container) {
-    @apply flex flex-col overflow-y-scroll w-max bg-white dark:bg-dark-4 py-5 px-2;
+    @apply flex flex-col overflow-y-auto w-max bg-white dark:bg-dark-4 py-5 px-2 shadow-lg;
   }
 
   sidenav-component::part(sidenav-container-gap) {
@@ -83,7 +83,7 @@
   sidenav-ul-item::part(sidenav-ul-item) {
     @apply rounded cursor-pointer;
   }
-    
+
   submenu-item::part(submenu-item-hover),
   sidenav-ul-item::part(sidenav-ul-item-hover) {
     @apply hover:bg-slate-100 dark:hover:bg-dark-1;

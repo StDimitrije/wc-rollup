@@ -1,26 +1,33 @@
 @layer components {
-    card-container::part(card-container) {
-    @apply flex flex-wrap gap-3;
+  card-container::part(card-container) {
+    @apply flex flex-wrap gap-4;
+  }
+
+  stat-card::part(stat-card),
+  product-card::part(card-container),
+  cta-card::part(cta-card),
+  user-card::part(user-card) {
+    @apply shadow-xl shadow-primary/10 rounded-lg dark:shadow-none bg-white dark:bg-dark-1;
   }
 
   stat-card::part(stat-card) {
-    @apply p-3 shadow-sm rounded-lg dark:shadow-none bg-slate-50 dark:bg-dark-1 min-w-[130px];
+    @apply px-4 py-3 min-w-[130px];
   }
 
   stat-card::part(stat-card-label) {
-    @apply text-sm;
+    @apply text-sm opacity-70;
   }
 
   stat-card::part(stat-card-count) {
-    @apply text-3xl font-medium;
+    @apply text-3xl font-bold;
   }
 
   product-card::part(card-container) {
-    @apply flex flex-col shadow-sm p-3 rounded-lg gap-2 bg-slate-50 dark:bg-dark-1;
+    @apply flex flex-col p-3 gap-2;
   }
 
   product-card::part(card-holder) {
-    @apply flex items-center justify-between gap-4 pb-3;
+    @apply flex items-center justify-between gap-4;
   }
 
   product-card::part(card-holder-header) {
@@ -48,14 +55,63 @@
   }
 
   cta-card::part(cta-card) {
-    @apply p-3 gap-2 flex flex-col shadow-sm rounded-lg dark:shadow-none bg-slate-50 dark:bg-dark-1 min-w-[130px];
+    @apply px-4 py-3 flex flex-col min-w-[130px];
   }
 
   cta-card::part(title) {
-    @apply text-lg leading-none opacity-70;
+    @apply text-sm opacity-70;
   }
 
   cta-card::part(subtitle) {
-    @apply text-sm font-semibold;
+    @apply text-sm mb-2;
+  }
+
+  user-card::part(user-card) {
+    @apply flex items-center justify-between py-4 px-6 gap-4 flex-wrap;
+  }
+
+  user-card::part(user-info) {
+    @apply flex gap-6 items-center;
+  }
+
+  user-card::part(user-initials) {
+    @apply rounded-full w-20 h-20 flex justify-center items-center text-3xl font-bold;
+  }
+
+  user-card::part(user-info-text-wrapper) {
+    @apply flex flex-col;
+  }
+
+  user-card::part(user-info-name-wrapper) {
+    @apply flex gap-6 items-center;
+  }
+
+  user-card::part(user-name) {
+    @apply font-bold text-2xl;
+  }
+
+  user-card::part(activity) {
+    @apply font-medium text-base py-0.5 px-2 rounded-md;
+  }
+
+  user-card::part(activity-active) {
+    @apply bg-accent-15;
+  }
+
+  user-card::part(activity-inactive) {
+    @apply bg-amber-200/[.4];
+  }
+
+  user-card::part(user-email) {
+    @apply mb-1;
+  }
+
+  user-card::part(user-email),
+  user-card::part(user-roles) {
+    @apply text-sm;
+  }
+
+  user-card::part(button-wrapper) {
+    @apply flex gap-6 items-center;
   }
 }

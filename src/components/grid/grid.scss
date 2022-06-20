@@ -1,5 +1,5 @@
 @layer components {
-    grid-item::part(grid-item-text) {
+  grid-item::part(grid-item-text) {
     @apply flex flex-col m-0 dark:text-white overflow-hidden;
   }
 
@@ -13,7 +13,7 @@
 
 
   grid-item::part(grid-item) {
-    @apply text-dark-1 no-underline flex gap-2 items-center hover:bg-slate-100 dark:hover:bg-dark-1 p-1.5 rounded-lg cursor-pointer;
+    @apply text-dark-1 no-underline flex gap-2 items-center hover:bg-slate-200 dark:hover:bg-dark-1 p-1.5 rounded-lg cursor-pointer;
   }
 
   grid-container::part(grid-container) {

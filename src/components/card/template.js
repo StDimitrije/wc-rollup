@@ -37,8 +37,8 @@ productCardTemplate.innerHTML = `
     </div>
   </div>
 `;
-const ctaCardtemplate = document.createElement('template')
-ctaCardtemplate.innerHTML = `
+const ctaCardTemplate = document.createElement('template')
+ctaCardTemplate.innerHTML = `
 <style>
   p {margin:0}
 </style>
@@ -48,10 +48,35 @@ ctaCardtemplate.innerHTML = `
   <slot name="cta-slot"/>
 </div>
 `
+const userCardTemplate = document.createElement('template')
+userCardTemplate.innerHTML = `
+<style>
+  p {margin:0}
+</style>
+<div part="user-card">
+  <div part="user-info">
+    <div part="user-initials" class="user-initials-bg">
+      <p class="user-initials"></p>
+    </div>
+    <div part="user-info-text-wrapper">
+      <div part="user-info-name-wrapper">
+        <p part="user-name" class="user-name"></p>
+        <p part="activity" class="activity"></p>
+      </div>
+      <p part="user-email" class="user-email"></p>
+      <p part="user-roles" class="user-roles"></p>
+    </div>
+  </div>
+  <div part="button-wrapper">
+    <slot name="button-slot"/>
+  </div>
+</div>
+`
 
 export {
   cardContainerTemplate,
   statCardTemplate,
   productCardTemplate,
-  ctaCardtemplate
+  ctaCardTemplate,
+  userCardTemplate,
 }

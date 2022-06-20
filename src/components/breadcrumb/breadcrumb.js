@@ -17,20 +17,9 @@ customElements.define('breadcrumb-component',
       const items = document.querySelectorAll('breadcrumb-item')
       const lastItem = items[items.length - 1]
 
-      lastItem.shadowRoot.querySelector('a').part.add('breadcrumb-li-a-active')
       lastItem.shadowRoot.querySelector('path').part.add('arrow-hidden')
-
-      if(items.length > 1) {
-        this.shadowRoot.querySelector('.breadcrumb-icon-wrapper').part.add('breadcrumb-icon-wrapper-start')
-        lastItem.classList.add('breadcrumb-item-active')
-        lastItem.classList.add('breadcrumb-item-active-ml')
-      } else {
-        this.shadowRoot.querySelector('.breadcrumb-icon-wrapper').part.add('breadcrumb-icon-wrapper-center')
-        lastItem.classList.add('breadcrumb-item-active')
-      }
     }
     connectedCallback() {
-      console.log('breadcrumb connected', window.loadEventListener)
       window.addEventListener(window.loadEventListener, () => this.toggleActiveItem())
     }
   }

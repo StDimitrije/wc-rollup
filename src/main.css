@@ -16,8 +16,11 @@
 @import './components/filter/filter.scss';
 @import './components/alert/alert.scss';
 
-
 @layer components {
+
+  [multiple] {
+    @apply p-0 border-0 shadow-sm;
+  }
   
   table {
     @apply w-full text-left whitespace-nowrap;
@@ -26,6 +29,7 @@
   th,td {
     @apply p-2.5;
   }
+
   th:first-child {
     @apply rounded-l-lg;
   }
@@ -43,15 +47,12 @@
   }
 
   thead tr {
-    @apply bg-slate-200 dark:bg-gray-700 dark:text-white;
+    @apply bg-slate-200 dark:bg-dark-1 dark:text-white;
   }
 
-  tbody tr {
-    @apply even:bg-slate-50 dark:even:bg-gray-900/[0.4] rounded-lg;
-  }
 
   tbody .clickable-row {
-    @apply hover:bg-slate-100 dark:hover:bg-dark-1 cursor-pointer;
+    @apply hover:bg-slate-100 dark:hover:bg-gray-900/[0.5] cursor-pointer;
   }
 
   .cell-w-btn {
@@ -63,11 +64,51 @@
   }
 
   .pagination-wrapper {
-    @apply flex items-center justify-between mt-7;
+    @apply flex flex-col md:flex-row items-center justify-between mt-7 gap-2;
+  }
+
+  .select-wrapper {
+    @apply flex gap-2 justify-between w-full items-center;
+  }
+
+  form {
+    @apply flex flex-col gap-4;
+  }
+
+  form .heading {
+    @apply pb-4 mb-4 border border-solid border-t-0 border-r-0 border-l-0 border-gray-200 dark:border-gray-300/[.20];
+  }
+
+  form .heading .title {
+    @apply text-2xl font-medium;
+  }
+
+  form .heading .subtitle {
+    @apply text-sm font-normal;
+  }
+
+  form .cols-2 {
+    @apply grid grid-cols-2 w-full gap-4;
+  }
+
+  form .cols-3 {
+    @apply grid grid-cols-3 w-full gap-4;
+  }
+
+  form .cols-4 {
+    @apply grid grid-cols-4 w-full gap-4;
+  }
+
+  form .radio-group {
+    @apply flex flex-col gap-2;
+  }
+
+  .select {
+    @apply rounded border-gray-300 text-sm shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-fit dark:bg-dark-1 dark:border-gray-700;
   }
 
   .pagination {
-    @apply flex cursor-pointer items-center gap-2;
+    @apply flex cursor-pointer items-center gap-1;
   }
 
   .pagination-item {
@@ -78,8 +119,8 @@
     @apply font-bold bg-accent hover:bg-accent text-white;
   }
 
-  .button {
-    @apply py-2 px-4 rounded font-bold border border-primary dark:border-gray-600 sm:text-sm text-dark-2 dark:text-white hover:bg-primary hover:bg-opacity-10 shadow-sm;
+  .label {
+    @apply text-sm;
   }
 
   .input {
@@ -87,7 +128,7 @@
   }
   
   .icon-fill {
-    @apply fill-primary dark:fill-gray-200;
+    @apply fill-primary-light dark:fill-white dark:opacity-80;
   }
 
   .fill-button-icon {
@@ -97,18 +138,6 @@
   .outline-button-icon {
     @apply fill-dark-3 dark:fill-gray-200;
   }
-
-  .breadcrumb-icon-fill {
-    @apply fill-dark-2 dark:fill-gray-200;
-  } 
-  .breadcrumb-item-active {
-    @apply basis-full;
-  }
-  .breadcrumb-item-active-ml {
-    @apply ml-[-25px];
-  }
-  
-  
 }
 
 html {

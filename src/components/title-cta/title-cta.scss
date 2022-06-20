@@ -4,7 +4,28 @@
     @apply flex flex-wrap justify-between items-center gap-3 pb-4;
   }
 
-  title-cta::part(title-cta-text) {
+  title-cta::part(h1),
+  title-cta::part(h2),
+  title-cta::part(h3),
+  title-cta::part(h4),
+  title-cta::part(h5),
+  title-cta::part(h6) {
+    @apply font-bold m-0;
+  }
+
+  title-cta::part(h1) {
+    @apply text-3xl;
+  }
+
+  title-cta::part(title-cta-container-border) {
+    @apply border border-solid border-t-0 border-r-0 border-l-0 border-gray-200 dark:border-gray-300/[.20];
+  }
+
+  title-cta::part(button-wrapper) {
+    @apply flex gap-6 items-center;
+  }
+
+  title-cta::part(p) {
     @apply text-2xl font-medium;
   }
 

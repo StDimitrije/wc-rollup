@@ -2,7 +2,8 @@ import {
   cardContainerTemplate,
   statCardTemplate,
   productCardTemplate,
-  ctaCardtemplate
+  ctaCardTemplate,
+  userCardTemplate,
 } from './template.js'
 
 customElements.define('card-container',
@@ -82,10 +83,41 @@ customElements.define('cta-card',
       this.attachShadow({
         mode: 'open'
       });
-      this.shadowRoot.appendChild(ctaCardtemplate.content.cloneNode(true));
+      this.shadowRoot.appendChild(ctaCardTemplate.content.cloneNode(true));
     }
     connectedCallback() {
       this.shadowRoot.querySelector('.title').innerText = this.getAttribute('title')
       this.shadowRoot.querySelector('.subtitle').innerText = this.getAttribute('subtitle')
     }
   });
+customElements.define('user-card',
+  class UserCard extends HTMLElement {
+    constructor() {
+      super();
+      this.showInfo = true;
+      this.attachShadow({
+        mode: 'open'
+      });
+      this.shadowRoot.appendChild(userCardTemplate.content.cloneNode(true));
+    }
+    connectedCallback() {
+      this.shadowRoot.querySelector('.user-name').innerText = this.getAttribute('name')
+      const activity = this.shadowRoot.querySelector('.activity')
+
+      if (this.getAttribute('active') != 'false') {
+        activity.innerText = 'Active'
+        activity.part.add('activity-active')
+      } else {
+        activity.innerText = 'Inactive'
+        activity.part.add('activity-inactive')
+      }
+      this.shadowRoot.querySelector('.user-email').innerText = this.getAttribute('email')
+      this.shadowRoot.querySelector('.user-roles').innerText = this.getAttribute('roles')
+      const fullName = this.getAttribute('name').split(' ');
+      const initials = fullName.shift().charAt(0) + fullName.pop().charAt(0);
+      initials.toUpperCase();
+      this.shadowRoot.querySelector('.user-initials').innerText = initials;
+      this.shadowRoot.querySelector('.user-initials-bg').style.backgroundColor = this.getAttribute('color')
+    }
+  }
+)
