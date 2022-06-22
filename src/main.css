@@ -52,7 +52,7 @@
 
 
   tbody .clickable-row {
-    @apply hover:bg-slate-100 dark:hover:bg-gray-900/[0.5] cursor-pointer;
+    @apply hover:bg-slate-100 dark:hover:bg-dark-1/[.2] cursor-pointer;
   }
 
   .cell-w-btn {
@@ -132,7 +132,7 @@
   }
 
   .fill-button-icon {
-    @apply fill-dark-3;
+    @apply fill-white;
   }
 
   .outline-button-icon {

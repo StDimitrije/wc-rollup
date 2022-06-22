@@ -111,7 +111,7 @@
   }
 
   sidenav-util-component::part(sidenav-util-component) {
-    @apply flex-col w-[300px] pb-5;
+    @apply flex flex-col w-[300px] pb-5 mb-5 border border-solid border-t-0 border-r-0 border-l-0 border-gray-200 dark:border-gray-300/[.20];
   }
 
   sidenav-util-component::part(sidenav-util-component-visible) {
@@ -132,7 +132,15 @@
   }
 
   sidenav-util-component::part(sidenav-util-component-button) {
-    @apply cursor-pointer py-2 px-4 w-full rounded-lg sm:text-sm border-0 text-dark-3 shadow-md bg-powder-blue;
+    @apply py-1 flex items-center w-full justify-center self-center cursor-pointer rounded-lg text-dark-3 bg-slate-50 hover:bg-slate-100 dark:bg-dark-1/[.4] dark:hover:bg-dark-1;
+  }
+
+  sidenav-util-component::part(util-component-btn-icon) {
+    @apply fill-dark-3 dark:fill-gray-200;
+  }
+
+  sidenav-util-component::part(util-component-btn-icon-up) {
+    @apply rotate-180;
   }
 
   sidenav-util-item::part(sidenav-util-item) {
@@ -170,11 +178,11 @@
   }
 
   submenu-component::part(submenu-component-img-title-wrapper) {
-    @apply flex gap-2 items-center px-1.5 pb-5 mb-5 border border-solid border-t-0 border-r-0 border-l-0 border-gray-200 dark:border-gray-300/[.20];
+    @apply flex gap-2 items-center px-1.5 pb-5;
   }
 
   submenu-ul-component::part(submenu-ul-component) {
-    @apply min-w-[200px] mb-5;
+    @apply min-w-[200px] my-5;
   }
 
   submenu-ul-component::part(submenu-ul-component-title) {

@@ -42,7 +42,9 @@ sideNavUtilComponentTemplate.innerHTML = `
     <ul part="sidenav-util-component-ul">
       <slot name="sidenav-util-item"/>
     </ul>
-    <button part="sidenav-util-component-button"></button>
+    <div part="sidenav-util-component-button" class="view-more-btn" >
+      <svg class="util-component-btn-icon" part="util-component-btn-icon" xmlns="http://www.w3.org/2000/svg" height="24" width="24"><path d="M12 14.65Q11.825 14.65 11.663 14.6Q11.5 14.55 11.375 14.4L6.85 9.9Q6.65 9.675 6.65 9.375Q6.65 9.075 6.875 8.85Q7.1 8.65 7.4 8.65Q7.7 8.65 7.925 8.85L12 12.925L16.1 8.85Q16.3 8.625 16.6 8.637Q16.9 8.65 17.125 8.85Q17.35 9.075 17.35 9.387Q17.35 9.7 17.125 9.9L12.625 14.4Q12.5 14.55 12.338 14.6Q12.175 14.65 12 14.65Z"/></svg>
+    </div>
   </div>
 `;
 const sideNavUtilItem = document.createElement('template');
@@ -88,11 +90,17 @@ sideNavSubmenuUlComponentTemplate.innerHTML = `
 <style>
   p {margin: 0}
 </style>
+<div>
+  <slot name="divider-top"/>
+</div>
 <div class="submenu-ul-component" part="submenu-ul-component">
   <p part="submenu-ul-component-title"></p>
   <ul part="submenu-ul-component-ul">
     <slot name="submenu-item"/>
   </ul>
+</div>
+<div>
+  <slot name="divider-bottom"/>
 </div>
 `
 const sideNavSubmenuItemTemplate = document.createElement('template');

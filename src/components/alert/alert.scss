@@ -4,10 +4,22 @@
   }
 
   custom-alert::part(alert-wrapper) {
-    @apply flex gap-1 items-center rounded-md bg-red-100 pl-2 pr-3 py-1 text-dark-2;
+    @apply flex gap-1 items-center rounded-md pl-2 pr-3 py-1 text-dark-2;
   }
 
   custom-alert::part(alert-text) {
     @apply m-0 font-medium;
+  }
+  
+  custom-alert::part(alert-warning){
+    @apply bg-amber-100;
+  }
+
+  custom-alert::part(alert-danger){
+    @apply bg-red-100;
+  }
+
+  custom-alert::part(alert-success){
+    @apply bg-emerald-100;
   }
 }

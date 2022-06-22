@@ -213,31 +213,31 @@ customElements.define('sidenav-util-component',
       this.shadowRoot.appendChild(sideNavUtilComponentTemplate.content.cloneNode(true));
       this.toggleList = true;
     }
-    viewMore(sideNavUtilItems, viewMoreButton) {
+    viewMore(sideNavUtilItems, viewMoreButtonIcon) {
       if (this.toggleList) {
         for (let i = 4; i < sideNavUtilItems.length; i++) {
           sideNavUtilItems[i].style.display = 'block'
         }
-        viewMoreButton.innerText = 'View Less'
+        viewMoreButtonIcon.part.toggle('util-component-btn-icon-up')
         this.toggleList = !this.toggleList
       } else {
         for (let i = 4; i < sideNavUtilItems.length; i++) {
           sideNavUtilItems[i].style.display = 'none'
         }
-        viewMoreButton.innerText = 'View More'
+        viewMoreButtonIcon.part.toggle('util-component-btn-icon-up')
         this.toggleList = !this.toggleList
       }
     }
     connectedCallback() {
       this.shadowRoot.querySelector('p').innerText = this.getAttribute('title');
-      const viewMoreButton = this.shadowRoot.querySelector('button');
+      const viewMoreButton = this.shadowRoot.querySelector('.view-more-btn');
+      const viewMoreButtonIcon = this.shadowRoot.querySelector('.util-component-btn-icon')
       window.addEventListener(window.loadEventListener, () => {
         const sideNavUtilItems = this.querySelectorAll('sidenav-util-item')
         for (let i = 4; i < sideNavUtilItems.length; i++) {
           sideNavUtilItems[i].style.display = 'none'
         }
-        viewMoreButton.innerText = this.getAttribute('buttonText');
-        viewMoreButton.addEventListener('click', () => this.viewMore(sideNavUtilItems, viewMoreButton));
+        viewMoreButton.addEventListener('click', () => this.viewMore(sideNavUtilItems, viewMoreButtonIcon));
       })
     }
   });

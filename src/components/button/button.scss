@@ -7,28 +7,28 @@
   .button-danger-outline,
   .button,
   custom-button::part(custom-button) {
-    @apply flex gap-2 px-4 py-2 w-fit rounded-md whitespace-nowrap items-center no-underline text-dark-3 text-sm font-medium cursor-pointer;
+    @apply flex gap-2 px-4 py-2 w-fit rounded-md whitespace-nowrap items-center no-underline text-sm font-medium cursor-pointer;
   }
 
   .button-primary,
   .button-success-fill,
   custom-button::part(custom-button-success-fill) {
-    @apply border-none bg-accent hover:bg-accent-dark;
+    @apply border-none bg-accent hover:bg-accent-dark text-white;
   }
 
   .button-success-outline,
   custom-button::part(custom-button-success-outline) {
-    @apply border border-solid border-accent-dark bg-transparent hover:bg-accent hover:bg-opacity-20 dark:text-white;;
+    @apply border border-solid border-accent-dark bg-transparent hover:bg-accent hover:bg-opacity-20 text-dark-2 dark:text-white;
   }
 
   .button-neutral-fill,
   custom-button::part(custom-button-neutral-fill) {
-    @apply border-none bg-powder-blue hover:bg-powder-blue-2;
+    @apply border-none bg-slate-100 hover:bg-slate-200 text-dark-2;
   }
 
   .button-neutral-outline,
   custom-button::part(custom-button-neutral-outline) {
-    @apply border border-solid border-powder-blue bg-transparent hover:bg-powder-blue hover:bg-opacity-20 dark:text-white;
+    @apply border border-solid border-slate-200 bg-transparent hover:bg-slate-200 hover:bg-opacity-20 text-dark-2 dark:text-white;
   }
 
   .button-danger-fill,
@@ -38,7 +38,7 @@
 
   .button-danger-outline,
   custom-button::part(custom-button-danger-outline) {
-    @apply border border-solid border-red-500 bg-transparent hover:bg-red-600 hover:bg-opacity-20 dark:text-white;;
+    @apply border border-solid border-red-500 bg-transparent hover:bg-red-600 hover:bg-opacity-20 text-dark-2 dark:text-white;;
   }
 
   util-button::part(util-button) {

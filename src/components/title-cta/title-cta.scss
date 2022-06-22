@@ -10,7 +10,7 @@
   title-cta::part(h4),
   title-cta::part(h5),
   title-cta::part(h6) {
-    @apply font-bold m-0;
+    @apply font-bold m-0 text-secondary-blue dark:text-white;
   }
 
   title-cta::part(h1) {

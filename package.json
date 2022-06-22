@@ -1,6 +1,6 @@
 {
   "name": "wc-rollup",
-  "version": "0.0.34",
+  "version": "0.0.41",
   "repository": "https://github.com/StDimitrije/wc-rollup.git",
   "scripts": {
     "start": "rollup -c -w",
