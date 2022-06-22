@@ -1,13 +1,13 @@
 const buttonTemplate = document.createElement('template');
 buttonTemplate.innerHTML = `
-  <a href="" part="custom-button">
+  <a part="custom-button">
     <slot name="icon-slot"/>
   </a>
 `;
 
 const utilButtonTemplate = document.createElement('template');;
 utilButtonTemplate.innerHTML = `
-<a part="util-button" href=""></a>
+<a part="util-button"></a>
 `;
 
 export {
