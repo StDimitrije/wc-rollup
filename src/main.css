@@ -138,6 +138,23 @@
   .outline-button-icon {
     @apply fill-dark-3 dark:fill-gray-200;
   }
+  
+  .messages-wrapper{
+    @apply flex flex-col text-sm gap-1 mt-3;
+  }
+
+  .message-w-icon {
+    @apply flex items-center gap-2;
+  }
+
+  .message-muted {
+    @apply opacity-70;
+  }
+
+  .message-medium {
+    @apply font-medium;
+  }
+
 }
 
 html {
