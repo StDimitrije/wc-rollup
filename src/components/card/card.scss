@@ -42,21 +42,6 @@
     @apply font-medium;
   }
 
-  .messages-wrapper{
-    @apply flex flex-col text-sm gap-1 mt-2;
-  }
-
-  .message-w-icon {
-    @apply flex items-center gap-2;
-  }
-
-  .message-muted {
-    @apply opacity-70;
-  }
-
-  .message-medium {
-    @apply font-medium;
-  }
 
   product-card::part(status-icon-wrapper) {
     @apply flex items-center justify-center;
