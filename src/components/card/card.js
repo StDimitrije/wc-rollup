@@ -79,7 +79,9 @@ customElements.define('cta-card',
     }
     connectedCallback() {
       this.shadowRoot.querySelector('.title').innerText = this.getAttribute('title')
-      this.shadowRoot.querySelector('.subtitle').innerText = this.getAttribute('subtitle')
+      if (this.getAttribute('href')) {
+        this.shadowRoot.querySelector('a').href = this.getAttribute('href')
+      }
     }
   });
 customElements.define('user-card',

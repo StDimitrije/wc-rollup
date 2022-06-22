@@ -67,7 +67,7 @@
   }
 
   cta-card::part(cta-card) {
-    @apply px-4 py-3 flex items-center gap-5 justify-between hover:bg-slate-50 hover:cursor-pointer no-underline text-dark-2;
+    @apply px-4 py-3 flex items-center gap-5 justify-between hover:bg-white/[.5] dark:hover:bg-dark-1/[.9] hover:cursor-pointer no-underline text-dark-2 dark:text-white;
   }
 
   cta-card::part(title) {
