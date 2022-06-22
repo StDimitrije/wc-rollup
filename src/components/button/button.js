@@ -55,14 +55,6 @@ customElements.define('custom-button',
           customBtn.part.add('custom-button-neutral-outline')
         }
       }
-
-      if (this.getAttribute('alert')) {
-        customBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          alert(this.getAttribute('alert'))
-        })
-      }
-      
     }
   }
 );
