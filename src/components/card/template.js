@@ -19,36 +19,40 @@ productCardTemplate.innerHTML = `
   <style>
     p {margin:0}
   </style>
-  <div part="card-container">
+  <a part="card-container" class="card-container" >
     <div part="card-holder">
       <div part="card-holder-header">
         <img part="card-profile-icon" class="profile-icon" src="" alt="" width="50px" height="50px">
         <div part="card-holder-header-text">
           <p part="card-holder-name" class="card-holder-name"></p>
-          <p part="deployment-time" class="deployment-time"></p>
+          <p part="deployments" class="deployments">No Deployments</p>
         </div>
       </div>
-      <img class="status-icon" src=""/>
+      <div part="status-icon-wrapper">
+        <img class="status-icon" src=""/>
+      </div>
     </div>
-    <div part="card-holder-info">
-      <p part="card-holder-info-muted" class="issues">Active, no issues</p>
-      <p part="card-holder-info-muted" class="terms-conditions">T&C accepted</p>
-      <p part="card-holder-info-muted" class="licence">License valid</p>
+    <div>
+      <slot name="card-slot"/>
     </div>
-  </div>
+  </a>
 `;
 const ctaCardTemplate = document.createElement('template')
 ctaCardTemplate.innerHTML = `
 <style>
   p {margin:0}
 </style>
-<div part="cta-card">
+<a part="cta-card">
   <div>
     <p class="title" part="title"></p>
-    <p class="subtitle" part="subtitle"></p>
+    <div part="icons-wrapper">
+      <slot name="icon-slot"/>
+    </div>
   </div>
-  <slot name="cta-slot"/>
-</div>
+  <div>
+    <slot name="cta-slot"/>
+  </div>
+</a>
 `
 const userCardTemplate = document.createElement('template')
 userCardTemplate.innerHTML = `

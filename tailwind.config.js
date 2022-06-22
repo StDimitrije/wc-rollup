@@ -1,8 +1,11 @@
 module.exports = {
-  content: ["./src/*.{html,js,css}"],
+  content: ["./src/**/*.{html,js,css}"],
   darkMode: 'class',
   theme: {
     extend: {
+      backgroundImage: {
+        'hotel-room': "url('/assets/images/photos/hotel_room.jpeg')",
+      },
       colors: {
         'primary': '#1F4971',
         'primary-light': '#29537B',
@@ -22,6 +25,7 @@ module.exports = {
         'dark-2': '#444545',
         'dark-3': '#13212F',
         'dark-4': '#202B38',
+        'dark-5': '#1D2B39',
       },
     },
   },

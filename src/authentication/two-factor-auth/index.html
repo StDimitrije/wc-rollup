@@ -1,0 +1,21 @@
+
+<main class="pt-20">
+  <div class="container px-6 mx-auto h-full">
+    <div class="h-full w-full flex items-center justify-center">
+      <div class="w-96">
+        <a href="/" class="block w-56 mx-auto mb-16">
+          {% include logo.html %}
+        </a>
+        <div class="mb-8">
+          {% include components/title.html content="Set up 2-factor authentication" %}
+          {% include components/subtitle.html content="Two-factor authentication (2FA) is an extra layer of security used when logging into websites or apps." %}
+        </div>
+        <div class="space-y-6">
+          <a href="/authentication/two-factor-auth/steps" type="submit" class="button button-primary w-full inline-flex justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Set up now</a>
+
+          <a href="/" class="block text-center py-2 text-sm font-medium">Maybe later</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

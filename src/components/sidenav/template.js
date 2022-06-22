@@ -90,18 +90,13 @@ sideNavSubmenuUlComponentTemplate.innerHTML = `
 <style>
   p {margin: 0}
 </style>
-<div>
-  <slot name="divider-top"/>
-</div>
 <div class="submenu-ul-component" part="submenu-ul-component">
   <p part="submenu-ul-component-title"></p>
   <ul part="submenu-ul-component-ul">
     <slot name="submenu-item"/>
   </ul>
 </div>
-<div>
-  <slot name="divider-bottom"/>
-</div>
+
 `
 const sideNavSubmenuItemTemplate = document.createElement('template');
 sideNavSubmenuItemTemplate.innerHTML = `

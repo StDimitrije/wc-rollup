@@ -23,7 +23,11 @@
   }
 
   product-card::part(card-container) {
-    @apply flex flex-col p-3 gap-2;
+    @apply flex flex-col p-3 h-[calc(100%-24px)] no-underline text-dark-2;
+  }
+
+  product-card::part(disabled) {
+    @apply opacity-50;
   }
 
   product-card::part(card-holder) {
@@ -31,39 +35,47 @@
   }
 
   product-card::part(card-holder-header) {
-    @apply flex gap-2;
+    @apply flex gap-2 items-center;
   }
 
   product-card::part(card-holder-name) {
     @apply font-medium;
   }
 
-  product-card::part(card-holder-info) {
-    @apply flex flex-col text-sm;
+  .messages-wrapper{
+    @apply flex flex-col text-sm gap-1 mt-2;
   }
 
-  product-card::part(card-holder-info-muted) {
+  .message-w-icon {
+    @apply flex items-center gap-2;
+  }
+
+  .message-muted {
     @apply opacity-70;
   }
 
-  product-card::part(card-holder-info-medium) {
+  .message-medium {
     @apply font-medium;
   }
 
-  product-card::part(deployment-time) {
+  product-card::part(status-icon-wrapper) {
+    @apply flex items-center justify-center;
+  }
+
+  product-card::part(deployments) {
     @apply text-xs;
   }
 
   cta-card::part(cta-card) {
-    @apply px-4 py-3 flex items-center gap-5 justify-between;
+    @apply px-4 py-3 flex items-center gap-5 justify-between hover:bg-slate-50 hover:cursor-pointer no-underline text-dark-2;
   }
 
   cta-card::part(title) {
     @apply text-sm opacity-70;
   }
 
-  cta-card::part(subtitle) {
-    @apply text-sm mb-2;
+  cta-card::part(icons-wrapper) {
+    @apply flex gap-1.5 items-center mt-2.5;
   }
 
   user-card::part(user-card) {

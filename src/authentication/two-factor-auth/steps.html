@@ -1,0 +1,155 @@
+
+<main class="pt-20 h-full">
+  <div class="container px-6 mx-auto h-full">
+    <div class="h-full w-full flex items-center justify-center">
+      <div class="flex flex-col max-w-lg gap-y-4">
+        <a href="/" class="block w-56 mx-auto mb-16">
+          {% include logo.html %}
+        </a>
+
+        <div class="rounded-xl overflow-hidden bg-gray-100 dark:bg-dark-2">
+          <div class="flex">
+            <h1 id="step1Title" class="text-xl font-bold py-2 px-4 flex items-center gap-2">
+              <div class="relative flex items-center">
+                <span class="absolute w-full text-center text-2xl js-order-number">❶</span>
+                <span id="step1Icon" class="material-icons-round">radio_button_unchecked</span>
+              </div>
+              Scan the image below
+            </h1>
+          </div>
+          <div id="step1" class="transition-all">
+            <div class="pb-6 px-6">
+              <p class="opacity-80">Scan this image with the two-factor authentication app on your phone. We recommend using cloud-based TOTP apps such as: 1Password, Authy, LastPass Authenticator, or Microsoft Authenticator.</p>
+              <div class="text-center">
+                <div class="mt-6 p-4 rounded-xl bg-white inline-block">
+                  <img width="200" height="200" src="/assets/images/qr_code_example.png" alt="2fa QR code example">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-xl overflow-hidden bg-gray-100 dark:bg-dark-2">
+          <h2 id="step2Title" class="text-xl font-bold py-2 px-4 flex items-center gap-2">
+            <div class="relative flex items-center">
+              <span class="absolute w-full text-center text-2xl js-order-number">❷</span>
+              <span id="step2Icon" class="material-icons-round">radio_button_unchecked</span>
+            </div>
+            Enter the code from the application
+          </h2>
+
+          <div id="step2" class="transition-all">
+            <div class="px-6 pb-6">
+              <p class="opacity-80">After scanning the QR code image, the app will display a code that you can enter below.</p>
+              <div class="col-span-3 mt-6 max-w-[250px]">
+                <label for="6_digit_code" class="block text-sm font-medium mb-1">6-digit code</label>
+                <input id="codeInput" autofocus type="text" name="6_digit_code" id="6_digit_code" maxlength="6" autocomplete="none" class="input">
+              </div>
+              <button id="step2Action" type="button" class="button  button-primary inline-flex justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-4">Confirm</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-xl overflow-hidden bg-gray-100 dark:bg-dark-2">
+          <h1 id="step3Title" class="text-xl font-bold py-2 px-4 flex items-center gap-2 opacity-25">
+            <div class="relative flex items-center">
+              <span class="absolute w-full text-center text-2xl js-order-number">❸</span>
+              <span id="step3Icon" class="material-icons-round">radio_button_unchecked</span>
+            </div>
+            Save your security codes
+          </h1>
+
+          <div id="step3" class="transition-all">
+            <div class="px-6 pb-6">
+              <p class="opacity-80">If you lose access to your phone, you can authenticate to Nomadix Cloud using your recovery codes.</p>
+              <div class="p-6 border dark:border-dark-1 rounded-xl mt-4">
+                <ul class="grid gap-4 grid-cols-2 font-mono mb-2">
+                  {% for item in site.data['2fa_security_codes'] %}
+                    <li>{{ item }}</li>
+                  {% endfor %}
+                </ul>
+                <button type="button" class="button inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-4">
+                  <span class="material-icons-round !text-md mr-2 -my-1">download</span>
+                  Download codes
+                </button>
+              </div>
+              <button id="step3Action" type="button" class="button button-primary inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-4">
+                I have saved my security codes
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-xl overflow-hidden bg-gray-100 dark:bg-dark-2">
+          <h1 id="step4Title" class="text-xl font-bold py-2 px-4 flex items-center gap-2 opacity-25">
+            <div class="relative flex items-center">
+              <span class="absolute w-full text-center text-2xl js-order-number">❹</span>
+              <span id="step4Icon" class="material-icons-round">radio_button_unchecked</span>
+            </div>
+            Two-factor authentication activated
+          </h1>
+
+          <div id="step4" class="transition-all">
+            <div class="px-6 pb-6">
+              <p class="opacity-80">The next time you login, you will need to provide a two-factor authentication code.</p>
+              <button type="button" class="button button-primary inline-flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-4">Done</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  const codeInput = document.querySelector('#codeInput');
+
+  const steps = document.querySelectorAll('#step1, #step2, #step3, #step4');
+  const stepIcons = document.querySelectorAll('#step1Icon, #step2Icon, #step3Icon, #step4Icon');
+  const stepTitles = document.querySelectorAll('#step1Title, #step2Title, #step3Title, #step4Title');
+  const orderNumbers = document.querySelectorAll('.js-order-number');
+
+  const step1InitialHeight = steps[0].clientHeight + 'px';
+  const step2InitialHeight = steps[1].clientHeight + 'px';
+  const step3InitialHeight = steps[2].clientHeight + 'px';
+  const step4InitialHeight = steps[3].clientHeight + 'px';
+
+  steps[0].style.height = step1InitialHeight;
+  steps[1].style.height = step2InitialHeight;
+  steps[2].style.height = 0;
+  steps[3].style.height = 0;
+
+  function toStep2 () {
+    codeInput.blur();
+    steps[0].style.height = 0;
+    orderNumbers[0].style.display = 'none';
+    stepIcons[0].textContent = 'check_circle';
+    stepTitles[0].classList.add('opacity-25');
+    steps[1].style.height = 0;
+    orderNumbers[1].style.display = 'none';
+    stepIcons[1].textContent = 'check_circle';
+    stepTitles[1].classList.add('opacity-25');
+    steps[2].style.height = step3InitialHeight;
+    stepTitles[2].classList.remove('opacity-25');
+  }
+
+  document.querySelector('#step2Action').onclick = function () {
+    toStep2();
+  }
+
+  document.querySelector('#step3Action').onclick = function () {
+    steps[2].style.height = 0;
+    orderNumbers[2].style.display = 'none';
+    stepIcons[2].textContent = 'check_circle';
+    stepTitles[2].classList.add('opacity-25');
+    steps[3].style.height = step4InitialHeight;
+    orderNumbers[3].style.display = 'none';
+    stepIcons[3].textContent = 'check_circle';
+    stepTitles[3].classList.remove('opacity-25');
+  }
+
+  codeInput.addEventListener('input', function (e) {
+    e.target.value.length >= 6 ? toStep2() : null;
+  });
+</script>

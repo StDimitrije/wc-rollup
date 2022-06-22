@@ -1,0 +1,90 @@
+
+<main class="flex min-h-full md:min-h-screen">
+  <div class="container mx-auto max-w-full">
+    <div class="h-full lg:grid grid-cols-12">
+      <div class="col-span-12 lg:col-span-6 flex align-middle">
+        <div class="lg:p-4 w-full max-h-full lg:max-h-screen">
+          <div
+            class="fixed lg:static object-cover w-full h-full lg:rounded-2xl lg:shadow-xl bg-hotel-room bg-cover bg-center">
+          </div>
+        </div>
+      </div>
+      <div class="col-span-12 lg:col-span-6 z-10">
+        <div class="px-6 h-full w-full flex items-center justify-center">
+          <div
+            class="absolute shadow-xl lg:shadow-none bottom-0 md:bottom-0 m-4 lg:m-0 md:static md:w-96 bg-white dark:bg-dark-3 lg:bg-transparent px-6 lg:px-0 pb-6 lg:pb-0 pt-12 lg:pt-0 rounded-2xl lg:rounded-none bg-opacity-70 lg:bg-opacity-0 backdrop-blur-xl dark:bg-opacity-80 lg:backdrop-blur-0">
+            <a href="/" class="block w-56 mx-auto mb-16">
+              {% include logo.html %}
+            </a>
+            <div class="mb-8">
+              <!-- {% include components/title.html content="Sign in" %} -->
+              <!-- {% include components/subtitle.html content="Welcome to Nomadix Cloud! Please fill in the form below to proceed." %} -->
+            </div>
+            <div class="space-y-6">
+              <form action="/authentication/two-factor-auth">
+                <div class="grid grid-cols-3 gap-6">
+                  <div class="col-span-3">
+                    <label for="email" class="block text-sm font-medium mb-1">Email Address</label>
+                    <input autofocus type="email" name="email" id="email" autocomplete="email" class="input">
+                  </div>
+                  <div class="col-span-3 sm:col-span-3">
+                    <div class="flex justify-between mb-1">
+                      <label for="password" class="block text-sm font-medium">Password</label>
+                      <a class="text-sm font-medium" href="/authentication/forgot-password">Forgot password?</a>
+                    </div>
+                    <input type="password" name="password" id="password" autocomplete="password" class="input">
+                  </div>
+                  <div class="col-span-3">
+                    <button type="submit"
+                      class="button shadow-lg button-primary w-full inline-flex justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"><svg
+                        class="hidden animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
+                        fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4">
+                        </circle>
+                        <path class="opacity-75" fill="currentColor"
+                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                        </path>
+                      </svg> Sign in</button>
+                  </div>
+                </div>
+              </form>
+
+              <button id="noAccount" class="text-sm font-medium py-1 block">Don’t have an account?</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<dialog id="favDialog" class="rounded-xl dark:bg-dark-2 text-inherit shadow-xl backdrop:bg-red-400 max-w-md p-6">
+  <div class="flex justify-between mb-3">
+    <h2 class="text-lg font-medium">Nomadix Cloud is invitation only</h2>
+    <button id="closeDialog">
+      <span class="material-icons-round">close</span>
+    </button>
+  </div>
+  <p class="opacity-75 mb-3">Please contact your administrator and ask about Nomadix Cloud.</p>
+  <button id="okButton" class="button">OK</button>
+</dialog>
+
+<script>
+  const noAccount = document.getElementById('noAccount');
+  const dialog = document.getElementById('favDialog');
+  const closeDialog = document.getElementById('closeDialog');
+  const okButton = document.getElementById('okButton');
+
+  noAccount.onclick = function () {
+    dialog.showModal();
+  }
+
+  closeDialog.onclick = function () {
+    dialog.close();
+  }
+
+  okButton.onclick = function () {
+    dialog.close();
+  }
+</script>

@@ -50,27 +50,19 @@ customElements.define('product-card',
       this.shadowRoot.appendChild(productCardTemplate.content.cloneNode(true));
     }
     attributeChangedCallback() {
-      this.shadowRoot.querySelector('.profile-icon').src = this.getAttribute('profile-icon-src')
+       this.shadowRoot.querySelector('.profile-icon').src = this.getAttribute('profile-icon-src')
       this.shadowRoot.querySelector('.card-holder-name').innerText = this.getAttribute('name')
-      this.shadowRoot.querySelector('.deployment-time').innerText = this.getAttribute('deployment-time')
-      this.shadowRoot.querySelector('.status-icon').src = this.getAttribute('status-icon-src');
-      if (this.getAttribute('issues')) {
-        const issues = this.shadowRoot.querySelector('.issues')
-        issues.innerText = this.getAttribute('issues') + ' issues'
-        issues.part.remove('card-holder-info-muted')
-        issues.part.add('card-holder-info-medium')
+      if (this.getAttribute('status-icon-src')) {
+        this.shadowRoot.querySelector('.status-icon').src = this.getAttribute('status-icon-src');
       }
-      if (this.getAttribute('terms-conditions')) {
-        const termsConditions = this.shadowRoot.querySelector('.terms-conditions')
-        termsConditions.innerText = this.getAttribute('terms-conditions')
-        termsConditions.part.remove('card-holder-info-muted')
-        termsConditions.part.add('card-holder-info-medium')
+      if (this.getAttribute('deployments')) {
+        this.shadowRoot.querySelector('.deployments').innerText = this.getAttribute('deployments')
       }
-      if (this.getAttribute('licence')) {
-        const licence = this.shadowRoot.querySelector('.licence')
-        licence.innerText = this.getAttribute('licence')
-        licence.part.remove('card-holder-info-muted')
-        licence.part.add('card-holder-info-medium')
+      if (this.getAttribute('disabled') == 'true') {
+        this.shadowRoot.querySelector('.card-container').part.add('disabled')
+      }
+      if (this.getAttribute('href')) {
+        this.shadowRoot.querySelector('.card-container').href = this.getAttribute('href')
       }
     }
   });

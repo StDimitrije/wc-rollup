@@ -103,7 +103,7 @@
     @apply flex flex-col gap-2;
   }
 
-  .select {
+  .rows-select {
     @apply rounded border-gray-300 text-sm shadow-sm focus:ring-blue-500 focus:border-blue-500 block w-fit dark:bg-dark-1 dark:border-gray-700;
   }
 
@@ -148,6 +148,6 @@ img {
   height: 100%;
 }
 
-svg {
+table svg {
   margin: 0 auto;
 }
