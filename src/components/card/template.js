@@ -43,8 +43,10 @@ ctaCardTemplate.innerHTML = `
   p {margin:0}
 </style>
 <div part="cta-card">
-  <p class="title" part="title"></p>
-  <p class="subtitle" part="subtitle"></p>
+  <div>
+    <p class="title" part="title"></p>
+    <p class="subtitle" part="subtitle"></p>
+  </div>
   <slot name="cta-slot"/>
 </div>
 `

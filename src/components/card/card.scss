@@ -55,7 +55,7 @@
   }
 
   cta-card::part(cta-card) {
-    @apply px-4 py-3 flex flex-col min-w-[130px];
+    @apply px-4 py-3 flex items-center gap-5 justify-between;
   }
 
   cta-card::part(title) {
