@@ -62,7 +62,9 @@ customElements.define('product-card',
         this.shadowRoot.querySelector('.card-container').part.add('disabled')
       }
       if (this.getAttribute('href')) {
-        this.shadowRoot.querySelector('.card-container').href = this.getAttribute('href')
+        const cardContainer = this.shadowRoot.querySelector('.card-container');
+        cardContainer.href = this.getAttribute('href')
+        cardContainer.part.add('hover')
       }
     }
   });

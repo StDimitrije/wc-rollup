@@ -23,7 +23,11 @@
   }
 
   product-card::part(card-container) {
-    @apply flex flex-col p-3 h-[calc(100%-24px)] no-underline text-dark-2;
+    @apply flex flex-col p-3 h-[calc(100%-24px)] no-underline text-dark-2 dark:text-white;
+  }
+
+  product-card::part(hover) {
+    @apply hover:bg-white/[.5] dark:hover:bg-dark-1/[.9] hover:cursor-pointer;
   }
 
   product-card::part(disabled) {
@@ -41,7 +45,6 @@
   product-card::part(card-holder-name) {
     @apply font-medium;
   }
-
 
   product-card::part(status-icon-wrapper) {
     @apply flex items-center justify-center;
