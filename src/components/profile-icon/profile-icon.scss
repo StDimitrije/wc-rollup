@@ -1,7 +1,7 @@
 @layer components {
 
   profile-icon::part(profile-icon) {
-    @apply cursor-pointer w-8 h-8 flex items-center justify-center text-sm text-white rounded-full;
+    @apply cursor-pointer w-8 h-8 flex items-center justify-center text-sm text-white rounded-full relative;
   }
 
   profile-icon::part(profile-icon-initials) {

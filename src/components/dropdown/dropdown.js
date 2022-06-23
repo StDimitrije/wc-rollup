@@ -18,8 +18,8 @@ customElements.define('dropdown-component',
       profileDropdown.part.toggle('dropdown-modal-visible')
     }
     connectedCallback() {
-      const profileDropdown = this.shadowRoot.querySelector('.dropdown-modal');
-      document.querySelector('profile-icon').addEventListener('click', () => this.toggleDropdown(profileDropdown))
+      const dropDownModal = this.shadowRoot.querySelector('.dropdown-modal');
+      this.parentElement.addEventListener('click', () => this.toggleDropdown(dropDownModal))
     }
   }
 );

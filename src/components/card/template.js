@@ -71,6 +71,10 @@ userCardTemplate.innerHTML = `
       </div>
       <p part="user-email" class="user-email"></p>
       <p part="user-roles" class="user-roles"></p>
+      <div part="two-factor">
+        <p class="two-factor-text"></p>
+        <a part="two-factor-button" href="" class="two-factor-button"></a>
+      </div>
     </div>
   </div>
   <div part="button-wrapper">

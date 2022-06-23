@@ -1,6 +1,7 @@
 import {
   buttonTemplate,
-  utilButtonTemplate
+  utilButtonTemplate,
+  kebabButtonTemplate,
 } from './template.js'
 
 customElements.define('custom-button',
@@ -109,6 +110,18 @@ customElements.define('util-button',
           this.shadowRoot.querySelector('a').setAttribute(attr, this.getAttribute(attr))
         }
       }
+    }
+  }
+);
+customElements.define('kebab-button',
+  class KebabButton extends HTMLElement {
+    constructor() {
+      super();
+      this.showInfo = true;
+      this.attachShadow({
+        mode: 'open'
+      });
+      this.shadowRoot.appendChild(kebabButtonTemplate.content.cloneNode(true));
     }
   }
 );

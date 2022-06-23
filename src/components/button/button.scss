@@ -45,4 +45,11 @@
     @apply flex gap-2 h-fit items-center no-underline text-dark-2 dark:text-white;
   }
 
+  kebab-button::part(kebab-button-container) {
+    @apply px-1.5 h-full w-[40px] relative border-gray-300 dark:border-gray-300/[.20] border border-solid rounded bg-transparent active:bg-gray-200 dark:active:bg-dark-1 shadow-sm flex items-center justify-center cursor-pointer;
+  }
+
+  kebab-button::part(kebab-button-icon-svg-path) {
+    @apply fill-accent;
+  }
 }

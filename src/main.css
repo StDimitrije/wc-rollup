@@ -30,6 +30,10 @@
     @apply p-2.5;
   }
 
+  td {
+    @apply leading-tight;
+  }
+
   th:first-child {
     @apply rounded-l-lg;
   }
@@ -56,11 +60,11 @@
   }
 
   .cell-w-btn {
-    @apply p-0;
+    @apply inline-flex justify-end w-full items-center;
   }
   
   .table-action-btn {
-    @apply inline-flex cursor-pointer font-medium hover:bg-accent-15 hover:dark:bg-primary-light p-1.5 rounded-md w-fit;
+    @apply cursor-pointer font-medium hover:bg-accent-15 hover:dark:bg-primary-light p-1.5 rounded-md w-fit;
   }
 
   .pagination-wrapper {
@@ -138,7 +142,6 @@
   .outline-button-icon {
     @apply fill-dark-3 dark:fill-gray-200;
   }
-  
   .messages-wrapper{
     @apply flex flex-col text-sm gap-1 mt-3;
   }
@@ -161,11 +164,13 @@
 
 }
 
+img {
+  image-rendering: auto;
+}
+
 html {
   image-rendering: -webkit-optimize-contrast;
 }
-
-img {image-rendering: auto}
 
 table svg {
   margin: 0 auto;

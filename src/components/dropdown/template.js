@@ -9,7 +9,7 @@ customDropdownComponentTemplate.innerHTML = `
 const customDropdownItemTemplate = document.createElement('template');
 customDropdownItemTemplate.innerHTML = `
   <li part="profile-dropdown-item">
-    <a part="profile-dropdown-item-a" href=""></a>
+    <a part="profile-dropdown-item-a"></a>
   </li>
 `
 

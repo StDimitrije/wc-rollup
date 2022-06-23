@@ -1,5 +1,5 @@
 
-<main class="flex min-h-full md:min-h-screen">
+<main class="flex min-h-full md:min-h-screen relative">
   <div class="container mx-auto max-w-full">
     <div class="h-full lg:grid grid-cols-12">
       <div class="col-span-12 lg:col-span-6 flex align-middle">
@@ -17,8 +17,8 @@
               {% include logo.html %}
             </a>
             <div class="mb-8">
-              <!-- {% include components/title.html content="Sign in" %} -->
-              <!-- {% include components/subtitle.html content="Welcome to Nomadix Cloud! Please fill in the form below to proceed." %} -->
+              {% include components/title.html content="Sign in" %}
+              {% include components/subtitle.html content="Welcome to Nomadix Cloud! Please fill in the form below to proceed." %}
             </div>
             <div class="space-y-6">
               <form action="/authentication/two-factor-auth">
@@ -57,18 +57,20 @@
       </div>
     </div>
   </div>
+  <div id="favDialog" class="hidden absolute w-full h-full items-center justify-center z-10 backdrop-blur-sm">
+    <div class="rounded-xl bg-white dark:bg-dark-5 text-inherit shadow-xl max-w-md p-6">
+      <div class="flex justify-between mb-3">
+        <h2 class="text-lg font-medium">Nomadix Cloud is invitation only</h2>
+        <button id="closeDialog">
+          <span class="material-icons-round">close</span>
+        </button>
+      </div>
+      <p class="opacity-75 mb-3">Please contact your administrator and ask about Nomadix Cloud.</p>
+      <button id="okButton" class="button">OK</button>
+    </div>
+  </div>
 </main>
 
-<dialog id="favDialog" class="rounded-xl dark:bg-dark-2 text-inherit shadow-xl backdrop:bg-red-400 max-w-md p-6">
-  <div class="flex justify-between mb-3">
-    <h2 class="text-lg font-medium">Nomadix Cloud is invitation only</h2>
-    <button id="closeDialog">
-      <span class="material-icons-round">close</span>
-    </button>
-  </div>
-  <p class="opacity-75 mb-3">Please contact your administrator and ask about Nomadix Cloud.</p>
-  <button id="okButton" class="button">OK</button>
-</dialog>
 
 <script>
   const noAccount = document.getElementById('noAccount');
@@ -77,14 +79,17 @@
   const okButton = document.getElementById('okButton');
 
   noAccount.onclick = function () {
-    dialog.showModal();
+    dialog.classList.toggle('hidden')
+    dialog.classList.toggle('flex')
   }
 
   closeDialog.onclick = function () {
-    dialog.close();
+    dialog.classList.toggle('hidden')
+    dialog.classList.toggle('flex')
   }
 
   okButton.onclick = function () {
-    dialog.close();
+    dialog.classList.toggle('hidden')
+    dialog.classList.toggle('flex')
   }
 </script>

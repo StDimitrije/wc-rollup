@@ -75,11 +75,11 @@
   }
 
   user-card::part(user-initials) {
-    @apply rounded-full w-20 h-20 flex justify-center items-center text-3xl font-bold;
+    @apply rounded-full w-20 h-20 flex justify-center items-center text-3xl font-bold text-white;
   }
 
   user-card::part(user-info-text-wrapper) {
-    @apply flex flex-col;
+    @apply flex flex-col gap-1;
   }
 
   user-card::part(user-info-name-wrapper) {
@@ -95,23 +95,36 @@
   }
 
   user-card::part(activity-active) {
-    @apply bg-accent-15;
+    @apply bg-accent/[.2] dark:bg-accent-dark/[.7];
   }
 
   user-card::part(activity-inactive) {
-    @apply bg-amber-200/[.4];
-  }
-
-  user-card::part(user-email) {
-    @apply mb-1;
+    @apply bg-slate-100 dark:bg-slate-600;
   }
 
   user-card::part(user-email),
-  user-card::part(user-roles) {
+  user-card::part(user-roles),
+  user-card::part(two-factor) {
     @apply text-sm;
   }
 
+  user-card::part(two-factor) {
+    @apply flex gap-1;
+  }
+
+  user-card::part(two-factor-button) {
+    @apply no-underline font-bold;
+  }
+
+  user-card::part(enable) {
+    @apply text-accent-dark hover:text-accent-dark;
+  }
+
+  user-card::part(disable) {
+    @apply text-red-600 hover:text-red-700 dark:text-red-500;
+  }
+
   user-card::part(button-wrapper) {
-    @apply flex gap-6 items-center;
+    @apply flex gap-6;
   }
 }

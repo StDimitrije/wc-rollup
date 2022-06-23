@@ -97,7 +97,7 @@ customElements.define('user-card',
       this.shadowRoot.appendChild(userCardTemplate.content.cloneNode(true));
     }
     connectedCallback() {
-      this.shadowRoot.querySelector('.user-name').innerText = this.getAttribute('name')
+       this.shadowRoot.querySelector('.user-name').innerText = this.getAttribute('name')
       const activity = this.shadowRoot.querySelector('.activity')
 
       if (this.getAttribute('active') != 'false') {
@@ -109,11 +109,24 @@ customElements.define('user-card',
       }
       this.shadowRoot.querySelector('.user-email').innerText = this.getAttribute('email')
       this.shadowRoot.querySelector('.user-roles').innerText = this.getAttribute('roles')
+
+      const twoFactorText = this.shadowRoot.querySelector('.two-factor-text')
+      const twoFactorLink = this.shadowRoot.querySelector('.two-factor-button')
+      if (this.getAttribute('two-factor-enabled') == 'true') {
+        twoFactorText.innerText = 'Two-factor Authentication enabled.'
+        twoFactorLink.innerText = 'Disable'
+        twoFactorLink.part.add('disable')
+      } else {
+        twoFactorText.innerText = 'Two-factor Authentication disabled.'
+        twoFactorLink.innerText = 'Enable'
+        twoFactorLink.part.add('enable')
+      }
+
       const fullName = this.getAttribute('name').split(' ');
       const initials = fullName.shift().charAt(0) + fullName.pop().charAt(0);
       initials.toUpperCase();
       this.shadowRoot.querySelector('.user-initials').innerText = initials;
-      this.shadowRoot.querySelector('.user-initials-bg').style.backgroundColor = this.getAttribute('color')
+      this.shadowRoot.querySelector('.user-initials-bg').style.backgroundColor = this.getAttribute('avatar-color')
     }
   }
 )
