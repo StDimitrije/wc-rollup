@@ -155,15 +155,17 @@
     @apply font-medium;
   }
 
+  hr {
+    @apply dark:opacity-30;
+  }
+
 }
 
 html {
   image-rendering: -webkit-optimize-contrast;
 }
 
-img {
-  height: 100%;
-}
+img {image-rendering: auto}
 
 table svg {
   margin: 0 auto;
