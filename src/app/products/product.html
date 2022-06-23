@@ -1,0 +1,171 @@
+---
+title: Product
+layout: dashboard
+---
+
+<div class="flex w-full bg-primary/[.03]">
+  <sidenav-component>
+    <submenu-component slot="sidenav-component" title="Angie Voice Assistant"
+      imgSrc="/assets/images/icons/angie-icon.svg">
+      <hr slot="submenu-container">
+      <submenu-ul-component slot="submenu-container" title="Angie Setup">
+        <submenu-item slot="submenu-item" href="/app/products/product.html" title="Realms">
+        </submenu-item>
+        <submenu-item slot="submenu-item" title="Sites">
+        </submenu-item>
+        <submenu-item slot="submenu-item" title="Something Else">
+        </submenu-item>
+      </submenu-ul-component>
+      <hr slot="submenu-container">
+      <submenu-ul-component slot="submenu-container" title="Angie Setup">
+        <submenu-item slot="submenu-item" href="/app/products/product.html" title="Realms">
+        </submenu-item>
+        <submenu-item slot="submenu-item" title="Sites">
+        </submenu-item>
+        <submenu-item slot="submenu-item" title="Something Else">
+        </submenu-item>
+      </submenu-ul-component>
+      <hr slot="submenu-container">
+    </submenu-component>
+  </sidenav-component>
+  <div class="container px-7 py-5 w-full overflow-y-scroll overflow-x-hidden">
+    <breadcrumb-component>
+      <breadcrumb-item slot="breadcrumb-item" href="/app/products/" title="Products"></breadcrumb-item>
+    </breadcrumb-component>
+    <div class="mt-2">
+      <title-cta title="Angie Voice Assistant" variant="h1" border="true">
+        <button slot="cta-slot" class="button-success-fill" onclick="openDrawer()">Deploy Product</button>
+      </title-cta>
+    </div>
+    <div class="mt-6">
+      <alert-component>
+        <custom-alert slot="alert" variant="danger" count="2"></custom-alert>
+        <custom-alert slot="alert" variant="warning" count="5"></custom-alert>
+        <custom-alert slot="alert" variant="success" count="123"></custom-alert>
+      </alert-component>
+    </div>
+    <div class="my-9">
+      <card-container>
+        <stat-card slot="card-item" label="Uptime" count="99,473%">
+        </stat-card>
+        <stat-card slot="card-item" label="Deployments" count="813">
+        </stat-card>
+        <stat-card slot="card-item" label="Properties" count="97">
+        </stat-card>
+        <stat-card slot="card-item" label="Active Users" count="462">
+        </stat-card>
+      </card-container>
+    </div>
+    <title-cta title="Deployments" border-bottom="true">
+      <div class="custom-filter-container" slot="cta-slot">
+        <div class="custom-filter-input-container">
+          <input class="custom-filter-input" type="text" placeholder="Search Suborganizations...">
+          <div class="custom-filter-input-icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+              class="custom-filter-input-icon" fill="#000000">
+              <path d="M0 0h24v24H0V0z" fill="none" />
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+            </svg>
+          </div>
+        </div>
+        <button class="custom-filter-button-container">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="custom-filter-button-icon-svg-path"
+              d="M4.25018 5.61C6.57018 8.59 10.0002 13 10.0002 13V18C10.0002 19.1 10.9002 20 12.0002 20C13.1002 20 14.0002 19.1 14.0002 18V13C14.0002 13 17.4302 8.59 19.7502 5.61C20.2602 4.95 19.7902 4 18.9502 4H5.04018C4.21018 4 3.74018 4.95 4.25018 5.61Z" />
+          </svg>
+        </button>
+      </div>
+    </title-cta>
+    <div class="overflow-x-auto">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Code</th>
+            <th>Property Name</th>
+            <th>Installed</th>
+            <th>Time Zone</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in site.data['single_product_deployments'] %}
+          <tr>
+            <td>
+              {% if item.warning %}
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M12.0001 5.99005L19.5301 19.0001H4.47012L12.0001 5.99005ZM2.74012 18.0001C1.97012 19.3301 2.93012 21.0001 4.47012 21.0001H19.5301C21.0701 21.0001 22.0301 19.3301 21.2601 18.0001L13.7301 4.99005C12.9601 3.66005 11.0401 3.66005 10.2701 4.99005L2.74012 18.0001ZM11.0001 11.0001V13.0001C11.0001 13.5501 11.4501 14.0001 12.0001 14.0001C12.5501 14.0001 13.0001 13.5501 13.0001 13.0001V11.0001C13.0001 10.4501 12.5501 10.0001 12.0001 10.0001C11.4501 10.0001 11.0001 10.4501 11.0001 11.0001ZM11.0001 16.0001H13.0001V18.0001H11.0001V16.0001Z"
+                  fill="rgb(245 158 11)" />
+              </svg>
+              {% endif %}
+            </td>
+            <td>{{ item.code }}</td>
+            <td>{{ item.propertyName }}</td>
+            <td>{{ item.installed }}</td>
+            <td>{{ item.timeZone }}</td>
+            <td class="cell-w-btn">
+              <a class="table-action-btn" href="/app/products/deployment.html">Settings</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination-wrapper">
+      <div class="select-wrapper">
+        <p class="text-sm">Showing 1 to 10 of 97 results</p>
+        <select class="rows-select">
+          <option value="10">10 Items</option>
+          <option value="20">20 Items</option>
+          <option value="30">30 Items</option>
+        </select>
+      </div>
+      <div class="pagination">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="icon-fill" opacity="0.5" d="M15.41 7.41L14 6L8 12L14 18L15.41 16.59L10.83 12L15.41 7.41Z" />
+        </svg>
+        <span class="pagination-item pagination-item-active">1</span>
+        <span class="pagination-item">2</span>
+        <span class="pagination-item">3</span>
+        <span class="pagination-item">3</span>
+        <span class="pagination-item">3</span>
+        <span class="pagination-item">3</span>
+        <span class="pagination-item">3</span>
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="icon-fill"
+            d="M9.99984 6L8.58984 7.41L13.1698 12L8.58984 16.59L9.99984 18L15.9998 12L9.99984 6Z" />
+        </svg>
+      </div>
+    </div>
+  </div>
+  <drawer-component title="Deploy Product" subtitle="Angie Voice Assistant">
+    <div slot="drawer-item">
+      <label for="" class="label">Choose Property</label>
+      <input list="browsers" type="text" id="browser" placeholder="Select..." class="input">
+      <datalist id="browsers">
+        <option value="Edge">
+        <option value="Firefox">
+        <option value="Chrome">
+        <option value="Opera">
+        <option value="Safari">
+      </datalist>
+    </div>
+    <button slot="drawer-item" class="button-success-fill confirm-btn">Confirm Deployment</button>
+  </drawer-component>
+</div>
+
+<script>
+  const confirmBtn = document.querySelector('.confirm-btn');
+  confirmBtn.onclick = () => {
+    alert('Deployment successfull')
+  }
+
+  function openDrawer() {
+    const drawer = document.querySelector('drawer-component').shadowRoot.querySelector('.drawer-component');
+    console.log(drawer)
+    drawer.part.remove('hidden')
+    drawer.part.add('visible')
+  }
+</script>

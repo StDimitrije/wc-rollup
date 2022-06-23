@@ -1,0 +1,109 @@
+---
+title: User Settings
+layout: dashboard
+---
+
+<div class="px-7 py-5 w-full overflow-auto bg-primary/[.03]">
+  <breadcrumb-component>
+    <breadcrumb-item slot="breadcrumb-item" href="/app/organization/index.html" title="Acme Organization Inc.">
+    </breadcrumb-item>
+    <breadcrumb-item slot="breadcrumb-item" href="/app/organization/users.html" title="Users"></breadcrumb-item>
+  </breadcrumb-component>
+  <div class="mt-2">
+    <title-cta title="John Doe" variant="h1" border="true">
+    </title-cta>
+  </div>
+  <div class="mt-5 max-w-[500px]">
+    <form action="">
+      <div>
+        <div class="heading">
+          <p class="title">Personal Information</p>
+          <p class="subtitle">This information will be displayed publicly in Acme Organization inc. environment.</p>
+        </div>
+        <div class="cols-2">
+          <div>
+            <label class="label" for="">First Name</label>
+            <input type="text" class="input" placeholder="John">
+          </div>
+          <div>
+            <label class="label" for="">Last Name</label>
+            <input type="text" class="input" placeholder="Doe">
+          </div>
+          <div>
+            <label class="label" for="">Email</label>
+            <input type="email" class="input" placeholder="john@doe.com">
+          </div>
+        </div>
+      </div>
+      <div class="mt-5">
+        <div class="heading">
+          <p class="title">Account Roles</p>
+          <p class="subtitle">Assign appropriate roles to the account to expand or limit Nomadix features.</p>
+        </div>
+        <div>
+          <label class="label" for="">User Roles</label>
+          <sl-select placeholder="Select a few" multiple clearable>
+            <sl-menu-item value="option-1">Option 1</sl-menu-item>
+            <sl-menu-item value="option-2">Option 2</sl-menu-item>
+            <sl-menu-item value="option-3">Option 3</sl-menu-item>
+            <sl-menu-item value="option-4">Option 4</sl-menu-item>
+            <sl-menu-item value="option-5">Option 5</sl-menu-item>
+            <sl-menu-item value="option-6">Option 6</sl-menu-item>
+          </sl-select>
+        </div>
+      </div>
+      <div class="mt-5">
+        <div class="heading">
+          <p class="title">Account Preferences</p>
+          <p class="subtitle">Manage how information is displayed for the account.</p>
+        </div>
+        <div class="cols-2">
+          <div>
+            <label class="label" for="">Timezone</label>
+            <select class="input">
+              <option value="gmt1">GMT+1</option>
+              <option value="gmt2">GMT+2</option>
+              <option value="gmt3">GMT+3</option>
+            </select>
+          </div>
+          <div>
+            <label class="label" for="">Timezone</label>
+            <select class="input">
+              <option value="gmt1">GMT+1</option>
+              <option value="gmt2">GMT+2</option>
+              <option value="gmt3">GMT+3</option>
+            </select>
+          </div>
+          <div>
+            <label class="label" for="">Choose Language</label>
+            <select class="input">
+              <option value="metric">English</option>
+              <option value="imperial">German</option>
+            </select>
+          </div>
+          <div>
+            <label class="label" for="">Theme</label>
+            <select class="input">
+              <option value="metric">Light</option>
+              <option value="imperial">Dark</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="radio-group">
+        <div>
+          <input type="radio" id="huey" name="drone" value="huey" checked>
+          <label for="">Keep properties private to me</label>
+        </div>
+        <div>
+          <input type="radio" id="huey" name="drone" value="huey">
+          <label for="">Share properties with Acme Organization inc.</label>
+        </div>
+      </div>
+      <div class="flex justify-between">
+        <button type="submit" class="button-success-fill">Save Account Settings</button>
+        <button class="button-danger-fill">Delete Account</button>
+      </div>
+    </form>
+  </div>
+</div>

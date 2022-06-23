@@ -1,0 +1,117 @@
+---
+title: Property
+layout: dashboard
+---
+
+<div class="px-7 py-5 w-full overflow-auto bg-primary/[.03]">
+  <breadcrumb-component>
+    <breadcrumb-item slot="breadcrumb-item" href="/app/properties/" title="Properties"></breadcrumb-item>
+    <breadcrumb-item slot="breadcrumb-item" href="/app/properties/property.html" title="Hyatt West Beach - Athens">
+    </breadcrumb-item>
+  </breadcrumb-component>
+  <div class="mt-2">
+    <title-cta title="Property Settings" variant="h1" border="true">
+    </title-cta>
+  </div>
+  <div class="mt-5 max-w-[500px]">
+    <form action="">
+      <div>
+        <label class="label" for="">Property Name</label>
+        <input type="text" class="input" placeholder="Hyatt West Beach - Athens">
+      </div>
+      <div>
+        <label class="label" for="">Property Tag</label>
+        <input type="text" class="input" placeholder="HYATT">
+      </div>
+      <div>
+        <label class="label" for="">Address</label>
+        <input type="text" class="input" placeholder="Leof. Andrea Siggrou Athens, Athens, Greece">
+      </div>
+      <div class="cols-2">
+        <div>
+          <label class="label" for="">Latitude/Longitude</label>
+          <input type="text" class="input" placeholder="41.881081, -87.631081">
+        </div>
+        <div>
+          <label class="label" for="">Timezone</label>
+          <select class="input">
+            <option value="gmt1">GMT+1</option>
+            <option value="gmt2">GMT+2</option>
+            <option value="gmt3">GMT+3</option>
+          </select>
+        </div>
+        <div>
+          <label class="label" for="">City</label>
+          <select class="input">
+            <option value="Athens">Athens</option>
+            <option value="Belgrade">Belgrade</option>
+            <option value="London">London</option>
+          </select>
+        </div>
+        <div>
+          <label class="label" for="">Country</label>
+          <select class="input">
+            <option value="uk">United Kingdom</option>
+            <option value="usa">USA</option>
+            <option value="serbia">Serbia</option>
+            <option value="italy">Italy</option>
+          </select>
+        </div>
+      </div>
+      <div class="mt-5">
+        <div class="heading">
+          <p class="title">Contact Details</p>
+        </div>
+        <div class="cols-2">
+          <div>
+            <label class="label" for="">Primary Contact Number</label>
+            <input type="tel" class="input" placeholder="+44 1631-311-6730">
+          </div>
+          <div>
+            <label class="label" for="">Primary Support Number</label>
+            <input type="tel" class="input" placeholder="+44 1631-311-6730">
+          </div>
+        </div>
+      </div>
+      <div class="mt-5">
+        <div class="heading">
+          <p class="title">Localization Preferences</p>
+        </div>
+        <div class="cols-2">
+          <div>
+            <label class="label" for="">Temperature Unit</label>
+            <select class="input">
+              <option value="Celsius">Celsius</option>
+              <option value="fahrenheit">Fahrenheit</option>
+            </select>
+          </div>
+          <div>
+            <label class="label" for="">Distance Unit</label>
+            <select class="input">
+              <option value="metric">Metric</option>
+              <option value="imperial">Imperial</option>
+            </select>
+          </div>
+          <div>
+            <label class="label" for="">Default Locale</label>
+            <select class="input">
+              <option value="metric">English</option>
+              <option value="imperial">German</option>
+            </select>
+          </div>
+          <div>
+            <label class="label" for="">Currency</label>
+            <select class="input">
+              <option value="euro">Euro</option>
+              <option value="dollar">Dollar</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-between">
+        <button type="submit" class="button-success-fill">Save</button>
+        <button class="button-danger-fill">Delete Property</button>
+      </div>
+    </form>
+  </div>
+</div>

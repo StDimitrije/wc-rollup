@@ -1,0 +1,39 @@
+---
+layout: dashboard
+---
+
+<div class="px-7 py-5 w-full overflow-auto bg-primary/[.03]">
+  <breadcrumb-component>
+    <breadcrumb-item slot="breadcrumb-item" href="/app/organization/" title="Acme Organization inc."></breadcrumb-item>
+  </breadcrumb-component>
+  <div class="mt-2">
+    <title-cta title="Settings" variant="h1" border="true">
+    </title-cta>
+  </div>
+  <div class="mt-5 max-w-[350px]">
+    <form action="">
+      <div>
+        <label class="label" for="">Organization Name</label>
+        <input type="text" class="input" placeholder="Acme Organization inc.">
+      </div>
+      <div>
+        <label class="label" for="">Organization Tag</label>
+        <input type="text" class="input" placeholder="ACMEORG">
+      </div>
+      <div>
+        <label class="label" for="">Contact Number</label>
+        <input type="tel" class="input" placeholder="+44 1631-311-6730">
+      </div>
+      <div>
+        <label class="label" for="">Country</label>
+        <select class="input">
+          <option value="uk">United Kingdom</option>
+          <option value="usa">USA</option>
+          <option value="serbia">Serbia</option>
+          <option value="italy">Italy</option>
+        </select>
+      </div>
+      <button class="button-success-fill">Save</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+---
+title: Property
+layout: dashboard
+---
+
+<div class="px-7 py-5 w-full overflow-auto bg-primary/[.03]">
+  <breadcrumb-component>
+    <breadcrumb-item slot="breadcrumb-item" href="/app/properties/" title="Properties"></breadcrumb-item>
+    <breadcrumb-item slot="breadcrumb-item" href="/app/properties/property.html" title="HYATT"></breadcrumb-item>
+  </breadcrumb-component>
+  <div class="mt-2">
+    <title-cta title="Hyatt West Beach - Athens" variant="h1" border="true">
+      <util-button slot="cta-slot" variant="share" title="Share" href="/app/properties/property.html"></util-button>
+      <util-button slot="cta-slot" variant="settings" title="Settings" href="/app/properties/settings.html">
+      </util-button>
+    </title-cta>
+  </div>
+  <div class="mt-5">
+    <alert-component>
+      <custom-alert slot="alert" variant="danger" count="2"></custom-alert>
+      <custom-alert slot="alert" variant="warning" count="5"></custom-alert>
+      <custom-alert slot="alert" variant="success" count="15"></custom-alert>
+    </alert-component>
+  </div>
+  <div class="my-9">
+    <card-container>
+      <stat-card slot="card-item" label="Uptime" count="99,473%">
+      </stat-card>
+      <stat-card slot="card-item" label="Deployments" count="813">
+      </stat-card>
+      <stat-card slot="card-item" label="Properties" count="97">
+      </stat-card>
+      <stat-card slot="card-item" label="Active Users" count="462">
+      </stat-card>
+      <stat-card slot="card-item" label="Active Users" count="462">
+      </stat-card>
+      <stat-card slot="card-item" label="Active Users" count="462">
+      </stat-card>
+    </card-container>
+  </div>
+  <div class="mb-4">
+    <title-cta title="Deployments" border="true">
+      <button slot="cta-slot" class="button-success-fill" onclick="openDrawer()">Deploy Product</button>
+    </title-cta>
+  </div>
+  <grid-container>
+    <product-card slot="grid-item" name="Angie Voice Assistant" deployments="Deployed 2 months ago"
+      profile-icon-src="/assets/images/icons/angie-icon.svg" status-icon-src="/assets/images/icons/danger-icon.svg">
+      <div slot="card-slot" class="messages-wrapper">
+        <p class="message-muted">Active, no issues</p>
+        <p class="message-muted">T&C accepted</p>
+        <p class="message-muted">License expired</p>
+      </div>
+    </product-card>
+    <product-card slot="grid-item" name="Angie Voice Assistant" deployments="Deployed 2 months ago"
+      profile-icon-src="/assets/images/icons/angie-icon.svg" status-icon-src="/assets/images/icons/warning-icon.svg">
+      <div slot="card-slot" class="messages-wrapper">
+        <p class="message-muted">Active, no issues</p>
+        <p class="message-muted">T&C accepted</p>
+        <p class="message-medium">License expired</p>
+      </div>
+    </product-card>
+
+    <product-card slot="grid-item" name="Angie Voice Assistant" deployments="Deployed 2 months ago"
+      profile-icon-src="/assets/images/icons/angie-icon.svg" status-icon-src="/assets/images/icons/checkmark-icon.svg">
+      <div slot="card-slot" class="messages-wrapper">
+        <p class="message-muted">Active, no issues</p>
+        <p class="message-medium">T&C not accepted</p>
+        <p class="message-medium">License expired</p>
+      </div>
+    </product-card>
+  </grid-container>
+  <drawer-component title="Deploy Product" subtitle="Hyatt West Beach - Athens">
+    <div slot="drawer-item">
+      <label for="" class="label">Choose Product</label>
+      <input list="browsers" type="text" id="browser" placeholder="Select..." class="input">
+      <datalist id="browsers">
+        <option value="Edge">
+        <option value="Firefox">
+        <option value="Chrome">
+        <option value="Opera">
+        <option value="Safari">
+      </datalist>
+    </div>
+    <button slot="drawer-item" class="button-success-fill confirm-btn">Confirm Deployment</button>
+  </drawer-component>
+</div>
+
+<script>
+  const confirmBtn = document.querySelector('.confirm-btn');
+  confirmBtn.onclick = () => {
+    alert('Deployment successfull')
+  }
+
+  function openDrawer() {
+    const drawer = document.querySelector('drawer-component').shadowRoot.querySelector('.drawer-component');
+    console.log(drawer)
+    drawer.part.remove('hidden')
+    drawer.part.add('visible')
+  }
+</script>

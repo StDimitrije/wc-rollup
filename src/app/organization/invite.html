@@ -1,0 +1,46 @@
+---
+layout: dashboard
+---
+
+<div class="px-7 py-5 w-full overflow-auto bg-primary/[.03]">
+  <breadcrumb-component>
+    <breadcrumb-item slot="breadcrumb-item" href="/app/organization/" title="Acme Organization inc."
+      icon-src="/assets/images/icons/properties-icon.svg"></breadcrumb-item>
+    <breadcrumb-item slot="breadcrumb-item" href="/app/organization/" title="Users"
+      icon-src="/assets/images/icons/properties-icon.svg"></breadcrumb-item>
+  </breadcrumb-component>
+  <div class="mt-2">
+    <title-cta title="Invite User" variant="h1" border="true">
+    </title-cta>
+  </div>
+  <div class="mt-5 max-w-[350px]">
+    <form action="">
+      <div>
+        <label class="label" for="">Email</label>
+        <input type="email" class="input" placeholder="john@doe.com">
+      </div>
+      <div class="cols-2">
+        <div>
+          <label class="label" for="">First Name</label>
+          <input type="text" class="input" placeholder="John">
+        </div>
+        <div>
+          <label class="label" for="">Last Name</label>
+          <input type="text" class="input" placeholder="Doe">
+        </div>
+      </div>
+      <div>
+        <label class="label" for="">User Roles</label>
+        <sl-select placeholder="Select a few" multiple clearable>
+          <sl-menu-item value="option-1">Option 1</sl-menu-item>
+          <sl-menu-item value="option-2">Option 2</sl-menu-item>
+          <sl-menu-item value="option-3">Option 3</sl-menu-item>
+          <sl-menu-item value="option-4">Option 4</sl-menu-item>
+          <sl-menu-item value="option-5">Option 5</sl-menu-item>
+          <sl-menu-item value="option-6">Option 6</sl-menu-item>
+        </sl-select>
+      </div>
+      <button class="button-success-fill">Send invitation</button>
+    </form>
+  </div>
+</div>

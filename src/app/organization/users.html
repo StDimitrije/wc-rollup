@@ -1,0 +1,115 @@
+---
+layout: dashboard
+---
+
+<div class="px-7 py-5 w-full overflow-auto bg-primary/[.03]">
+  <breadcrumb-component>
+    <breadcrumb-item slot="breadcrumb-item" href="/app/organization/" title="Acme Organization inc."
+      icon-src="/assets/images/icons/properties-icon.svg"></breadcrumb-item>
+  </breadcrumb-component>
+  <div class="mt-2">
+    <title-cta title="Users" variant="h1" border="true">
+      <custom-button title="Invite User" slot="cta-slot" href="/app/organization/invite.html" variant="fill"
+        color="success">
+        <svg slot="icon-slot" width="11" height="11" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="fill-button-icon"
+            d="M13 8.5H8V13.5C8 14.05 7.55 14.5 7 14.5C6.45 14.5 6 14.05 6 13.5V8.5H1C0.45 8.5 0 8.05 0 7.5C0 6.95 0.45 6.5 1 6.5H6V1.5C6 0.95 6.45 0.5 7 0.5C7.55 0.5 8 0.95 8 1.5V6.5H13C13.55 6.5 14 6.95 14 7.5C14 8.05 13.55 8.5 13 8.5Z"
+            fill="white" />
+        </svg>
+      </custom-button>
+    </title-cta>
+  </div>
+  <div class="mt-5">
+    <title-cta>
+      <div class="custom-filter-container" slot="cta-slot">
+        <div class="custom-filter-input-container">
+          <input class="custom-filter-input" type="text" placeholder="Search Users...">
+          <div class="custom-filter-input-icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+              class="custom-filter-input-icon" fill="#000000">
+              <path d="M0 0h24v24H0V0z" fill="none" />
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+            </svg>
+          </div>
+        </div>
+        <button class="custom-filter-button-container">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="custom-filter-button-icon-svg-path"
+              d="M4.25018 5.61C6.57018 8.59 10.0002 13 10.0002 13V18C10.0002 19.1 10.9002 20 12.0002 20C13.1002 20 14.0002 19.1 14.0002 18V13C14.0002 13 17.4302 8.59 19.7502 5.61C20.2602 4.95 19.7902 4 18.9502 4H5.04018C4.21018 4 3.74018 4.95 4.25018 5.61Z" />
+          </svg>
+        </button>
+      </div>
+    </title-cta>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Last Signed In</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in site.data['all_user_items'] %}
+      <tr>
+        <td>
+          {% if item.locked == true %}
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g opacity="1">
+              <path class="icon-fill"
+                d="M11.9998 5.33329H11.3332V3.99996C11.3332 2.15996 9.83984 0.666626 7.99984 0.666626C6.15984 0.666626 4.6665 2.15996 4.6665 3.99996V5.33329H3.99984C3.2665 5.33329 2.6665 5.93329 2.6665 6.66663V13.3333C2.6665 14.0666 3.2665 14.6666 3.99984 14.6666H11.9998C12.7332 14.6666 13.3332 14.0666 13.3332 13.3333V6.66663C13.3332 5.93329 12.7332 5.33329 11.9998 5.33329ZM5.99984 3.99996C5.99984 2.89329 6.89317 1.99996 7.99984 1.99996C9.1065 1.99996 9.99984 2.89329 9.99984 3.99996V5.33329H5.99984V3.99996ZM11.3332 13.3333H4.6665C4.29984 13.3333 3.99984 13.0333 3.99984 12.6666V7.33329C3.99984 6.96663 4.29984 6.66663 4.6665 6.66663H11.3332C11.6998 6.66663 11.9998 6.96663 11.9998 7.33329V12.6666C11.9998 13.0333 11.6998 13.3333 11.3332 13.3333ZM7.99984 11.3333C8.73317 11.3333 9.33317 10.7333 9.33317 9.99996C9.33317 9.26663 8.73317 8.66663 7.99984 8.66663C7.2665 8.66663 6.6665 9.26663 6.6665 9.99996C6.6665 10.7333 7.2665 11.3333 7.99984 11.3333Z"
+                fill="#323232" />
+            </g>
+          </svg>
+          {% endif %}
+        </td>
+        <td class="name">{{ item.name }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.signedIn }}</td>
+        <td>{{ item.status }}</td>
+        <td class="cell-w-btn">
+          {% if item.reinvite == true %}
+          <button class="table-action-btn re-invite-btn" title="Reinvite">
+            <svg class="icon-fill" width="20" height="20" viewBox="0 0 28 26" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path class="icon-fill"
+                d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 18H4V8L12 13L20 8V18ZM12 11L4 6H20L12 11Z"
+                fill="#323232" />
+              <circle cx="20" cy="18" r="6" class="fill-white dark:fill-dark-3" />
+              <path class="stroke-white dark:stroke-dark-3"
+                d="M23.7518 13.5411C22.7381 12.6854 21.4325 12.1666 20 12.1666C16.7764 12.1666 14.1733 14.778 14.1733 18C14.1733 21.222 16.7764 23.8333 20 23.8333C22.722 23.8333 24.989 21.9719 25.6375 19.4582L25.7987 18.8333H25.1533H23.7667H23.4126L23.295 19.1673C22.8166 20.5268 21.5213 21.5 20 21.5C18.0695 21.5 16.5 19.9305 16.5 18C16.5 16.0694 18.0695 14.5 20 14.5C20.785 14.5 21.5023 14.7652 22.0837 15.2092L20.3131 16.9797L19.4596 17.8333H20.6667H25.3333H25.8333V17.3333V12.6666V11.4595L24.9798 12.3131L23.7518 13.5411Z"
+                fill="#323232" stroke="white" />
+              <path class="fill-primary-light stroke-primary-light dark:stroke-dark-3 dark:fill-white"
+                d="M23.7657 14.0575C22.7851 13.12 21.4632 12.5416 20 12.5416C16.9841 12.5416 14.5483 14.9845 14.5483 18C14.5483 21.0155 16.9841 23.4583 20 23.4583C22.5455 23.4583 24.6673 21.7179 25.2744 19.3645L25.3147 19.2083H25.1533H23.7667H23.6781L23.6488 19.2918C23.1191 20.7967 21.6853 21.875 20 21.875C17.8624 21.875 16.125 20.1376 16.125 18C16.125 15.8623 17.8624 14.125 20 14.125C21.0261 14.125 21.9461 14.5334 22.6356 15.1876L20.5783 17.2449L20.3649 17.4583H20.6667H25.3333H25.4583V17.3333V12.6666V12.3648L25.245 12.5782L23.7657 14.0575Z"
+                fill="#323232" stroke="#323232" stroke-width="0.25" />
+            </svg>
+          </button>
+          {% endif %}
+          <a class="table-action-btn" href="/app//organization/edit-user.html" title="Edit">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" class="icon-fill" clip-rule="evenodd"
+                d="M2.5 14.3751V17.5001H5.625L14.8417 8.28346L11.7167 5.15846L2.5 14.3751ZM17.2583 5.8668C17.5833 5.5418 17.5833 5.0168 17.2583 4.6918L15.3083 2.7418C14.9833 2.4168 14.4583 2.4168 14.1333 2.7418L12.6083 4.2668L15.7333 7.3918L17.2583 5.8668Z"
+                fill="#1D2B39" />
+            </svg>
+          </a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script>
+  const reInviteBtn = document.getElementsByClassName('re-invite-btn');
+  const name = document.getElementsByClassName('name');
+  for (let i = 0; i < reInviteBtn.length; i++) {
+    reInviteBtn[i].onclick = () => {
+      alert('Another invitation link has beeen sent to ' + name[i].innerText)
+    }
+
+  }
+</script>

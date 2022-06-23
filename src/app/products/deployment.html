@@ -1,0 +1,43 @@
+---
+title: Deployments
+layout: dashboard
+---
+
+<div class="flex w-full">
+  <sidenav-component>
+    <submenu-component slot="sidenav-component" title="Angie Voice Assistant"
+      imgSrc="/assets/images/icons/angie-icon.svg">
+      <submenu-ul-component slot="submenu-container">
+        <hr slot="divider-top">
+        <submenu-item slot="submenu-item" title="Configuration Settings" href="/app/products/deployment.html">
+        </submenu-item>
+        <submenu-item slot="submenu-item" title="RADIUS Sessions">
+        </submenu-item>
+        <submenu-item slot="submenu-item" title="Enrollments">
+        </submenu-item>
+        <hr slot="divider-bottom">
+      </submenu-ul-component>
+      <submenu-ul-component slot="submenu-container" title="Angie Setup">
+        <submenu-item slot="submenu-item" href="/app/products/product.html" title="Realms">
+        </submenu-item>
+        <submenu-item slot="submenu-item" title="Sites">
+        </submenu-item>
+        <submenu-item slot="submenu-item" title="Something Else">
+        </submenu-item>
+      </submenu-ul-component>
+    </submenu-component>
+  </sidenav-component>
+  <div class="px-7 py-5 w-full overflow-y-scroll overflow-x-hidden bg-primary/[.03]">
+    <breadcrumb-component>
+      <breadcrumb-item slot="breadcrumb-item" href="/app/products/" title="Products"></breadcrumb-item>
+      <breadcrumb-item slot="breadcrumb-item" href="/app/products/product.html" title="Angie Voice Assistant">
+      </breadcrumb-item>
+    </breadcrumb-component>
+    <div class="mt-2">
+      <title-cta title="Ayers Rock Appartments • Deployment" variant="h1" border="true">
+        <custom-button slot="cta-slot" variant="fill" color="success" title="Configure">
+        </custom-button>
+      </title-cta>
+    </div>
+  </div>
+</div>

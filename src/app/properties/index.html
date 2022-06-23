@@ -1,0 +1,97 @@
+---
+title: Properties
+layout: dashboard
+---
+
+<div class="px-7 py-5 w-full overflow-auto bg-primary/[.03]">
+  <title-cta title="Properties" variant="h1" border="true">
+    <custom-button slot="cta-slot" variant="fill" color="success" title="New Property">
+      <svg slot="icon-slot" width="11" height="11" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="fill-button-icon"
+          d="M13 8.5H8V13.5C8 14.05 7.55 14.5 7 14.5C6.45 14.5 6 14.05 6 13.5V8.5H1C0.45 8.5 0 8.05 0 7.5C0 6.95 0.45 6.5 1 6.5H6V1.5C6 0.95 6.45 0.5 7 0.5C7.55 0.5 8 0.95 8 1.5V6.5H13C13.55 6.5 14 6.95 14 7.5C14 8.05 13.55 8.5 13 8.5Z"
+          fill="white" />
+      </svg>
+    </custom-button>
+  </title-cta>
+  <div class="mt-5">
+    <title-cta>
+      <div class="custom-filter-container" slot="cta-slot">
+        <div class="custom-filter-input-container">
+          <input class="custom-filter-input" type="text" placeholder="Search Suborganizations...">
+          <div class="custom-filter-input-icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"
+              class="custom-filter-input-icon" fill="#000000">
+              <path d="M0 0h24v24H0V0z" fill="none" />
+              <path
+                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+            </svg>
+          </div>
+        </div>
+        <button class="custom-filter-button-container">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="custom-filter-button-icon-svg-path"
+              d="M4.25018 5.61C6.57018 8.59 10.0002 13 10.0002 13V18C10.0002 19.1 10.9002 20 12.0002 20C13.1002 20 14.0002 19.1 14.0002 18V13C14.0002 13 17.4302 8.59 19.7502 5.61C20.2602 4.95 19.7902 4 18.9502 4H5.04018C4.21018 4 3.74018 4.95 4.25018 5.61Z" />
+          </svg>
+        </button>
+      </div>
+    </title-cta>
+  </div>
+  <div class="overflow-x-auto">
+    <table>
+      <thead>
+        <tr>
+          <th>Property Name</th>
+          <th>Code</th>
+          <th>Organization</th>
+          <th>Owner Name</th>
+          <th>Time Zone</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in site.data['all_property_table_items'] %}
+        <tr class="clickable-row" data-href="{{ item.propertyLink }}">
+          <td>{{ item.code }}</td>
+          <td>{{ item.propertyName }}</td>
+          <td>{{ item.organization }}</td>
+          <td>{{ item.ownerName }}</td>
+          <td>{{ item.timeZone }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-wrapper">
+    <div class="select-wrapper">
+      <p class="text-sm">Showing 1 to 10 of 97 results</p>
+      <select class="rows-select">
+        <option value="10">10 Items</option>
+        <option value="20">20 Items</option>
+        <option value="30">30 Items</option>
+      </select>
+    </div>
+    <div class="pagination">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="icon-fill" opacity="0.5" d="M15.41 7.41L14 6L8 12L14 18L15.41 16.59L10.83 12L15.41 7.41Z" />
+      </svg>
+      <span class="pagination-item pagination-item-active">1</span>
+      <span class="pagination-item">2</span>
+      <span class="pagination-item">3</span>
+      <span class="pagination-item">3</span>
+      <span class="pagination-item">3</span>
+      <span class="pagination-item">3</span>
+      <span class="pagination-item">3</span>
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path class="icon-fill" d="M9.99984 6L8.58984 7.41L13.1698 12L8.58984 16.59L9.99984 18L15.9998 12L9.99984 6Z" />
+      </svg>
+    </div>
+  </div>
+</div>
+
+<script>
+  const tableRowLink = document.getElementsByClassName('clickable-row')
+  for (let i = 0; i < tableRowLink.length; i++) {
+    tableRowLink[i].addEventListener('click', function () {
+      window.location = this.dataset.href
+    })
+  }
+</script>
