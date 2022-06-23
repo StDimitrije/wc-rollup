@@ -15,6 +15,7 @@
 @import './components/title-cta/title-cta.scss';
 @import './components/filter/filter.scss';
 @import './components/alert/alert.scss';
+@import './components/drawer/drawer.scss';
 
 @layer components {
 

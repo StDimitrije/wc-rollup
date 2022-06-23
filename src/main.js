@@ -13,6 +13,7 @@ import './components/card/card.js';
 import './components/title-cta/title-cta.js';
 import './components/filter/filter.js';
 import './components/alert/alert.js';
+import './components/drawer/drawer.js';
 
 window.loadEventListener = "DOMContentLoaded"
 

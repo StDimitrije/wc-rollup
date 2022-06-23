@@ -1,0 +1,38 @@
+@layer components {
+  drawer-component::part(drawer-component) {
+    @apply overflow-hidden  bg-white dark:bg-dark-4 flex flex-col gap-10 absolute h-full top-0 right-0 shadow-lg transition-all whitespace-nowrap;
+  }
+
+  drawer-component::part(hidden) {
+    @apply w-0;
+  }
+
+  drawer-component::part(visible) {
+    @apply w-[300px];
+  }
+
+  drawer-component::part(heading) {
+    @apply flex justify-between items-start pt-8 px-5; 
+  }
+
+  drawer-component::part(heading-text) {
+    @apply flex flex-col gap-1;
+  }
+
+  drawer-component::part(title) {
+    @apply font-medium text-xl;
+  }
+
+  drawer-component::part(subtitle) {
+    @apply font-bold text-base;
+  }
+
+  drawer-component::part(close-icon) {
+    @apply cursor-pointer dark:fill-white;
+  }
+
+  drawer-component::part(slot-wrapper) {
+    @apply flex flex-col gap-4 px-5;
+  }
+
+}
