@@ -1,0 +1,184 @@
+---
+title: User Invitation Steps
+layout: default
+---
+
+<main class="pt-20 h-full">
+  <div class="container px-6 mx-auto h-full">
+    <div class="h-full w-full flex items-center justify-center">
+      <div class="flex flex-col max-w-lg gap-y-4">
+        <a href="/" class="block w-56 mx-auto mb-16">
+          <img src="/assets/images/provider-inc.png" alt="">
+        </a>
+        <div class="rounded-xl overflow-hidden bg-gray-100 dark:bg-dark-5">
+          <div class="flex">
+            <h1 id="step1Title" class="text-xl font-bold py-2 px-4 flex items-center gap-2">
+              <div class="relative flex items-center">
+                <span class="absolute w-full text-center text-2xl js-order-number">❶</span>
+                <span id="step1Icon" class="material-icons-round">radio_button_unchecked</span>
+              </div>
+              Choose Language
+            </h1>
+          </div>
+          <div id="step1" class="transition-all">
+            <div class="pb-6 px-6">
+              <p class="opacity-80">Hi John Doe, choose preferred language to join Acme Organization inc:</p>
+              <div class="w-1/2 block m-auto">
+                <p class="mt-6 mb-2.5 flex items-center gap-2.5 opacity-80"><svg width="25" height="24"
+                    viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M13.62 15.07L11.08 12.56L11.11 12.53C12.85 10.59 14.09 8.36 14.82 6H17.75V4H10.75V2H8.75V4H1.75V5.99H12.92C12.25 7.92 11.19 9.75 9.75 11.35C8.82 10.32 8.05 9.19 7.44 8H5.44C6.17 9.63 7.17 11.17 8.42 12.56L3.33 17.58L4.75 19L9.75 14L12.86 17.11L13.62 15.07ZM19.25 10H17.25L12.75 22H14.75L15.87 19H20.62L21.75 22H23.75L19.25 10ZM16.63 17L18.25 12.67L19.87 17H16.63Z"
+                      fill="#323232" />
+                  </svg>
+                  Choose Language:
+                </p>
+                <div class="bg-white py-3 px-2.5 rounded-md shadow-lg text-sm flex flex-col">
+                  <div>
+                    <label>
+                      <input type="radio" id="html" name="fav_language" value="english" class="hidden peer">
+                      <i class="flex hover:bg-gray-100 px-2.5 py-1 rounded
+                        cursor-pointer peer-checked:bg-gray-200 not-italic">English</i>
+                    </label>
+                  </div>
+                  <div>
+                    <label>
+                      <input type="radio" id="html" name="fav_language" value="english" class="hidden peer">
+                      <i class="flex hover:bg-gray-100 px-2.5 py-1 rounded cursor-pointer peer-checked:bg-gray-200
+                        not-italic">Spanish</i>
+                    </label>
+                  </div>
+                  <div>
+                    <label>
+                      <input type="radio" id="html" name="fav_language" value="english" class="hidden peer">
+                      <i class="flex hover:bg-gray-100 px-2.5 py-1 rounded cursor-pointer peer-checked:bg-gray-200
+                        not-italic">中国人</i>
+                    </label>
+                  </div>
+                  <div>
+                    <label>
+                      <input type="radio" id="html" name="fav_language" value="english" class="hidden peer">
+                      <i
+                        class="flex hover:bg-gray-100 px-2.5 py-1 rounded cursor-pointer peer-checked:bg-gray-200 not-italic">Српски</i>
+                    </label>
+                  </div>
+                </div>
+                <button id="step1Action" class="button-success-fill mt-4 block mx-auto">
+                  Confirm
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-xl overflow-hidden bg-gray-100 dark:bg-dark-5">
+          <h2 id="step2Title" class="text-xl font-bold py-2 px-4 flex items-center gap-2 opacity-25">
+            <div class="relative flex items-center">
+              <span class="absolute w-full text-center text-2xl js-order-number">❷</span>
+              <span id="step2Icon" class="material-icons-round">radio_button_unchecked</span>
+            </div>
+            Account Settings • Join Acme Organization inc.
+          </h2>
+
+          <div id="step2" class="transition-all">
+            <div class="px-6 pb-6">
+              <p class="opacity-80">Please fill this form to finish creating your account:</p>
+              <form action="" class="my-6">
+                <div class="cols-2">
+                  <div>
+                    <label for="" class="opacity-80 label">First Name</label>
+                    <input type="text" class="input" placeholder="John">
+                  </div>
+                  <div>
+                    <label for="" class="opacity-80 label">Last Name</label>
+                    <input type="text" class="input" placeholder="Doe">
+                  </div>
+                </div>
+                <div>
+                  <label for="" class="opacity-80 label">Enter your password</label>
+                  <input id="passInput" type="password" name="6_digit_code" id="6_digit_code" minlength="8"
+                    autocomplete="none" class="rounded border-gray-300 text-sm shadow-sm focus:ring-blue-500
+                    focus:border-blue-500 block w-full dark:bg-dark-1 dark:border-gray-700">
+                  <p class="text-xs opacity-60">Minimum 8 characters </p>
+                </div>
+              </form>
+              <div>
+                <p class="font-bold">Two-factor Authentication</p>
+                <p class="my-3 opacity-80">Protect your account with two-factor authentication. Each time you sign in to
+                  your
+                  user account,
+                  you’ll need your password and a one-time passcode.</p>
+                <div class="flex gap-2 items-center">
+                  <label class="switch relative inline-block w-[50px] h-[30px]">
+                    <input id="toggleTwoFactor" type="checkbox" class="opacity-0 w-0 h-0 peer">
+                    <span
+                      class="slider rounded-[34px] before:rounded-full absolute cursor-pointer top-0 left-0 right-0 bottom-0
+                      bg-gray-200 dark:bg-dark-1 transition-all before:absolute before:content-[''] before:h-[22px] before:w-[22px] before:left-1 before:bottom-1
+                    before:bg-white before:transition-all peer-checked:bg-accent peer-checked:before:translate-x-[20px]"></span>
+                  </label>
+                  <p>Enable two-factor Authentication</p>
+                </div>
+              </div>
+              <!-- <div class="col-span-3 mt-6 max-w-[250px]">
+                <label for="6_digit_code" class="block text-sm font-medium mb-1">6-digit code</label>
+                <input id="codeInput" type="text" name="6_digit_code" id="6_digit_code" maxlength="6"
+                  autocomplete="none" class="input">
+              </div> -->
+              <button id="step2Action" type="button"
+                class="button  button-primary inline-flex justify-center focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-4">Create
+                Account</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+  const steps = document.querySelectorAll('#step1, #step2');
+  const stepIcons = document.querySelectorAll('#step1Icon, #step2Icon');
+  const stepTitles = document.querySelectorAll('#step1Title, #step2Title');
+  const orderNumbers = document.querySelectorAll('.js-order-number');
+  const step2Action = document.querySelector('#step2Action');
+  const twoFactorToggle = document.querySelector('#toggleTwoFactor');
+  const passInput = document.querySelector('#passInput');
+
+  const step1InitialHeight = steps[0].clientHeight + 'px';
+  const step2InitialHeight = steps[1].clientHeight + 'px';
+
+  steps[0].style.height = step1InitialHeight;
+  steps[1].style.height = 0;
+
+  document.querySelector('#step1Action').onclick = function () {
+    steps[0].style.height = 0;
+    orderNumbers[0].style.display = 'none';
+    stepIcons[0].textContent = 'check_circle';
+    stepTitles[0].classList.add('opacity-25');
+    steps[1].style.height = step2InitialHeight;
+    stepTitles[1].classList.remove('opacity-25');
+  }
+
+  step2Action.onclick = function () {
+    if (passInput.value.length < 8) {
+      passInput.focus();
+      passInput.classList.remove('focus:ring-blue-500', 'focus:border-blue-500')
+      passInput.classList.add('focus:ring-red-500', 'focus:border-red-500')
+    } else {
+      if (twoFactorToggle.checked) {
+        console.log('go to 2factor')
+        window.location.href = '/authentication/two-factor-auth/steps'
+      } else {
+        console.log('go to hpome')
+        window.location.href = '/app/organization/'
+      }
+    }
+  }
+
+  twoFactorToggle.addEventListener('change', function (e) {
+    if (e.target.checked) {
+      step2Action.innerHTML = 'Set up two-factor authentication'
+    } else {
+      step2Action.innerHTML = 'Create Account';
+    }
+  });
+</script>
