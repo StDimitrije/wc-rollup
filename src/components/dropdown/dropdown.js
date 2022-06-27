@@ -13,13 +13,16 @@ customElements.define('dropdown-component',
       });
       this.shadowRoot.appendChild(customDropdownComponentTemplate.content.cloneNode(true));
     }
-    toggleDropdown(profileDropdown) {
-      profileDropdown.part.toggle('dropdown-modal-hidden')
-      profileDropdown.part.toggle('dropdown-modal-visible')
+    toggleDropdown(dropDownModal, dropDownComponent) {
+      dropDownModal.part.toggle('dropdown-modal-hidden')
+      dropDownModal.part.toggle('dropdown-modal-visible')
+      dropDownComponent.part.toggle('dropdown-modal-hidden')
+      dropDownComponent.part.toggle('dropdown-modal-visible')
     }
     connectedCallback() {
       const dropDownModal = this.shadowRoot.querySelector('.dropdown-modal');
-      this.parentElement.addEventListener('click', () => this.toggleDropdown(dropDownModal))
+      const dropDownComponent = this.shadowRoot.querySelector('.dropdown-component')
+      this.parentElement.addEventListener('click', () => this.toggleDropdown(dropDownModal, dropDownComponent))
     }
   }
 );

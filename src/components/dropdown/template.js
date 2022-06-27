@@ -1,10 +1,9 @@
 const customDropdownComponentTemplate = document.createElement('template');
 customDropdownComponentTemplate.innerHTML = `
-<div class="dropdown-modal" part="dropdown-modal dropdown-modal-hidden">
-  <ul part="dropdown-component" class="dropdown-component" >
+  <div class="dropdown-modal" part="dropdown-modal dropdown-modal-hidden"></div>
+  <ul part="dropdown-component dropdown-modal-hidden" class="dropdown-component" >
     <slot name="dropdown-item"/>
   </ul>
-</div>
 `
 const customDropdownItemTemplate = document.createElement('template');
 customDropdownItemTemplate.innerHTML = `
